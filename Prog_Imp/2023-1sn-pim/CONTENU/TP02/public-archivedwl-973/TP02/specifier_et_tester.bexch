@@ -1,0 +1,19 @@
+[GENERATED OBJECT FILE]
+b__specifier_et_tester.o
+[PROJECT FILES]
+/home/crt4254/Documents/Annee_1/Prog_Imp/2023-1sn-pim/CONTENU/TP02/public-archivedwl-973/TP02/tp2.gpr
+20230928065906 8051ba164e969325ab4bba5cdbd258e0
+[BOUND OBJECT FILES]
+/home/crt4254/Documents/Annee_1/Prog_Imp/2023-1sn-pim/CONTENU/TP02/public-archivedwl-973/TP02/specifier_et_tester.o
+[GENERATED SOURCE FILES]
+b__specifier_et_tester.ads
+b__specifier_et_tester.adb
+b__specifier_et_tester.ali
+[RESULTING OPTIONS]
+-L/home/crt4254/Documents/Annee_1/Prog_Imp/2023-1sn-pim/CONTENU/TP02/public-archivedwl-973/TP02/
+-L/home/crt4254/Documents/Annee_1/Prog_Imp/2023-1sn-pim/CONTENU/TP02/public-archivedwl-973/TP02/
+-L/mnt/n7fs/ens/tp_cregut/GNAT/2021/lib/gcc/x86_64-pc-linux-gnu/10.3.1/adalib/
+-static
+-static-libgcc
+/mnt/n7fs/ens/tp_cregut/GNAT/2021/lib/gcc/x86_64-pc-linux-gnu/10.3.1/adalib/libgnat.a
+-ldl

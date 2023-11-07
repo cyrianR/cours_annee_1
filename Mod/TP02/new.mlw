@@ -1,0 +1,24 @@
+
+
+theory Proposition
+
+        predicate ai
+        predicate bi
+        predicate ci
+
+        (*1*)
+        (*Les trois declarations sont-elles compatibles*)
+        
+        goal Thm00 : (not(bi) /\ ci) /\ (not(ai) -> not(ci)) /\ (ci /\ (not(ai) \/ not(bi)))
+
+        
+        (*DA peut se déduire de DB et DC*)
+
+        (*DA ne peut pas se déduire de DB et DC*)
+
+        (*DB peut se déduire de DA et DC*)
+
+        (*DB ne peut pas se déduire de DA et DC*)
+
+
+

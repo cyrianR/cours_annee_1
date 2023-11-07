@@ -1,0 +1,60 @@
+V "GNAT Lib v9"
+M P W=b
+A -gnatwa
+P ZX
+
+RN
+RV NO_IO
+RV SPARK_05
+
+U min_max_serie%b	min_max_serie.adb	1137db37 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W text_io%s		text_io.ads		text_io.ali
+
+D ada.ads		20210601075304 76789da1 ada%s
+D a-except.ads		20210601075304 291912d5 ada.exceptions%s
+D a-inteio.ads		20210601075304 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20210601075304 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20210601075304 119b8fb3 ada.streams%s
+D a-tags.ads		20210601075304 491b781d ada.tags%s
+D a-textio.ads		20210601075304 881db35a ada.text_io%s
+D a-tiinio.ads		20210601075304 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20210601075304 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20210601075304 5ab55268 interfaces%s
+D i-cstrea.ads		20210601075304 e53d8b8e interfaces.c_streams%s
+D min_max_serie.adb	20230914062636 c6ce9a0b min_max_serie%b
+D system.ads		20210601075304 4635ec04 system%s
+D s-crtl.ads		20210601075304 0ebbdb71 system.crtl%s
+D s-exctab.ads		20210601075304 54135002 system.exception_table%s
+D s-ficobl.ads		20210601075304 078245e4 system.file_control_block%s
+D s-parame.ads		20210601075304 48ec542b system.parameters%s
+D s-secsta.ads		20210601075304 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20210601075304 a7318a92 system.soft_links%s
+D s-stache.ads		20210601075304 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210601075304 09bd3940 system.standard_library%s
+D s-stoele.ads		20210601075304 2dc34a04 system.storage_elements%s
+D s-traent.ads		20210601075304 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20210601075304 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20210601075304 1b7d22d2 system.wch_con%s
+D text_io.ads		20210601075304 21b2c898 text_io%s
+X 1 ada.ads
+16K9*Ada 20e8 12|3r6 4r5
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[8|46] 12|3w10 4r9
+X 7 a-textio.ads
+166U14*New_Line 12|49s17 53s17
+242U14*Put 12|16s9 47s17 51s17
+263U14*Put_Line 12|22s17
+X 8 a-tiinio.ads
+56U14*Get 12|19s9[3|18] 29s17[3|18] 43s25[3|18]
+66U14*Put 12|48s17[3|18] 52s17[3|18]
+X 12 min_max_serie.adb
+10U11*Min_Max_Serie 10b11 55l5 55t18
+11i9 Entier{integer} 19m13 21r12 25r24 26r24 29m21 30r23 32r28 34r40 35r31
+. 37r40 43m29
+12i9 Min{integer} 25m17 35r40 37m33 48r21
+12i14 Max{integer} 26m17 32r37 34m33 52r21
+X 26 text_io.ads
+24K9*Text_IO=24:29 12|1w6 2r5
+
