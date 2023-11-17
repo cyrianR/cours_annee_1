@@ -27,7 +27,16 @@ package body LCA is
 
 	procedure Afficher_Debug (Sda : in T_LCA) is
 	begin
-	  Null;
+	  if Sda = Null then
+      Put("--E");
+    else
+      Put("-->[");
+      Afficher_Cle(Sda.all.Cle);
+      Put(" : ");
+      Afficher_Donnee(Sda.all.Valeur);
+      Put("]");
+      Afficher_Debug(Sda.all.Suivant);
+    end if;
 	end Afficher_Debug;
 
 
@@ -41,19 +50,25 @@ package body LCA is
 	end;
 
 
-	function Taille (Sda : in T_LCA) return Integer is
+  function Taille(Sda: in T_LCA) return Integer is
+    
     Somme: Integer;
-    Ptr: T_LCA;
-	begin
-		Somme := 0;
-    Ptr := Sda;
-    while Ptr /= Null loop
-      Somme := Somme + 1;
-      Ptr := Ptr.all.Suivant;
-    end loop;
-    Ptr := Null;
+
+    procedure Taille_Interne(Sda: in T_LCA) is
+    begin
+      if Sda /= Null then
+        Somme := Somme + 1;
+        Taille_Interne(Sda.all.Suivant);
+      else
+        Null;
+      end if;
+    end Taille_Interne;
+
+  begin
+    Somme := 0;
+    Taille_Interne(Sda);
     return Somme;
-	end Taille;
+  end Taille;
 
 
   procedure Enregistrer (Sda: in out T_LCA ; Cle: in T_Cle ; Valeur: in T_Valeur) is
@@ -74,40 +89,53 @@ package body LCA is
   end Enregistrer;
 
 
-	function Cle_Presente (Sda : in T_LCA ; Cle : in T_Cle) return Boolean is
-    Ptr: T_LCA;
-	begin
-		Ptr := Sda;
-    while Ptr /= Null loop
-      if Ptr.all.Cle = Cle then
-        return True;
+  function Cle_Presente(Sda: in T_LCA ; Cle: in T_Cle) return Boolean is
+  
+    Resultat: Boolean;
+
+    procedure Cle_Presente_Interne(Sda: in T_LCA ; Cle: in T_Cle) is
+    begin
+      if Sda = Null then
+        Null;
+      elsif Sda.all.Cle = Cle then
+        Resultat := True;
       else
-        Ptr := Ptr.all.Suivant;
+        Cle_Presente_Interne(Sda.all.Suivant, Cle);
       end if;
-    end loop;
-    Ptr := Null;
-    return False;
-	end;
+    end Cle_Presente_Interne;
+
+  begin
+    Resultat := False;
+    Cle_Presente_Interne(Sda, Cle);
+    return Resultat;
+  end Cle_Presente;
 
 
-	function La_Valeur (Sda : in T_LCA ; Cle : in T_Cle) return T_Valeur is
-    Ptr: T_LCA;
-    Valeur: T_Valeur;
-	begin
-    Ptr := Sda;
-    while Ptr /= Null loop
-      if Ptr.all.Cle = Cle then
-        Valeur := Ptr.all.Valeur;
-        Ptr := Null;
-        return Valeur;
+  function La_Valeur(Sda: in T_LCA; Cle: in T_Cle) return T_Valeur is
+  
+    Resultat: T_Valeur;
+    Erreur: Boolean;
+
+    procedure La_Valeur_Interne(Sda: in T_LCA; Cle: in T_Cle) is
+    begin
+      if Sda = Null then
+        Erreur := True;
+      elsif Sda.all.Cle = Cle then
+        Resultat := Sda.all.Valeur;
       else
-        Ptr := Ptr.all.Suivant;
+        La_Valeur_Interne(Sda.all.Suivant, Cle);
       end if;
-    end loop;
-    Ptr := Null;
-    raise Cle_Absente_Exception;
-	  	
-	end La_Valeur;
+    end La_Valeur_Interne;
+
+  begin
+    Erreur := False;
+    La_Valeur_Interne(Sda, Cle);
+    if Erreur then
+      raise Cle_Absente_Exception;
+    else
+      return Resultat;
+    end if;
+  end La_Valeur;
 
 
 	procedure Supprimer (Sda : in out T_LCA ; Cle : in T_Cle) is
@@ -126,25 +154,22 @@ package body LCA is
 	end Supprimer;
 
 
-	procedure Pour_Chaque (Sda : in T_LCA) is
-
-    procedure Traiter_Interne(Ptr: in T_LCA) is
-      begin
-        Traiter(Ptr.all.Cle, Ptr.all.Valeur);
-      exception
-        when others => Null;
+  procedure Pour_Chaque(Sda: in T_LCA) is
+  
+    procedure Traiter_Interne(Sda: in T_LCA) is
+    begin
+      Traiter(Sda.all.Cle, Sda.all.Valeur);
+    exception
+      when others => Null;
     end Traiter_Interne;
 
-    Ptr: T_LCA;
-
-	begin
-    Ptr := Sda;
-		while Ptr /= Null loop
-      Traiter_Interne(Ptr);
-      Ptr := Ptr.all.Suivant;
-    end loop;
-    Ptr := Null;
-	end Pour_Chaque;
-
+  begin
+    if Sda /= Null then
+      Traiter_Interne(Sda);
+      Pour_Chaque(Sda.all.Suivant);
+    else
+      Null;
+    end if;
+  end Pour_Chaque;
 
 end LCA;

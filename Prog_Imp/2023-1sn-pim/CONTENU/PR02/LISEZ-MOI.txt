@@ -1,6 +1,6 @@
 % Compte-rendu minimal du mini-projet SDA : LCA et TH
-% Auteur : NOM Prénom
-% Groupe de TP : ...
+% Auteur : RAGOT Cyrian
+% Groupe de TP : K
 
 
 **Consigne :** Vous devez écrire vos réponse à la place des ... en laissant
@@ -21,7 +21,10 @@ pandoc --toc -N -o LISEZ-MOI.pdf LISEZ-MOI.txt
 **Indiquer les inconvénients/avantages d'une implantation par listes chaînées
 d'une SDA.**
 
-...
+Avantage : implantation relativement simple à comprendre et mettre en oeuvre
+Inconvénients : la récursivité prends pas mal de mémoire, on est obligé de parcourir toute la 
+liste chaînée dans le pire cas pour toutes les opérations. Peut être aussi le fait qu'il faille
+penser à détruire la sda après utilisation. 
 
 
 
@@ -47,8 +50,11 @@ Indiquer les conclusions quant à la qualité du générateur aléatoire.
 Indiquer ici les principales difficultés rencontrées lors de la réalisation de
 ce projet et comment elles ont été surmontées ou contournéeS.
 
-...
-
+Pour l'exercice 1 j'avais écrit en itératif la plupart des prodécures/fonctions mais le premier 
+test me soulevait mon erreur Cle_Absente_Exception lors de l'execution. Au final, en changeant 
+et en écrivant tout de manière récursive je n'ai plus eu ce problème. C'était à cause de ma 
+procédure Enregistrer mais je n'ai toujours pas compris pourquoi il me soulevait quand même cette
+erreur.
 
 
 # Informations complémentaires
