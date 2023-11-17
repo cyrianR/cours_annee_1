@@ -27,7 +27,7 @@ package body LCA is
 
 	procedure Afficher_Debug (Sda : in T_LCA) is
 	begin
-		null;	-- TODO : à changer
+	  Null;
 	end Afficher_Debug;
 
 
@@ -56,31 +56,22 @@ package body LCA is
 	end Taille;
 
 
-	procedure Enregistrer (Sda : in out T_LCA ; Cle : in T_Cle ; Valeur : in T_Valeur) is
-    Ptr: T_LCA;
-    Est_Enregistre: Boolean;
+  procedure Enregistrer (Sda: in out T_LCA ; Cle: in T_Cle ; Valeur: in T_Valeur) is
     Nouvelle_Cellule: T_LCA;
-	begin
-		Ptr := Sda;
-    Est_Enregistre := False;
-
-    while not Est_Enregistre loop
-      if Ptr = Null then
-        Nouvelle_Cellule := new T_Cellule;
-        Nouvelle_Cellule.all.Cle := Cle;
-        Nouvelle_Cellule.all.Valeur := Valeur;
-        Nouvelle_Cellule.all.Suivant := Null;
-        Ptr := Nouvelle_Cellule;
-        Est_Enregistre := True;
-      elsif Ptr.all.Cle = Cle then
-        Ptr.all.Valeur := Valeur;
-        Est_Enregistre := True;
-      else
-        Ptr := Ptr.all.Suivant;
-      end if;
-    end loop;
-    Ptr := Null;
-	end Enregistrer;
+  begin
+    if Sda = Null then
+      Nouvelle_Cellule := new T_Cellule;
+      Nouvelle_Cellule.all.Cle := Cle;
+      Nouvelle_Cellule.all.Valeur := Valeur;
+      Nouvelle_Cellule.all.Suivant := Null;
+      Sda := Nouvelle_Cellule;
+      Nouvelle_Cellule := Null;
+    elsif Sda.all.Cle = Cle then
+      Sda.all.Valeur := Valeur;
+    else
+      Enregistrer(Sda.all.Suivant, Cle, Valeur);
+    end if;
+  end Enregistrer;
 
 
 	function Cle_Presente (Sda : in T_LCA ; Cle : in T_Cle) return Boolean is
@@ -120,8 +111,18 @@ package body LCA is
 
 
 	procedure Supprimer (Sda : in out T_LCA ; Cle : in T_Cle) is
+    Ptr: T_LCA;
 	begin
-		null;	-- TODO : à changer
+    if Sda = Null then
+      raise Cle_Absente_Exception;
+    elsif Sda.all.Cle = Cle then
+      Ptr := Sda.all.Suivant;
+      Free(Sda);
+      Sda := Ptr;
+      Ptr := Null;
+    else
+      Supprimer(Sda.all.Suivant, Cle);
+    end if;
 	end Supprimer;
 
 
