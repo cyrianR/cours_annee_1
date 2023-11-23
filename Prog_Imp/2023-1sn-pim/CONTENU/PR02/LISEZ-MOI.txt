@@ -48,7 +48,7 @@ Indiquer les conclusions quant à la qualité du générateur aléatoire.
 # Principales difficultés rencontrées
 
 Indiquer ici les principales difficultés rencontrées lors de la réalisation de
-ce projet et comment elles ont été surmontées ou contournéeS.
+ce projet et comment elles ont été surmontées ou contournées.
 
 Pour l'exercice 1 j'avais écrit en itératif la plupart des prodécures/fonctions mais le premier 
 test me soulevait mon erreur Cle_Absente_Exception lors de l'execution. Au final, en changeant 
@@ -64,8 +64,8 @@ travail réalisé.
 
 Cette partie peut être vide.
 
-...
-
+J'ai corrigé sur l'exercice 1 le problème d'indentation normalement à toutes les lignes.
+J'avais mal configuré mon neovim personnel.
 
 
 # Bilan personnel

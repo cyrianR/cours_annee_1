@@ -19,7 +19,7 @@ package LCA is
 
 
 	-- Est-ce qu'une Sda est vide ?
-	function Est_Vide (Sda : T_LCA) return Boolean;
+  function Est_Vide (Sda : in T_LCA) return Boolean;
 
 
 	-- Obtenir le nombre d'éléments d'une Sda. 
@@ -68,15 +68,15 @@ package LCA is
 
 private
 
-  type T_Cellule;
+	type T_Cellule;
 
-  type T_LCA is access T_Cellule;
+	type T_LCA is access T_Cellule;
 
-  type T_Cellule
-    is record
-      Cle: T_Cle;
-      Valeur: T_Valeur;
-      Suivant: T_LCA;
-    end record;
+	type T_Cellule
+		is record
+			Cle: T_Cle;
+			Valeur: T_Valeur;
+			Suivant: T_LCA;
+		end record;
   
 end LCA;
