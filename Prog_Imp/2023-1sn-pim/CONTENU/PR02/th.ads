@@ -1,3 +1,4 @@
+with LCA;
 
 -- Définition de structures de données associatives sous forme d'une 
 -- table de hachage (TH)
