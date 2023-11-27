@@ -1,5 +1,5 @@
 with Ada.Strings.Unbounded;			use Ada.Strings.Unbounded;
-with Ada.TextIO.Unbounded_IO;		use Ada.TextIO.Unbounded_IO;
+with Ada.Text_IO.Unbounded_IO;		use Ada.Text_IO.Unbounded_IO;
 with Ada.Integer_Text_IO;				use Ada.Integer_Text_IO;
 with Ada.Text_IO;								use Ada.Text_IO;
 with TH;
@@ -8,9 +8,17 @@ procedure TH_Sujet is
 
 	Capacite : constant := 11;
 
-	package TH_ChaineCar_Entier is													-- TH avec la clé étant une chaîne de caractères
-		new TH (Unbounded_String, Integer, Capacite, Length)	-- et la valeur un entier dont le tableau est
-	use TH_ChaineCar_Entier;																-- de taille Capacite
+	-- Fonction de hachage retournant la longueur de la clé de type 
+	-- Unbounded_String modulo la capacité de la TH
+	function Hachage_Length_String (Cle : in Unbounded_String) return Integer is
+	begin
+		return Length (Cle) mod Capacite;
+	end Hachage_Length_String;
+
+
+	package TH_ChaineCar_Entier is																				-- TH avec la clé étant une chaîne de caractères
+		new TH (Unbounded_String, Integer, Capacite, Hachage_Length_String);-- et la valeur un entier dont le tableau est
+	use TH_ChaineCar_Entier;																							-- de taille Capacite
 
 
 	-- Affichage d'une clé (chaîne de caractère)

@@ -65,8 +65,8 @@ package TH is
 	-- Afficher la Sda en révélant sa structure interne.
 	-- Voici un exemple d'affichage.
 	-- [
-	-- -->["un" : 1]-->["deux" : 2]--E,
-	-- -->["trois" : 3]-->["quatre" : 4]--E,
+	-- -->["un" : 1]-->["deux" : 2]--E
+	-- -->["trois" : 3]-->["quatre" : 4]--E
 	-- -->["cinq" : 5]--E
 	-- ]
 	generic
@@ -76,6 +76,10 @@ package TH is
 
 
 private
+
+	package LCA_Generic is
+		new LCA (T_Cle, T_Valeur);
+	use LCA_Generic;
 
 	type T_TH is array (1..Capacite) of T_LCA;
 

@@ -129,7 +129,7 @@ package body LCA is
 
 	begin
 		Erreur := False;
-		La_Valeur_Interne (Sda, Cle);
+		La_Valeur_Interne (Sda, Clt);
 		if Erreur then
 			raise Cle_Absente_Exception;
 		else
