@@ -10,7 +10,6 @@ procedure TH_Sujet is
 
 	-- Fonction de hachage retournant la longueur de la clé de type 
 	-- Unbounded_String modulo la capacité de la TH
-<<<<<<< HEAD
 	function Hachage_Length_String (Cle : in Unbounded_String) return Integer is
 	begin
 		return Length (Cle) mod Capacite;
@@ -19,16 +18,7 @@ procedure TH_Sujet is
 
 	package TH_ChaineCar_Entier is																				-- TH avec la clé étant une chaîne de caractères
 		new TH (Unbounded_String, Integer, Capacite, Hachage_Length_String);-- et la valeur un entier dont le tableau est
-=======
-	function Hachage_Length_String (Cle : in T_Cle) return Integer is
-	begin
-		return Length (Cle) mod Capacite;
-	return Hachage_Length_String;
 
-
-	package TH_ChaineCar_Entier is																				-- TH avec la clé étant une chaîne de caractères
-		new TH (Unbounded_String, Integer, Capacite, Hachage_Length_String)	-- et la valeur un entier dont le tableau est
->>>>>>> b4d15d26ec5a6a5cb25a76db3980d7457d68ec91
 	use TH_ChaineCar_Entier;																							-- de taille Capacite
 
 
