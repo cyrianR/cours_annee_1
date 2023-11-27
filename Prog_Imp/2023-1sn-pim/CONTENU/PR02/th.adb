@@ -1,14 +1,11 @@
 with Ada.Text_IO;            use Ada.Text_IO;
-with SDA_Exceptions;         use SDA_Exceptions;
-with Ada.Unchecked_Deallocation;
-
 
 package body TH is
 
 	procedure Initialiser (Sda: out T_TH) is
 	begin
 		for i in 1..Capacite loop
-			Sda(i) := Null;
+			LCA_Generic.Initialiser (Sda (i));
 		end loop;
 	end Initialiser;
 
@@ -63,7 +60,7 @@ package body TH is
 	end Cle_Presente;
 
 
-	function La_Valeur (Sda : in T_TH ; Cle : in T_Cle) return T_Valeur
+	function La_Valeur (Sda : in T_TH ; Cle : in T_Cle) return T_Valeur is
 	begin
 		return LCA_Generic.La_Valeur (Sda (Hachage (Cle)), Cle);
 	end La_Valeur;

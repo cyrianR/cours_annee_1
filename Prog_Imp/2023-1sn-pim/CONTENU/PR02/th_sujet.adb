@@ -45,18 +45,18 @@ begin
 	Initialiser (Une_TH);
 
 	-- Ajouter les valeurs 1, 2, 3, 4, 5, 99 et 21 avec les clés respectives en toutes lettres
-	Enregistrer (Une_TH, To_Unbounded_String ("un"), 1);
-	Enregistrer (Une_TH, To_Unbounded_String ("deux"), 2);
-	Enregistrer (Une_TH, To_Unbounded_String ("trois"), 3);
-	Enregistrer (Une_TH, To_Unbounded_String ("quatre"), 4);
-	Enregistrer (Une_TH, To_Unbounded_String ("cinq"), 5);
+	--Enregistrer (Une_TH, To_Unbounded_String ("un"), 1);
+	--Enregistrer (Une_TH, To_Unbounded_String ("deux"), 2);
+	--Enregistrer (Une_TH, To_Unbounded_String ("trois"), 3);
+	--Enregistrer (Une_TH, To_Unbounded_String ("quatre"), 4);
+	--Enregistrer (Une_TH, To_Unbounded_String ("cinq"), 5);
 	Enregistrer (Une_TH, To_Unbounded_String ("quatre-vingt-dix-neuf"), 99);
 	Enregistrer (Une_TH, To_Unbounded_String ("vingt-et-un"), 21);
 
 	-- Afficher la TH
-	Afficher_TH (Une_TH);
+	--Afficher_TH (Une_TH);
 
 	-- Detruire la TH après utilisation
-	Detruire (Une_TH);
+	--Detruire (Une_TH);
 
 end TH_Sujet;
