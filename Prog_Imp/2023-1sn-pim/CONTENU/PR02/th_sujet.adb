@@ -8,9 +8,17 @@ procedure TH_Sujet is
 
 	Capacite : constant := 11;
 
-	package TH_ChaineCar_Entier is													-- TH avec la clé étant une chaîne de caractères
-		new TH (Unbounded_String, Integer, Capacite, Length)	-- et la valeur un entier dont le tableau est
-	use TH_ChaineCar_Entier;																-- de taille Capacite
+	-- Fonction de hachage retournant la longueur de la clé de type 
+	-- Unbounded_String modulo la capacité de la TH
+	function Hachage_Length_String (Cle : in T_Cle) return Integer is
+	begin
+		return Length (Cle) mod Capacite;
+	return Hachage_Length_String;
+
+
+	package TH_ChaineCar_Entier is																				-- TH avec la clé étant une chaîne de caractères
+		new TH (Unbounded_String, Integer, Capacite, Hachage_Length_String)	-- et la valeur un entier dont le tableau est
+	use TH_ChaineCar_Entier;																							-- de taille Capacite
 
 
 	-- Affichage d'une clé (chaîne de caractère)
