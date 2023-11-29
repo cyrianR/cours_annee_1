@@ -66,11 +66,19 @@ Cette partie peut être vide.
 
 J'ai corrigé sur l'exercice 1 le problème d'indentation normalement à toutes les lignes.
 J'avais mal configuré mon neovim personnel.
+La fonction de hachage utilisant la longueur des chaînes de caractères que j'ai 
+implémentée renvoie la position 1 pour une chaîne de longueur d'un multiple de 11. On aurait pu 
+décaler les indices renvoyés pour que la longueur de la chaîne de la clé soit exactement égale
+à la position de la clé dans le tableau mais cela ne change pas grand chose, la vitesse de lecture
+reste en principe la même (on a juste qu'une clé de longueur 11 est placée dans la LCA de position 0
+dans le tableau par exemple, ce décalage ne change rien)
 
 
 # Bilan personnel
 
 Quel bilan personnel tirez-vous de ce mini-projet ?
 
-...
+Ce projet m'a bien aider à mieux comprendre les notions de pointeurs, et de généricité et 
+leurs implantations en Ada. C'était des notions encore assez difficiles mais maintenant ça va.
+Sinon j'ai trouvé intéressante l'implémentation des tables de hachage, qui est une notion que j'avais déjà utilisé en Java mais que je ne comprenais pas vraiment avant.
 

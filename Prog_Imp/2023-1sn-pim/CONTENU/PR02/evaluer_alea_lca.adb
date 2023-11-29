@@ -3,9 +3,14 @@ with Ada.Integer_Text_IO;  use Ada.Integer_Text_IO;
 with Ada.Command_Line;     use Ada.Command_Line;
 with SDA_Exceptions;       use SDA_Exceptions;
 with Alea;
+with LCA;
 
 -- Évaluer la qualité du générateur aléatoire et les LCA.
 procedure Evaluer_Alea_LCA is
+
+	package LCA_Integer_Integer is 
+		bew LCA (Integer, Integer);
+	use LCA_Integer_Integer;
 
 
 	-- Afficher l'usage.
@@ -71,8 +76,11 @@ procedure Evaluer_Alea_LCA is
 			new Alea (1, Borne);
 		use Mon_Alea;
 
+		Frequences: T_LCA; -- SDA contenant les fréquences des nombres tirés aléatoirement
 	begin
-		null;	-- TODO à remplacer !
+		
+		
+
 	end Calculer_Statistiques;
 
 
