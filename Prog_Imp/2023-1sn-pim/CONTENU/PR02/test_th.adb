@@ -282,6 +282,7 @@ procedure Test_TH is
 	procedure Tester_La_Valeur_Erreur is
 		Annuaire : T_TH;
 		Inutile: Integer;
+		pragma Unreferenced (Inutile);
 	begin
 		begin
 			Put_Line ("=== Tester_La_Valeur_Erreur..."); New_Line;
@@ -305,6 +306,7 @@ procedure Test_TH is
 		Somme: Integer;
 
 		procedure Sommer (Cle: Unbounded_String; Valeur: Integer) is
+			pragma Unreferenced (Cle);
 		begin
 			Put (" + ");
 			Put (Valeur, 2);

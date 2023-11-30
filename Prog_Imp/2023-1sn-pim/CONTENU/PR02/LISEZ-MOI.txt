@@ -27,22 +27,34 @@ liste chaînée dans le pire cas pour toutes les opérations. Peut être aussi l
 penser à détruire la sda après utilisation. 
 
 
-
 # Évaluation expérimentale.
 
 ## Performance comparée de LCA et TH
 
 Indiquer ici les résultats obtenus.
 
-...
+Voici quelques résultats avec le temps utilisateur pour chaque programme :
+Borne: 10, Taille: 1000 => LCA: 0.004s, TH: 0.031s
+Borne: 10, Taille: 100000 => LCA: 0.085s, TH: 2.856s
+Borne: 100, Taille: 1000 => LCA: 0.079s, TH: 0.036s
+Borne: 1000, Taille: 1000 => LCA: 11.793s, TH: 0.066s
+Borne: 1000, Taille: 100000 => LCA: 11m35s, TH: 3.671s
+Borne: 100000, Taille: 100000 => TH: 4m5s
+Borne: 100000, Taille: 10000000 => TH: tourne trop longtemps (quasiment 2h) donc arrêté de force
+Finalement, pour une borne faible (10) les LCA et les TH sont autant efficaces (les LCA sont même
+légèrement meilleures) mais dès qu'on arrive à 100 en borne, les TH deviennent déjà bien meilleures
+à taille d'échantillon fixé. C'est normal puisqu'on parcours plusieurs petites LCA avec les TH, à
+la place d'une grande LCA dont les opérations sont coûteuses.
 
 
 ## Qualité du générateur aléatoire
 
 Indiquer les conclusions quant à la qualité du générateur aléatoire.
 
-...
-
+Si on prends par exemple le résultat de borne=1000 et taille=100000. 
+Le pire cas serait Min = 0 et Max = 100000 et le résultat obtenu est Min = 73 et Max = 130.
+Ceci nous fait un ratio de 57/100000 = 0.057 %.
+Notre générateur aléatoire est performant.
 
 
 # Principales difficultés rencontrées
@@ -71,7 +83,10 @@ implémentée renvoie la position 1 pour une chaîne de longueur d'un multiple d
 décaler les indices renvoyés pour que la longueur de la chaîne de la clé soit exactement égale
 à la position de la clé dans le tableau mais cela ne change pas grand chose, la vitesse de lecture
 reste en principe la même (on a juste qu'une clé de longueur 11 est placée dans la LCA de position 0
-dans le tableau par exemple, ce décalage ne change rien)
+dans le tableau par exemple, ce décalage ne change rien).
+Pour ce qui est des programmes d'évaluation, on aurais pu optimiser plus les programmes (j'utilise quand même 3 boucles for) et on aurais pu utiliser la procédure Pour_Chaque mais comme ce n'est pas 
+le but principal de l'exercice et que l'amélioration n'affecterait pas notre comparaison des
+programmes avec LCA ou TH, je me suis permis de le laisser tel quel.
 
 
 # Bilan personnel

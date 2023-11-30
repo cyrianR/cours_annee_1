@@ -1,11 +1,24 @@
 with Ada.Text_IO;          use Ada.Text_IO;
 with Ada.Integer_Text_IO;  use Ada.Integer_Text_IO;
 with Ada.Command_Line;     use Ada.Command_Line;
-with SDA_Exceptions;       use SDA_Exceptions;
 with Alea;
+with TH;
 
 -- Évaluer la qualité du générateur aléatoire et les TH.
 procedure Evaluer_Alea_TH is
+
+	Capacite : CONSTANT Integer := 1000;
+
+	-- Fonction de hachage identité
+	function Hachage_Identite (Cle : in Integer) return Integer is
+	begin
+		return (Cle mod Capacite) + 1;
+	end Hachage_Identite;
+
+	-- TH de clé entières et valeurs entières de taille 1000 et de fonction de hachage l'identité
+	package TH_Entier_Entier is
+		new TH (Integer, Integer, Capacite, Hachage_Identite);
+	use TH_Entier_Entier;
 
 
 	-- Afficher l'usage.
@@ -71,10 +84,52 @@ procedure Evaluer_Alea_TH is
 			new Alea (1, Borne);
 		use Mon_Alea;
 
+		Frequences: T_TH; -- SDA contenant les fréquences des nombres tirés aléatoirement
+		Nombre_Aleatoire: Integer;
+		Min_Valeur: Integer;
+		Max_Valeur: Integer;
+		Valeur: Integer;
 	begin
-		null;	-- TODO à remplacer !
-	end Calculer_Statistiques;
+		-- Initialiser la SDA contenant les fréquences
+		Initialiser (Frequences);
 
+		-- Mettre la valeur de chaque clé à 0 (les compteurs de fréquences sont mis à 0)
+		for i in 1..Borne loop
+			Enregistrer (Frequences, i, 0);
+		end loop;
+		
+		-- Compter les occurences des entiers aléatoirement tirés
+		for i in 1..Taille loop
+			Get_Random_Number (Nombre_Aleatoire);
+			Enregistrer (Frequences, Nombre_Aleatoire, La_Valeur (Frequences, Nombre_Aleatoire) + 1);
+		end loop;
+
+		-- Calcul du minimum et du maximum
+		Min_Valeur := La_Valeur (Frequences, 1);
+		Max_Valeur := Min_Valeur;
+		for i in 2..Borne loop
+			Valeur := La_Valeur (Frequences, i);
+			-- Si la valeur itérée est un maximum
+			if Valeur > Max_Valeur then
+				Max_Valeur := Valeur;
+			else
+				Null;
+			end if;
+			-- Si la valeur itérée est un minimum
+			if Valeur < Min_Valeur then
+				Min_Valeur := Valeur;
+			else
+				Null;
+			end if;
+		end loop;
+		
+		Max := Max_Valeur;
+		Min := Min_Valeur;
+		
+		-- Detruire la SDA 
+		Detruire (Frequences);
+	
+	end Calculer_Statistiques;
 
 
 	Min, Max: Integer; -- fréquence minimale et maximale d'un échantillon
@@ -92,10 +147,22 @@ begin
 		Afficher_Variable ("Borne ", Borne);
 		Afficher_Variable ("Taille", Taille);
 
-		Calculer_Statistiques (Borne, Taille, Min, Max);
+		if Taille > 1 and Borne > 1 then
+			Calculer_Statistiques (Borne, Taille, Min, Max);
 
-		-- Afficher les fréquence Min et Max
-		Afficher_Variable ("Min", Min);
-		Afficher_Variable ("Max", Max);
+			-- Afficher les fréquence Min et Max
+			Afficher_Variable ("Min", Min);
+			Afficher_Variable ("Max", Max);
+		else 
+			New_Line;
+			Put_Line ("Borne et Taille doivent être supérieurs à 1");
+			Afficher_Usage;
+		end if;
 	end if;
+
+exception 
+	when Constraint_Error =>
+		New_Line;
+		Put_Line ("Erreur de saisie, entrez des nombres entiers");
+		Afficher_Usage;
 end Evaluer_Alea_TH;

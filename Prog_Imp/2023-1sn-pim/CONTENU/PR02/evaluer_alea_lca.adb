@@ -7,9 +7,9 @@ with LCA;
 -- Évaluer la qualité du générateur aléatoire et les LCA.
 procedure Evaluer_Alea_LCA is
 
-	package LCA_Integer_Integer is 
+	package LCA_Entier_Entier is 
 		new LCA (Integer, Integer);
-	use LCA_Integer_Integer;
+	use LCA_Entier_Entier;
 
 
 	-- Afficher l'usage.
@@ -100,17 +100,14 @@ procedure Evaluer_Alea_LCA is
 		Min_Valeur := La_Valeur (Frequences, 1);
 		Max_Valeur := Min_Valeur;
 		for i in 2..Borne loop
-
 			Valeur := La_Valeur (Frequences, i);
-			
 			-- Si la valeur itérée est un maximum
 			if Valeur > Max_Valeur then
 				Max_Valeur := Valeur;
 			else
 				Null;
 			end if;
-			
-			-- Si la valeut itérée est un minimum
+			-- Si la valeur itérée est un minimum
 			if Valeur < Min_Valeur then
 				Min_Valeur := Valeur;
 			else
@@ -144,15 +141,16 @@ begin
 		
 		if Taille > 1 and Borne > 1 then
 			Calculer_Statistiques (Borne, Taille, Min, Max);
+
+			-- Afficher les fréquence Min et Max
+			Afficher_Variable ("Min", Min);
+			Afficher_Variable ("Max", Max);
 		else 
 			New_Line;
 			Put_Line ("Borne et Taille doivent être supérieurs à 1");
 			Afficher_Usage;
 		end if;
 
-		-- Afficher les fréquence Min et Max
-		Afficher_Variable ("Min", Min);
-		Afficher_Variable ("Max", Max);
 	end if;
 
 exception 

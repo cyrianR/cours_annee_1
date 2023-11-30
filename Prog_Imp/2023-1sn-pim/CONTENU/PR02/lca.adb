@@ -52,11 +52,11 @@ package body LCA is
 
 	function Taille (Sda: in T_LCA) return Integer is
 
-		procedure Taille_Interne(Sda: in T_LCA, Somme: in out Integer) is
+		procedure Taille_Interne(Sda: in T_LCA ; Somme: in out Integer) is
 		begin
 			if Sda /= Null then
 				Somme := Somme + 1;
-				Taille_Interne (Sda.all.Suivant);
+				Taille_Interne (Sda.all.Suivant, Somme);
 			else
 				Null;
 			end if;
@@ -89,46 +89,45 @@ package body LCA is
 
 
 	function Cle_Presente (Sda: in T_LCA ; Cle: in T_Cle) return Boolean is
-  
-		Resultat: Boolean;
 
-		procedure Cle_Presente_Interne (Sda: in T_LCA ; Cle: in T_Cle) is
+		procedure Cle_Presente_Interne (Sda: in T_LCA ; Cle: in T_Cle ; Resultat: in out Boolean) is
 		begin
 			if Sda = Null then
 				Null;
 			elsif Sda.all.Cle = Cle then
 				Resultat := True;
 			else
-				Cle_Presente_Interne (Sda.all.Suivant, Cle);
+				Cle_Presente_Interne (Sda.all.Suivant, Cle, Resultat);
 			end if;
 		end Cle_Presente_Interne;
 
+		Resultat: Boolean;
 	begin
 		Resultat := False;
-		Cle_Presente_Interne (Sda, Cle);
+		Cle_Presente_Interne (Sda, Cle, Resultat);
 		return Resultat;
 	end Cle_Presente;
 
 
 	function La_Valeur (Sda: in T_LCA; Cle: in T_Cle) return T_Valeur is
   
-		Resultat: T_Valeur;
-		Erreur: Boolean;
-
-		procedure La_Valeur_Interne (Sda: in T_LCA; Cle: in T_Cle) is
+		procedure La_Valeur_Interne (Sda: in T_LCA; Cle: in T_Cle; Resultat: in out T_Valeur; 
+			Erreur: in out Boolean) is
 		begin
 			if Sda = Null then
 				Erreur := True;
 			elsif Sda.all.Cle = Cle then
 				Resultat := Sda.all.Valeur;
 			else
-				La_Valeur_Interne (Sda.all.Suivant, Cle);
+				La_Valeur_Interne (Sda.all.Suivant, Cle, Resultat, Erreur);
 			end if;
 		end La_Valeur_Interne;
 
+		Resultat: T_Valeur;
+		Erreur: Boolean;
 	begin
 		Erreur := False;
-		La_Valeur_Interne (Sda, Cle);
+		La_Valeur_Interne (Sda, Cle, Resultat, Erreur);
 		if Erreur then
 			raise Cle_Absente_Exception;
 		else
