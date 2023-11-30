@@ -1,7 +1,6 @@
 with Ada.Text_IO;          use Ada.Text_IO;
 with Ada.Integer_Text_IO;  use Ada.Integer_Text_IO;
 with Ada.Command_Line;     use Ada.Command_Line;
-with SDA_Exceptions;       use SDA_Exceptions;
 with Alea;
 with LCA;
 
@@ -9,7 +8,7 @@ with LCA;
 procedure Evaluer_Alea_LCA is
 
 	package LCA_Integer_Integer is 
-		bew LCA (Integer, Integer);
+		new LCA (Integer, Integer);
 	use LCA_Integer_Integer;
 
 
@@ -72,17 +71,60 @@ procedure Evaluer_Alea_LCA is
 			and 0 <= Max and Max <= Taille
 			and (if Min /= Max then Min + Max <= Taille)
 	is
+
 		package Mon_Alea is
 			new Alea (1, Borne);
 		use Mon_Alea;
 
 		Frequences: T_LCA; -- SDA contenant les fréquences des nombres tirés aléatoirement
+		Nombre_Aleatoire: Integer;
+		Min_Valeur: Integer;
+		Max_Valeur: Integer;
+		Valeur: Integer;
 	begin
+		-- Initialiser la SDA contenant les fréquences
+		Initialiser (Frequences);
+
+		-- Mettre la valeur de chaque clé à 0 (les compteurs de fréquences sont mis à 0)
+		for i in 1..Borne loop
+			Enregistrer (Frequences, i, 0);
+		end loop;
 		
+		-- Compter les occurences des entiers aléatoirement tirés
+		for i in 1..Taille loop
+			Get_Random_Number (Nombre_Aleatoire);
+			Enregistrer (Frequences, Nombre_Aleatoire, La_Valeur (Frequences, Nombre_Aleatoire) + 1);
+		end loop;
+
+		-- Calcul du minimum et du maximum
+		Min_Valeur := La_Valeur (Frequences, 1);
+		Max_Valeur := Min_Valeur;
+		for i in 2..Borne loop
+
+			Valeur := La_Valeur (Frequences, i);
+			
+			-- Si la valeur itérée est un maximum
+			if Valeur > Max_Valeur then
+				Max_Valeur := Valeur;
+			else
+				Null;
+			end if;
+			
+			-- Si la valeut itérée est un minimum
+			if Valeur < Min_Valeur then
+				Min_Valeur := Valeur;
+			else
+				Null;
+			end if;
+		end loop;
 		
+		Max := Max_Valeur;
+		Min := Min_Valeur;
+		
+		-- Detruire la SDA 
+		Detruire (Frequences);
 
 	end Calculer_Statistiques;
-
 
 
 	Min, Max: Integer; -- fréquence minimale et maximale d'un échantillon
@@ -99,11 +141,23 @@ begin
 		-- Afficher les valeur de Borne et Taille
 		Afficher_Variable ("Borne ", Borne);
 		Afficher_Variable ("Taille", Taille);
-
-		Calculer_Statistiques (Borne, Taille, Min, Max);
+		
+		if Taille > 1 and Borne > 1 then
+			Calculer_Statistiques (Borne, Taille, Min, Max);
+		else 
+			New_Line;
+			Put_Line ("Borne et Taille doivent être supérieurs à 1");
+			Afficher_Usage;
+		end if;
 
 		-- Afficher les fréquence Min et Max
 		Afficher_Variable ("Min", Min);
 		Afficher_Variable ("Max", Max);
 	end if;
+
+exception 
+	when Constraint_Error =>
+		New_Line;
+		Put_Line ("Erreur de saisie, entrez des nombres entiers");
+		Afficher_Usage;
 end Evaluer_Alea_LCA;

@@ -1,16 +1,18 @@
 with Ada.Strings.Unbounded;			use Ada.Strings.Unbounded;
-with Ada.Text_IO.Unbounded_IO;		use Ada.Text_IO.Unbounded_IO;
+with Ada.Text_IO.Unbounded_IO;	use Ada.Text_IO.Unbounded_IO;
 with Ada.Integer_Text_IO;				use Ada.Integer_Text_IO;
 with Ada.Text_IO;								use Ada.Text_IO;
 with TH;
 
 procedure TH_Sujet is
 
+	Capacite : CONSTANT Integer := 11;
+
 	-- Fonction de hachage retournant la longueur de la clé de type 
 	-- Unbounded_String modulo la capacité de la TH
 	function Hachage_Length_String (Cle : in Unbounded_String) return Integer is
 	begin
-		return (Length (Cle) mod 11) + 1;
+		return (Length (Cle) mod Capacite) + 1;
 	end Hachage_Length_String;
 
 

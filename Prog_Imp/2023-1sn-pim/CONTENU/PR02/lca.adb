@@ -51,10 +51,8 @@ package body LCA is
 
 
 	function Taille (Sda: in T_LCA) return Integer is
-    
-		Somme: Integer;
 
-		procedure Taille_Interne(Sda: in T_LCA) is
+		procedure Taille_Interne(Sda: in T_LCA, Somme: in out Integer) is
 		begin
 			if Sda /= Null then
 				Somme := Somme + 1;
@@ -64,9 +62,10 @@ package body LCA is
 			end if;
 		end Taille_Interne;
 
+		Somme: Integer;
 	begin
 		Somme := 0;
-		Taille_Interne (Sda);
+		Taille_Interne (Sda, Somme);
 		return Somme;
 	end Taille;
 

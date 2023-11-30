@@ -6,16 +6,18 @@ with TH;
 
 procedure Test_TH is
 
+	Capacite : CONSTANT Integer := 11;
+
 	-- Fonction de hachage retournant la longueur de la clé de type 
 	-- Unbounded_String modulo 11, la capacité de la TH
 	function Hachage_Length_String (Cle : in Unbounded_String) return Integer is
 	begin
-		return (Length (Cle) mod 11) + 1;
+		return (Length (Cle) mod Capacite) + 1;
 	end Hachage_Length_String;
 
 
 	package TH_String_Integer is
-		new TH (T_Cle => Unbounded_String, T_Valeur => Integer, Capacite => 11, 
+		new TH (T_Cle => Unbounded_String, T_Valeur => Integer, Capacite => Capacite, 
 			Hachage => Hachage_Length_String);
 	use TH_String_Integer;
 
