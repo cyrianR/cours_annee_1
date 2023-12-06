@@ -2,44 +2,89 @@
 #define COMPLEX_H
 
 // Type utilisateur complexe_t
-/** À COMPLÉTER **/
+struct complexe_t {
+	float reel;
+	float imaginaire;
+};
 
-// Fonctions reelle et imaginaire
+typedef struct complexe_t complexe_t;
+
+// Procédures reelle et imaginaire
+
 /**
  * reelle
+ * Donne la partie réelle d'un complexe.
+ * 
+ * Paramètres :
+ *	c		[in]	complexe
  *
- * CONTRAT À COMPLÉTER
+ * Retour :
+ *	r		partie réelle de c
  */
-/** FONCTION À DÉCLARER **/
+float reelle(complexe_t c);
 
 /**
  * imaginaire
+ * Donne la partie imaginaire d'un complexe.
+ * 
+ * Paramètres :
+ *	c		[in]	complexe
  *
- * CONTRAT À COMPLÉTER
+ * Retour :
+ *	r		partie imaginaire de c
  */
-/** FONCTION À DÉCLARER **/
+float imaginaire(complexe_t c);
 
-// Procédures set_reelle, set_imaginaire et init
+
+// Procédures set_reelle et set_imaginaire
+
 /**
  * set_reelle
+ * Change la partie réelle d'un complexe.
+ * 
+ * Paramètres :
+ *	resultat		[out]	complexe dont on change la partie reelle
+ *	r						[in]	nouvelle partie réelle 
  *
- * CONTRAT À COMPLÉTER
+ * Pré-conditions : resultat non null
+ *
+ * Post-conditions :
+ *	- partie réelle du complexe est égale à la nouvelle partie réelle r
  */
-/** PROCÉDURE À DÉCLARER **/
+void set_reelle(complexe_t* resultat, double r);
 
 /**
  * set_imaginaire
+ * Change la partie imaginaire d'un complexe.
+ * 
+ * Paramètres :
+ *	resultat		[out]	complexe dont on change la partie imaginaire
+ *	i						[in]	nouvelle partie imaginaire
  *
- * CONTRAT À COMPLÉTER
+ * Pré-conditions : resultat non null
+ *
+ * Post-conditions :
+ *	- partie imaginaire du complexe est égale à la nouvelle partie imaginaire i
  */
-/** PROCÉDURE À DÉCLARER **/
+void set_imaginaire(complexe_t* resultat, double i);
 
 /**
  * init
+ * Change les parties réelle et imaginaire d'un complexe.
  *
- * CONTRAT À COMPLÉTER
+ * Paramètres :
+ *	resultat		[out]	complexe dont on modifie la partie réelle et la partie complexe
+ *	r						[in]	nouvelle partie reelle
+ *	i						[in]	nouvelle partie imaginaire 
+ *
+ * Pré-conditions : resultat non null
+ *
+ * Post-conditions :
+ *  - partie imaginaire du complexe est égale à la nouvelle partie imaginaire i
+ *	- partie reelle du complexe est égale à la nouvelle partie reelle i
  */
-/** PROCÉDURE À DÉCLARER **/
+void init(complexe_t* resultat, double r, double i);
+
 
 // Procédure copie
 /**
@@ -56,10 +101,11 @@
  */
 void copie(complexe_t* resultat, complexe_t autre);
 
+
 // Algèbre des nombres complexes
 /**
  * conjugue
- * Calcule le conjugué du nombre complexe op et le sotocke dans resultat.
+ * Calcule le conjugué du nombre complexe op et le stock dans resultat.
  *
  * Paramètres :
  *   resultat       [out] Résultat de l'opération
@@ -145,27 +191,46 @@ void echelle(complexe_t* resultat, complexe_t op, double facteur);
  */
 void puissance(complexe_t* resultat, complexe_t op, int exposant);
 
+
 // Module et argument
 /**
  * module_carre
+ * Calcule le module au carré du nombre complexe fournit
  *
- * CONTRAT À COMPLETER
+ * Paramètres :
+ *  c			[in] complexe dont on veut le module au carré
+ * 
+ * Retour : r est le module au carré de c
+ *
+ * Post-conditions : r = c.reel^2 + c.imaginaire^2
  */
-/** FONCTION À DÉCLARER **/
+double module_carre(complexe_t c);
 
 /**
  * module
+ * Calcule le module du nombre complexe fournit
+ * 
+ * Paramètres :
+ *	c			[in] complexe dont on veut le module au carré
  *
- * CONTRAT À COMPLETER
+ * Retour : r est le module au carré de c
+ *
+ * Post-conditions : r = sqrt(c.reel^2 + c.imaginaire^2)
  */
-/** FONCTION À DÉCLARER **/
+double module(complexe_t c);
 
 /**
  * argument
+ * Calcule l'argument du nombre complexe fournit
  *
- * CONTRAT À COMPLETER
+ * Paramètres :
+ *	c			[in] complexe dont on veut l'argument
+ *
+ * Retour : r est l'argument de c
+ *
+ * Post-conditions : r = arctan(c.imaginaire / c.reel)
  */
-/** FONCTION À DÉCLARER **/
+double argument(complexe_t c);
 
 
 #endif // COMPLEXE_H
