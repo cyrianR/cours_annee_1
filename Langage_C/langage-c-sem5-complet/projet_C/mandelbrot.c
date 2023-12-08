@@ -21,7 +21,7 @@ int mandelbrot(complexe_t z0, complexe_t c, double seuil, int maxit) {
 	int compteur = 0;
 	complexe_t z = z0;
 	complexe_t* p_z = &z;
-	while (module(z) <= seuil || compteur < maxit) {
+	while (module(z) <= seuil && compteur < maxit) {
 		puissance(p_z, z, 2);
 		ajouter(p_z, z, c);
 		compteur++;
