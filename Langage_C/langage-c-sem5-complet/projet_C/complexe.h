@@ -6,7 +6,6 @@ struct complexe_t {
 	float reel;
 	float imaginaire;
 };
-
 typedef struct complexe_t complexe_t;
 
 // Procédures reelle et imaginaire
@@ -51,7 +50,7 @@ float imaginaire(complexe_t c);
  * Post-conditions :
  *	- partie réelle du complexe est égale à la nouvelle partie réelle r
  */
-void set_reelle(complexe_t* resultat, double r);
+void set_reelle(complexe_t* resultat, float r);
 
 /**
  * set_imaginaire
@@ -66,7 +65,7 @@ void set_reelle(complexe_t* resultat, double r);
  * Post-conditions :
  *	- partie imaginaire du complexe est égale à la nouvelle partie imaginaire i
  */
-void set_imaginaire(complexe_t* resultat, double i);
+void set_imaginaire(complexe_t* resultat, float i);
 
 /**
  * init
@@ -83,7 +82,7 @@ void set_imaginaire(complexe_t* resultat, double i);
  *  - partie imaginaire du complexe est égale à la nouvelle partie imaginaire i
  *	- partie reelle du complexe est égale à la nouvelle partie reelle i
  */
-void init(complexe_t* resultat, double r, double i);
+void init(complexe_t* resultat, float r, float i);
 
 
 // Procédure copie
@@ -174,7 +173,7 @@ void multiplier(complexe_t* resultat, complexe_t gauche, complexe_t droite);
  * Pré-conditions : resultat non-null
  * Post-conditions : *resultat = op * facteur
  */
-void echelle(complexe_t* resultat, complexe_t op, double facteur);
+void echelle(complexe_t* resultat, complexe_t op, float facteur);
 
 /**
  * puissance

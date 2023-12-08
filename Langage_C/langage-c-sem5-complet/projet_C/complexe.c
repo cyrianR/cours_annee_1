@@ -14,15 +14,15 @@ float imaginaire(complexe_t c) {
 
 // Implantations de set_reelle et set_imaginaire
 
-void set_reelle(complexe_t *resultat, double r) {
+void set_reelle(complexe_t* resultat, float r) {
 	resultat->reel = r; 
 }
 
-void set_imaginaire(complexe_t *resultat, double i) {
+void set_imaginaire(complexe_t* resultat, float i) {
 	resultat->imaginaire = i;
 }
 
-void init(complexe_t *resultat, double r, double i) {
+void init(complexe_t* resultat, float r, float i) {
 	resultat->imaginaire = i;
 	resultat->reel = r;
 }
@@ -44,12 +44,12 @@ void conjugue(complexe_t *resultat, complexe_t op) {
 
 void ajouter(complexe_t *resultat, complexe_t gauche, complexe_t droite) {
 	resultat->reel = gauche.reel + droite.reel;
-	resultat->imaginaire = droite.imaginaire + droite.imaginaire;
+	resultat->imaginaire = droite.imaginaire + gauche.imaginaire;
 }
 
 void soustraire(complexe_t *resultat, complexe_t gauche, complexe_t droite) {
 	resultat->imaginaire = gauche.imaginaire - droite.imaginaire;
-	resultat->reel = gauche.reel - gauche.imaginaire;
+	resultat->reel = gauche.reel - droite.reel;
 }
 
 void multiplier(complexe_t *resultat, complexe_t gauche, complexe_t droite) {
@@ -57,7 +57,7 @@ void multiplier(complexe_t *resultat, complexe_t gauche, complexe_t droite) {
 	resultat->reel = gauche.reel * droite.reel + (-1) * droite.imaginaire * gauche.imaginaire;
 }
 
-void echelle(complexe_t *resultat, complexe_t op, double facteur) {
+void echelle(complexe_t *resultat, complexe_t op, float facteur) {
 	resultat->imaginaire = op.imaginaire * facteur;
 	resultat->reel = op.reel * facteur;
 }
@@ -67,8 +67,8 @@ void echelle(complexe_t *resultat, complexe_t op, double facteur) {
 
 void puissance(complexe_t *resultat, complexe_t op, int exposant) {
 	if (exposant == 0) {
-		resultat->reel = 0;
-		resultat->imaginaire = 0;
+		resultat->reel = 1.0;
+		resultat->imaginaire = 0.0;
 	} else {
 		resultat->reel = 1;
 		resultat->imaginaire = 0;
@@ -89,7 +89,14 @@ double module(complexe_t c) {
 }
 
 double argument(complexe_t c) {
-	return atan(c.imaginaire / c.reel);
+	double result = atan(c.imaginaire / c.reel); 
+	if (c.reel < 0.0 && c.imaginaire == 0.0) {
+		return M_PI;
+	} else if (result < 0.0) {
+		return result + M_PI;
+	} else {
+		return result;
+	}
 }
 
 

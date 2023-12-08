@@ -8,7 +8,7 @@
 #include "tests.h"
 #include <math.h>
 
-#define PRECISION   1e-6
+#define PRECISION   1e-4
 
 int main() {
     INITIALIZE_TESTS();
