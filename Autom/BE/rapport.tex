@@ -1,18 +1,28 @@
 \documentclass[11pt,french]{article} % police taille 11 car 10 c'est pour les terroristes
 \usepackage{babel} % paquet qui permet de gérer les différentes langues
 \usepackage{graphicx} % paquet pour inclure des images
+\usepackage{float}
+\usepackage{titling}
+\usepackage{geometry}
+\geometry{legalpaper, margin=100pt}
 
 \begin{document}
 
 \begin{figure}[t]
     \centering
-		\advance\leftskip-0.5cm
-    \includegraphics[width=12cm]{inp_n7.png} % joli logo de l'N7
+		\advance\leftskip-0.2cm
+    \includegraphics[width=8cm]{inp_n7.png} % joli logo de l'N7
 \end{figure}
 
-\title{\vspace{1cm} \textbf{Rapport de bureau d'études\\Systèmes Cyber Physique}} 
+\title{\vspace{0.5cm} \textbf{Rapport de bureau d'études\\Automatique Systèmes Cyber Physique}} 
 \author{RAGOT Cyrian}
-\date{\vspace{9cm} Département Sciences du Numérique - Première année \\
+\renewcommand{\maketitlehookc}{%
+	\vspace{3cm}
+  \begin{center}
+		\includegraphics[width=14cm]{segway.png}
+  \end{center}
+}
+\date{\vspace{1cm}\vfill Département Sciences du Numérique - Première année \\
 2023-2024 }
 
 \maketitle
@@ -22,9 +32,19 @@
 \newpage
 
 \section{Introduction}
+
+
+\newpage
 \section{Modèle du pendule inversé}
+
+\newpage
 \section{Modèle du robot Lego}
+
+\newpage
 \section{Robot Lego NXT}
+
+\newpage
 \section{Conclusion}
+
 
 \end{document}

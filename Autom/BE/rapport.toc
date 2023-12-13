@@ -1,6 +1,6 @@
 \babel@toc {nil}{}\relax 
 \contentsline {section}{\numberline {1}Introduction}{3}{}%
-\contentsline {section}{\numberline {2}Modèle du pendule inversé}{3}{}%
-\contentsline {section}{\numberline {3}Modèle du robot Lego}{3}{}%
-\contentsline {section}{\numberline {4}Robot Lego NXT}{3}{}%
-\contentsline {section}{\numberline {5}Conclusion}{3}{}%
+\contentsline {section}{\numberline {2}Modèle du pendule inversé}{4}{}%
+\contentsline {section}{\numberline {3}Modèle du robot Lego}{5}{}%
+\contentsline {section}{\numberline {4}Robot Lego NXT}{6}{}%
+\contentsline {section}{\numberline {5}Conclusion}{7}{}%
