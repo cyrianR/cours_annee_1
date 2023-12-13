@@ -44,8 +44,9 @@
 
 \newpage
 \section{Modèle du pendule inversé}
+\subsection{Contrôle par retour d'état}
 
-Dans cette partie, nous étudierons un modèle simple d'un pendule inversé contrôlé par retour d'état. Le système contrôlé issu des équations physiques de la dynamique est \\
+Dans cette partie, nous étudierons un modèle simple d'un pendule inversé contrôlé par retour d'état (figure \ref{fig:schema_pend_inv}) pour lequel on a accès aux variables de sortie. Le système contrôlé issu des équations physiques de la dynamique est \\
 
 
 \begin{equation}
@@ -59,7 +60,7 @@ Dans cette partie, nous étudierons un modèle simple d'un pendule inversé cont
     \end{array}
   \right.
 	}
-\end{equation}
+\end{equation}\\
 
 avec
 
@@ -72,12 +73,119 @@ avec
 	\item[--] $\boldsymbol{u(t)}$ contrôle par retour d'état
 \end{description}
 
-% TODO figure du pendule avec alpha
+\begin{figure}[h]
+    \centering
+		\advance\leftskip-0.2cm
+    \includegraphics[width=3cm]{pendule_inverse.png} % joli logo de l'N7
+		\label{fig:schema_pend_inv}
+		\caption{Schéma du pendule inversé}
+\end{figure}
+\vspace{0.5cm}
 
-On souhaite stabiliser le système à l'origine (la position verticale du pendule inversé), cependant le système non contrôlé n'est pas stable à l'origine. En effet,  \\
+\subsubsection{Analyse du modèle théorique}
+
+L'équation d'état est alors
+
+\begin{equation}
+	\NORMAL{
+			\dot{x}(t) = f(x(t),u(t)), \\
+	}
+\end{equation}\\
+
+où 
+
+\begin{equation}
+	\NORMAL{
+		f(x,u) = 
+		\left(
+		\begin{array}{c}
+			x_2 \\
+			\frac{g}{l}sin(x_1)-\frac{cos(x_1)u}{l} \\
+    \end{array}
+  \right)
+	}
+\end{equation}\\
 
 
-On choisit alors un contrôle par retour d'état linéaire $u(t) = u_e + K(x(t) - x_e)$ avec $K = (k_1, k_2)$.
+On souhaite stabiliser le système à l'origine (la position verticale du pendule inversé), cependant le système non contrôlé n'est pas stable à l'origine. En effet, lorsque $u = 0$, en passant par la jacobienne de $g$ au point de fonctionnement puis son polynôme caractéristique, on trouve la valeur propre $\sqrt{\frac{g}{l}}$ qui est à partie réelle strictement positive.\\
+
+% TODO : on pourrait parler du critere de Kalman si ya de la place encore
+% TODO : on pourrait mettre des equations pour le calcul de la vp aussi
+
+On choisit alors un contrôle en boucle fermée par retour d'état linéaire de la forme $u(t) = u_e + K(x(t) - x_e)$ avec $K = (k_1, k_2)$. Cherchons alors $K$ de manière à avoir un contrôle qui stabilise le système asymptotiquement en $x_e$.\\
+
+On boucle le système :\\
+
+\begin{equation}
+	\NORMAL{
+			\dot{x}(t) = f(x(t),u_e + K(x(t)-x_e)) := g(x(t)) \\
+	}
+\end{equation}\\
+
+Alors $g(x_e) = f(x_e, u_e) = 0$ donc $x_e$ est un point d'équilibre de $\dot{x} = g(x)$. \\
+
+La matrice jacobienne associée est alors 
+
+\begin{equation}
+	\NORMAL{
+		J_g(x) = 
+		\left(
+		\begin{array}{cc}
+			0 & 1\\
+			\frac{cos(x_1)}{l}(g-k_1)+\frac{u_e}{l}sin(x_1) & -\frac{cos(x_1)}{l}k_2 \\
+    \end{array}
+  \right)
+	}
+\end{equation}\\
+
+Au point de fonctionnement $(x_e,u_e) = (0,0,0)}$ on a 
+
+\begin{equation}
+	\NORMAL{
+		J_g(x_e) = 
+		\left(
+		\begin{array}{cc}
+			0 & 1\\
+			\frac{g-k_1}{l} & -\frac{k_2}{l} \\
+    \end{array}
+  \right)
+	}
+\end{equation}\\
+
+De plus, le contrôle stabilise asymptotiquement le système en $(x_e,u_e)$ si et seulement si les valeurs propres sont à parties réelles strictement négatives donc si et seulement si
+
+\begin{equation}
+	\NORMAL{
+  \left\{
+    \begin{array}{l}
+			tr(J_g(x_e)) < 0 \\
+			det(J_g(x_e)) > 0 \\
+    \end{array}
+  \right.
+	}
+\end{equation}\\
+
+Finalement,
+
+\begin{equation}
+	\NORMAL{
+  \left\{
+    \begin{array}{l}
+			k_1 > g \\
+			k_2 > 0 \\
+    \end{array}
+  \right.
+	}
+\end{equation}\\
+
+\subsubsection{Simulation du modèle sur Simulink} \\
+
+Maintenant que l'on a compris comment le système contrôlé devrait réagir, nous allons effectuer des simulations sur Simulink où nous pourrons comparer le comportement du système pour différents cas d'étude. \\
+
+Les schémas blocs construits sur Simulink lors des séances de TP sont représentés figure \ref{bloc_pend_inv_controle}. Nous étudierons les simulations avec les différents cas de la figure \ref{cas_pend_inv_controle}.\\
+
+
+
 
 
 

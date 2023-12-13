@@ -1,6 +1,9 @@
 \babel@toc {nil}{}\relax 
 \contentsline {section}{\numberline {1}Introduction}{3}{}%
 \contentsline {section}{\numberline {2}Modèle du pendule inversé}{4}{}%
-\contentsline {section}{\numberline {3}Modèle du robot Lego}{5}{}%
-\contentsline {section}{\numberline {4}Robot Lego NXT}{6}{}%
-\contentsline {section}{\numberline {5}Conclusion}{7}{}%
+\contentsline {subsection}{\numberline {2.1}Contrôle par retour d'état}{4}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Analyse du modèle théorique}{4}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}Simulation du modèle sur Simulink}{5}{}%
+\contentsline {section}{\numberline {3}Modèle du robot Lego}{6}{}%
+\contentsline {section}{\numberline {4}Robot Lego NXT}{7}{}%
+\contentsline {section}{\numberline {5}Conclusion}{8}{}%
