@@ -17,13 +17,15 @@ function [X_VS,w,c,code_retour] = estim_param_SVM_dual(X,Y)
     
     w = 0;
     X_VS = [];
+    I = 0;
     for i = 1:n
         if alpha(i) > 10^(-6)
+            I = i;
             X_VS = [X_VS; X(i)];
             w = w + alpha(i)*Y(i)*(X(i).');
         end
     end
-    c = (w.')*(X(1).') - Y(1);
+    c = (w.')*(X(I).') - Y(I);
 
 
 
