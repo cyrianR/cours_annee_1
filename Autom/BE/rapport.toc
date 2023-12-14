@@ -4,6 +4,7 @@
 \contentsline {subsection}{\numberline {2.1}Contrôle par retour d'état}{4}{}%
 \contentsline {subsubsection}{\numberline {2.1.1}Analyse du modèle théorique}{4}{}%
 \contentsline {subsubsection}{\numberline {2.1.2}Simulation du modèle sur Simulink}{5}{}%
-\contentsline {section}{\numberline {3}Modèle du robot Lego}{6}{}%
-\contentsline {section}{\numberline {4}Robot Lego NXT}{7}{}%
-\contentsline {section}{\numberline {5}Conclusion}{8}{}%
+\contentsline {subsection}{\numberline {2.2}Capteurs}{6}{}%
+\contentsline {section}{\numberline {3}Modèle du robot Lego}{7}{}%
+\contentsline {section}{\numberline {4}Robot Lego NXT}{8}{}%
+\contentsline {section}{\numberline {5}Conclusion}{9}{}%

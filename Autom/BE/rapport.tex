@@ -77,8 +77,8 @@ avec
     \centering
 		\advance\leftskip-0.2cm
     \includegraphics[width=3cm]{pendule_inverse.png} % joli logo de l'N7
-		\label{fig:schema_pend_inv}
 		\caption{Schéma du pendule inversé}
+		\label{fig:schema_pend_inv}
 \end{figure}
 \vspace{0.5cm}
 
@@ -138,7 +138,7 @@ La matrice jacobienne associée est alors
 	}
 \end{equation}\\
 
-Au point de fonctionnement $(x_e,u_e) = (0,0,0)}$ on a 
+Au point de fonctionnement $(x_e,u_e) = (0,0,0)$ on a 
 
 \begin{equation}
 	\NORMAL{
@@ -178,15 +178,47 @@ Finalement,
 	}
 \end{equation}\\
 
-\subsubsection{Simulation du modèle sur Simulink} \\
+\subsubsection{Simulation du modèle sur Simulink} 
 
 Maintenant que l'on a compris comment le système contrôlé devrait réagir, nous allons effectuer des simulations sur Simulink où nous pourrons comparer le comportement du système pour différents cas d'étude. \\
 
-Les schémas blocs construits sur Simulink lors des séances de TP sont représentés figure \ref{bloc_pend_inv_controle}. Nous étudierons les simulations avec les différents cas de la figure \ref{cas_pend_inv_controle}.\\
+Les schémas blocs construits sur Simulink lors des séances de TP sont représentés sur les figures \ref{fig:simulink_controle_pend_inv}, \ref{fig:systeme_pend_inv} et \ref{fig:controle_pend_inv}. Nous étudierons les simulations avec les différents cas de la figure \ref{cas_pend_inv_controle}. On rappelle que $t_f$ est le temps de simulation en secondes.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{simulink_controle_pend_inv.png} % joli logo de l'N7
+		\caption{Schéma bloc du système contrôlé sur Simulink}
+		\label{fig:simulink_controle_pend_inv}
+\end{figure}
+\vspace{2cm}
+
+\begin{figure}[H]
+    \centering
+		\advance\leftskip-2cm
+    \includegraphics[width=19cm]{systeme_pend_inv.png} % joli logo de l'N7
+		\caption{Schéma bloc du système}
+		\label{fig:systeme_pend_inv}
+\end{figure}
+\vspace{0.5cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=11cm]{controle_pend_inv.png} % joli logo de l'N7
+		\caption{Schéma bloc du contrôle}
+		\label{fig:controle_pend_inv}
+\end{figure}
+\vspace{0.5cm}
+
+%TODO : table avec cas
+
+Commentons maintenant les courbes obtenues. \\
 
 
 
 
+\subsection{Capteurs}
+
+Nous avons pu contrôler correctement le système à l'aide des variables de sorties de position angulaire et de vitesse, cependant, sur un système réel, on auras pas toujours accès à toutes les variables de sorties. On va alors maintenant supposer que l'on a accès qu'à la valeur $\dot\alpha$ à l'aide d'un capteur sur le système. Il faut alors reconstruire $\alpha$ à l'aide d'un prédicteur. Pour cela, on utilise un intégrateur continu. \\
 
 
 
