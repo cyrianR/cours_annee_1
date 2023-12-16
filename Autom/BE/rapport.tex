@@ -4,6 +4,7 @@
 \usepackage{float}
 \usepackage{titling}
 \usepackage{environ}
+\usepackage{subfig}
 \usepackage{amsmath,amsfonts,amssymb,amsthm}
 \usepackage{geometry}
 \geometry{legalpaper, margin=100pt}
@@ -14,6 +15,14 @@
     \scalebox{1.2}{$\BODY$} 
 } 
 
+\renewcommand{\contentsname}{Table des matières}
+
+
+% TODO : liens pour se deplacer vers section/figures
+% TODO : ameliorer titres des figures
+% TODO : revoir tout doc à la fin et faire des saut de ligne/pages pour rendre plus lisible
+% TODO : ajouter critere Kalman
+
 \begin{document}
 
 \begin{figure}[t]
@@ -23,7 +32,7 @@
 \end{figure}
 
 \title{\vspace{0.5cm} \textbf{Rapport de bureau d'études\\Automatique Systèmes Cyber Physique}} 
-\author{RAGOT Cyrian}
+\author{RAGOT Cyrian \\ Groupe K}
 \renewcommand{\maketitlehookc}{%
 	\vspace{3cm}
   \begin{center}
@@ -39,7 +48,8 @@
 \tableofcontents % génère un sommaire des sections du document
 \newpage
 
-\section{Introduction}
+\section*{Introduction}
+\addcontentsline{toc}{section}{\protect\numberline{}Introduction}
 
 
 \newpage
@@ -76,13 +86,13 @@ avec
 \begin{figure}[h]
     \centering
 		\advance\leftskip-0.2cm
-    \includegraphics[width=3cm]{pendule_inverse.png} % joli logo de l'N7
-		\caption{Schéma du pendule inversé}
+    \includegraphics[width=3cm]{pendule_inverse.png}
+		\caption{\textit{Schéma du pendule inversé}}
 		\label{fig:schema_pend_inv}
 \end{figure}
 \vspace{0.5cm}
 
-\subsubsection{Analyse du modèle théorique}
+\subsubsection{Analyse du modèle théorique du pendule inverse}
 
 L'équation d'état est alors
 
@@ -167,7 +177,7 @@ De plus, le contrôle stabilise asymptotiquement le système en $(x_e,u_e)$ si e
 
 Finalement,
 
-\begin{equation}
+\begin{equation} \label{eq:k12}
 	\NORMAL{
   \left\{
     \begin{array}{l}
@@ -182,12 +192,12 @@ Finalement,
 
 Maintenant que l'on a compris comment le système contrôlé devrait réagir, nous allons effectuer des simulations sur Simulink où nous pourrons comparer le comportement du système pour différents cas d'étude. \\
 
-Les schémas blocs construits sur Simulink lors des séances de TP sont représentés sur les figures \ref{fig:simulink_controle_pend_inv}, \ref{fig:systeme_pend_inv} et \ref{fig:controle_pend_inv}. Nous étudierons les simulations avec les différents cas de la figure \ref{cas_pend_inv_controle}. On rappelle que $t_f$ est le temps de simulation en secondes.
+Les schémas blocs construits sur Simulink lors des séances de TP sont représentés sur les figures \ref{fig:simulink_controle_pend_inv}, \ref{fig:systeme_pend_inv} et \ref{fig:controle_pend_inv}. Nous étudierons les simulations avec les différents cas du tableau \ref{table:1}. On rappelle que $t_f$ est le temps de simulation en secondes. \\
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=9cm]{simulink_controle_pend_inv.png} % joli logo de l'N7
-		\caption{Schéma bloc du système contrôlé sur Simulink}
+    \includegraphics[width=9cm]{simulink_controle_pend_inv.png} 
+		\caption{\textit{Schéma bloc du système contrôlé par retour d'état}}
 		\label{fig:simulink_controle_pend_inv}
 \end{figure}
 \vspace{2cm}
@@ -195,42 +205,302 @@ Les schémas blocs construits sur Simulink lors des séances de TP sont représe
 \begin{figure}[H]
     \centering
 		\advance\leftskip-2cm
-    \includegraphics[width=19cm]{systeme_pend_inv.png} % joli logo de l'N7
-		\caption{Schéma bloc du système}
+    \includegraphics[width=19cm]{systeme_pend_inv.png} 
+		\caption{\textit{Schéma bloc du système}}
 		\label{fig:systeme_pend_inv}
 \end{figure}
 \vspace{0.5cm}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=11cm]{controle_pend_inv.png} % joli logo de l'N7
-		\caption{Schéma bloc du contrôle}
+    \includegraphics[width=11cm]{controle_pend_inv.png} 
+		\caption{\textit{Schéma bloc du contrôleur}}
 		\label{fig:controle_pend_inv}
 \end{figure}
 \vspace{0.5cm}
 
-%TODO : table avec cas
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c c c c c|} 
+ \hline
+ Cas & $x_0$ & $t_f$ & $K$ & Intégrateur \\ [0.5ex] 
+ \hline\hline
+ Cas 1 & $(\pi/20,0)$ & 10 & (30,10) & $ode45$ \\ 
+ Cas 2 & $(\pi/20,0)$ & 100 & (10,1) & $ode45$ \\
+ Cas 3 & $(\pi/20,0)$ & 100 & (10,1) & Euler, $ode1$ \\
+ Cas 4 & $(\pi/20,0)$ & 1000 & (10,1) & Euler, $ode1$ \\
+ Cas 5 & $(\pi/10,0)$ & 100 & (10,1) & $ode45$ \\ 
+ Cas 6 & $(\pi/10,0)$ & 100 & (30,10) & $ode45$ \\ [1ex] 
+ \hline
+\end{tabular}
+\caption{\textit{Données pour différents cas d'étude du contrôle par retour d'état}}
+\label{table:1}
+\end{table} 
 
-Commentons maintenant les courbes obtenues. \\
+Commentons les résultats des simulations obtenues pour ces cas d'étude. \\
+
+Prenons les deux premiers cas dont les courbes sont représentées en figure \ref{fig:cas_1_2}. Les conditions pour la stabilisation sont vraies aux alentours du point de fonctionnement, or la valeur de $x_0$ est bien proche de $x_e=(0,0)$. De plus, les conditions de l'équation (\ref{eq:k12}) sont vérifiées dans ces deux cas. On a bien un système qui est stabilisé. Pour le cas 2, on diminue le gain $K$ du contrôle, ceci prolonge le temps de réponse du système puisque le contrôle a moins d'impact. \\
+
+\begin{figure}[H]%
+    \centering
+		\noindent\makebox[\textwidth]{
+		\subfloat[\centering{Cas 1}]{{\includegraphics[width=9cm]{tp2_cas_11.png}}}%
+		\qquad
+		\subfloat[\centering{Cas 2}]{{\includegraphics[width=9cm]{tp2_cas_12.png}}}}%
+		\caption{\textit{Comparaison du changement de gain}}%
+		\label{fig:cas_1_2}%
+\end{figure}
+\vspace{0.5cm}
+
+Ensuite, pour les cas 3 et 4 (figure \ref{fig:cas_3_4}), on change d'algorithme d'intégration. Le cas 3 montre une perte de précision, les oscillations sont plus larges qu'au cas 2, mais restent stabilisées. En revanche, pour le cas 4, on augmente seulement le temps de simulation et la courbe de l'état devient absurde. En effet, l'intégrateur de l'algorithme d'Euler $ode1$ utilise un pas qui dépend de la durée de simulation. Ici, le pas est trop grand et provoque une simulation incorrecte. \\
+
+\begin{figure}[H]%
+    \centering
+		\noindent\makebox[\textwidth]{
+		\subfloat[\centering{Cas 3}]{{\includegraphics[width=9cm]{tp2_cas_13.png}}}%
+		\qquad
+		\subfloat[\centering{Cas 4}]{{\includegraphics[width=9cm]{tp2_cas_14.png}}}}%
+		\caption{\textit{Comparaison du changement d'intégrateur}}%
+		\label{fig:cas_3_4}%
+\end{figure}
+\vspace{0.5cm}
+
+Enfin, on repasse sur le premier intégrateur. Les cas 5 et 6 (figure \ref{fig:cas_5_6}) ont été obtenus en modifiant l'état initial $x_0$ que l'on a pris plus loin du point de fonctionnement, on a choisi un angle initial plus grand $\pi/10$ au lieu de $\pi/20$. En gardant un gain faible $K$, on ne stabilise plus le système, l'état diverge au cas 5. Cependant, si on augmente à nouveau $K$ à la valeur du cas 1, on peut re-stabiliser le système (cas 6) puisqu'on donne plus d'importance au contrôle. \\
+
+\begin{figure}[H]%
+    \centering
+		\noindent\makebox[\textwidth]{
+		\subfloat[\centering{Cas 5}]{{\includegraphics[width=9cm]{tp2_cas_15.png}}}%
+		\qquad
+		\subfloat[\centering{Cas 6}]{{\includegraphics[width=9cm]{tp2_cas_16.png}}}}%
+		\caption{\textit{Comparaison du changement d'état initial}}%
+		\label{fig:cas_5_6}%
+\end{figure}
+\vspace{0.5cm}
 
 
 
 
-\subsection{Capteurs}
+\subsection{Contrôle par retour de sortie avec capteur}
 
-Nous avons pu contrôler correctement le système à l'aide des variables de sorties de position angulaire et de vitesse, cependant, sur un système réel, on auras pas toujours accès à toutes les variables de sorties. On va alors maintenant supposer que l'on a accès qu'à la valeur $\dot\alpha$ à l'aide d'un capteur sur le système. Il faut alors reconstruire $\alpha$ à l'aide d'un prédicteur. Pour cela, on utilise un intégrateur continu. \\
+Nous avons pu contrôler correctement le système à l'aide des variables de sorties de position angulaire et de vitesse, cependant, sur un système réel, on a pas toujours accès à toutes les variables de sorties. On va donc maintenant supposer que l'on a accès qu'à la valeur $\dot\alpha$ à l'aide d'un capteur sur le système. Il faut alors reconstruire $\alpha$ à l'aide d'un prédicteur. Pour cela, on utilise un intégrateur continu. \\
 
+Le schéma bloc réalisé sur Simulink en séance de TP reste le même pour le bloc du système simple (figure \ref{fig:systeme_pend_inv}) et le bloc du contrôleur (figure \ref{fig:controle_pend_inv}), on ajoute simplement le capteur et le prédicteur sur la figure \ref{fig:simulink_capteur_pend_inv}. Les blocs du prédicteur et du capteur sont représentés respectivement sur les figures \ref{fig:predicteur_pend_inv} et \ref{fig:capteur_pend_inv}. Nous étudierons les simulations avec les différents cas du tableau \ref{table:2}. \\
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{simulink_capteur_pend_inv.png} 
+		\caption{\textit{Schéma bloc du système contrôlé par retour de sortie}}
+		\label{fig:simulink_capteur_pend_inv}
+\end{figure}
+\vspace{0.5cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=11cm]{predicteur_pend_inv.png} 
+		\caption{\textit{Schéma bloc du prédicteur}}
+		\label{fig:predicteur_pend_inv}
+\end{figure}
+\vspace{0.5cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=11cm]{capteur_pend_inv.png} 
+		\caption{\textit{Schéma bloc du capteur}}
+		\label{fig:capteur_pend_inv}
+\end{figure}
+\vspace{0.5cm}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c c c c c c|} 
+ \hline
+ Cas & $x_0$ & $t_f$ & $K$ & Pas & Intégrateur \\ [0.5ex] 
+ \hline\hline
+ Cas 1 & $(\pi/20,0)$ & 100 & (10,1) & par défaut & $ode45$ \\ 
+ Cas 2 & $(\pi/20,0)$ & 100 & (10,1) & 0.001 & Euler, $ode1$ \\
+ Cas 3 & $(\pi/20,0)$ & 100 & (10,1) & 5 & Euler, $ode1$ \\ [1ex]
+ \hline
+\end{tabular}
+\caption{\textit{Données pour différents cas d'étude du contrôle par retour de sortie}}
+\label{table:2}
+\end{table}
+
+Nous pouvons observer sur les trois courbes (figure \ref{fig:courbes_capteurs}) des points indiquant le pas de l'intégrateur choisi. \\
+
+Pour le premier cas, nous avons utilisé l'intégrateur plus performant $ode45$ qui ne nécessite pas de préciser le pas qui est fixé par défaut. De plus, la courbe est similaire à celle du cas 2 de la figure \ref{fig:cas_1_2}, notre contrôle donc fonctionne aussi bien lorsque le signal est reconstitué au travers d'un capteur pour cet intégrateur. \\
+
+Le second cas utilise l'intégrateur d'Euler, $ode1$ avec un pas fixé à $0.001$ contrairement à la figure \ref{fig:cas_3_4} où le pas était automatique. Ici, le pas choisi est suffisamment petit pour avoir un modèle correct qui donne un résultat similaire au cas 1. Cependant, le premier intégrateur est très certainement moins lourd et plus rapide que celui-ci vu le nombre de points calculé au cas 2. \\
+
+Quant au dernier cas, on a pris un pas de $5$ bien trop grand pour l'intégrateur d'Euler $ode1$ ce qui entraîne une mauvaise simulation avec un temps de réponse plus grand mais on a toujours une stabilisation.
+
+\begin{figure}[H]%
+	\centering
+	\noindent\makebox[\textwidth]{
+		\subfloat[Cas 1]{\includegraphics[width=9cm]{tp2_cas_21.png}} \qquad
+		\subfloat[Cas 2]{\includegraphics[width=9cm]{tp2_cas_22.png}}} \\
+		\subfloat[Cas 3]{\includegraphics[width=9cm]{tp2_cas_23.png}}
+		\caption{\textit{Comparaison de l'algorithme d'intégration utilisé}}
+		\label{fig:courbes_capteurs}%
+\end{figure}
+\vspace{0.5cm}
 
 
 \newpage
 \section{Modèle du robot Lego}
 
+Après avoir étudié un modèle simple de pendule inverse, tentons de modéliser le système plus compelxe du robot Lego NXT qui s'appuie sur celui du pendule inverse. \\
+
+\subsection{Contrôle par retour d'état}
+
+Nous allons à nouveau étudier le modèle avec contrôle par retour d'état. Cette fois les équations de la dynamique sont plus complexes car elles font intervenir l'inertie du robot et deux autres variables d'état supplémentaires : la position angulaire des roues $\theta$ et leur vitesse angulaire $\dot\theta$. On a donc $x(t) = (x_1(t),x_2(t),x_3(t),x_4(t))^\intercal = (\theta(t),\alpha(t),\dot\theta(t),\dot\alpha(t))^\intercal$ et $x_e = (0,0,0,0)^\intercal$. \\
+
+\subsubsection{Analyse du modèle théorique du robot}
+
+L'équation d'état reste la même que dans 1.1.1 (voir (2)) mais $f$ est définie différemment. Nous n'irons par dans les détails pour rester dans le cadre de notre étude.\\
+Comme pour la partie 1.1.1, on boucle le système avec le contrôle $u(t)$ (voir (4)) et $K \in \mathbb{R}$. Puis, on trouve la matrice jacobienne au point de fonctionnement sous la forme
+
+\begin{equation}
+	\NORMAL{
+			J_g(x_e) = A + BK \\
+	}
+\end{equation}\\
+
+où $A \in \mathbb{M}_4$ et $B \in \mathbb{R}^4$. \\
+
+Finalement, la stabilisation du système va dépendre des valeurs propres de $J_g(x_e)$, on aimerait alors trouver $K$ tel que ces valeurs propres soient strictement négatives. On prendra les valeurs propres contenues dans $V = (-136.5905, -2.6555, -3.5026, -5.9946)$. \\
+
+\subsubsection{Simulation du modèle sur Simulink}
+
+Nous pouvons maintenant effectuer des simulations du robot Lego sur Simulink. La figure \ref{fig:simulink_tp3_1} représente le schéma bloc du système contrôlé par retour d'état, le bloc de contrôle étant le même que celui de la figure \ref{fig:controle_pend_inv}. La table \ref{table:3} référencie les différents cas étudiés lors des simulations. \\
+
+Les équations de la dynamique sont ici décrites par une fonction matlab fournie pour simuler le système. De plus, on trouve $K$ en calculant les matrices A et B puis en utilisant la fonction $place(A,B,V)$ qui retourne $-K$ dans un fichier matlab à part. L'algorithme d'intégration utilisé est $ode45$. \\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{simulink_tp3_1.png} 
+		\caption{\textit{Schéma bloc du système contrôlé du robot Lego}}
+		\label{fig:simulink_tp3_1}
+\end{figure}
+\vspace{0.5cm}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c c c|} 
+ \hline
+ Cas & $x_0$ & $t_f$ \\ [0.5ex] 
+ \hline\hline
+ Cas 1 & $(0,0,0,0)$ & 2 \\ 
+ Cas 2 & $(0,\pi/5,0,0)$ & 5 \\ 
+ Cas 3 & $(0,\pi/10,0,0)$ & 5 \\ [1ex] 
+ \hline
+\end{tabular}
+\caption{\textit{Données pour différents cas d'étude du contrôle par retour d'état}}
+\label{table:3}
+\end{table}
+
+Les résultats sont représentés sur la figure \ref{fig:robot_controle}. On remarque pour le cas 1 que l'état reste constant nul pour un état initial nul, le système ne dégénère donc pas au point de fonctionnement. Pour des états initiaux non nuls (cas 2 et 3), on visualise bien une stabilisation du système contrôlé. Enfin, on remarque que pour une position angulaire initiale plus faible (cas 3), les oscillations sont moins fortes, ce qui est normal puisque le système démarre plus proche du point de fonctionnement. \\ 
+
+\begin{figure}[H]%
+	\centering
+	\noindent\makebox[\textwidth]{
+		\subfloat[Cas 1]{\includegraphics[width=9cm]{tp3_cas_11.png}} \qquad
+		\subfloat[Cas 2]{\includegraphics[width=9cm]{tp3_cas_12.png}}} \\
+		\subfloat[Cas 3]{\includegraphics[width=9cm]{tp3_cas_13.png}}
+		\captionsetup{justification=centering}
+		\caption{\textit{Résultats du contrôle par retour d'état du robot Lego pour différents états initiaux}}
+		\label{fig:robot_controle}%
+\end{figure}
+\vspace{0.5cm}
+
+
+\subsection{Contrôle par retour de sortie avec capteur}
+
+Dans cette partie nous allons encore une fois effectuer un contrôle par retour de sortie en considérant que l'on a accès qu'aux valeurs de la vitesse angulaire $\dot\alpha = x_4$ du robot et de la position angulaire des roues $\theta = x_1$ à l'aide de capteurs. Encore une fois nous avons besoin d'un prédicteur pour reconstruire l'information des deux autres composantes manquantes. \\
+
+Le schéma bloc réalisé en figure \ref{fig:simulink_tp3_2_systeme} est similaire à celui de la figure \ref{fig:simulink_tp3_1} mais on y ajoute un bloc pour le capteur (figure \ref{fig:simulink_tp3_2_capteur}) et pour le prédicteur (figure \ref{fig:simulink_tp3_2_predicteur}). \\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{simulink_tp3_2_systeme.png} 
+		\caption{\textit{Schéma bloc du système contrôlé par retour de sortie du robot Lego}}
+		\label{fig:simulink_tp3_2_systeme}
+\end{figure}
+\vspace{0.5cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{simulink_tp3_2_capteur.png} 
+		\caption{\textit{Schéma bloc du capteur}}
+		\label{fig:simulink_tp3_2_capteur}
+\end{figure}
+\vspace{0.5cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{simulink_tp3_2_predicteur.png} 
+		\caption{\textit{Schéma bloc du prédicteur}}
+		\label{fig:simulink_tp3_2_predicteur}
+\end{figure}
+\vspace{0.5cm}
+
+Pour la simulation, on étudie les mêmes cas que dans la partie 2.1.2 qui sont donnés en table \ref{table:3}. Les résultats sont donnés en figure \ref{fig:robot_capteur}. Les courbes obtenues semblent être les mêmes que celles de la figure \ref{fig:robot_controle} pour le contrôle par retour d'état, ce qui est normal en utilisant l'intégrateur performant $ode45$. Les conclusions sont donc les mêmes. Avec un bon intégrateur, on peut toujours stabiliser aussi bien le système avec ou sans capteur. \\
+
+\begin{figure}[H]%
+	\centering
+	\noindent\makebox[\textwidth]{
+		\subfloat[Cas 1]{\includegraphics[width=9cm]{tp3_cas_21.png}} \qquad
+		\subfloat[Cas 2]{\includegraphics[width=9cm]{tp3_cas_22.png}}} \\
+		\subfloat[Cas 3]{\includegraphics[width=9cm]{tp3_cas_23.png}}
+		\captionsetup{justification=centering}
+		\caption{\textit{Résultats du contrôle par retour de sortie du robot Lego pour différents états initiaux}}
+		\label{fig:robot_capteur}%
+\end{figure}
+\vspace{0.5cm}
+
+
+\subsection{Modèle hybride par discrétisation}
+
+Enfin, il reste un aspect que l'on n'a pas traité pour le pendule inverse et qui est important pour un système réel, c'est la prise en compte de signaux discrets. En effet, le logiciel implanté dans le robot, qui calcul le contrôle et la prédiction, fonctionne avec un signal discret tandis que le système représentant la physique est continu. On change donc les blocs du capteur et du prédicteur sur Simulink pour simuler un signal discret (voir figures \ref{fig:simulink_tp3_3_capteur} et \ref{fig:simulink_tp3_3_predicteur}). Le reste du système reste le même que précédemment (figure \ref{fig:simulink_tp3_2_systeme}). \\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{simulink_tp3_3_capteur.png} 
+		\caption{\textit{Schéma bloc du capteur avec signal discret}}
+		\label{fig:simulink_tp3_3_capteur}
+\end{figure}
+\vspace{0.5cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{simulink_tp3_3_predicteur.png} 
+		\caption{\textit{Schéma bloc du prédicteur avec signal discret}}
+		\label{fig:simulink_tp3_3_predicteur}
+\end{figure}
+\vspace{0.5cm}
+
+Les cas d'études de la simulation sont encore les mêmes (table \ref{table:3}) mais on pense bien à fixer le pas de la simulation à $0.005$, sans quoi la discrétisation trop forte produit une simulation peu concluante. Les résultats sont représentés figure \ref{fig:robot_discret}. \\
+Finalement, les courbes sont encore similaires aux deux parties précédentes 2.2 et 2.1, les oscillations sont seulement un peu plus amples. Donc, avec un bon intégrateur et une discrétisation qui a un pas suffisamment faible, on peut avoir un modèle très correct.
+
+\begin{figure}[H]%
+	\centering
+	\noindent\makebox[\textwidth]{
+		\subfloat[Cas 1]{\includegraphics[width=9cm]{tp3_cas_31.png}} \qquad
+		\subfloat[Cas 2]{\includegraphics[width=9cm]{tp3_cas_32.png}}} \\
+		\subfloat[Cas 3]{\includegraphics[width=9cm]{tp3_cas_33.png}}
+		\captionsetup{justification=centering}
+		\caption{\textit{Résultats du contrôle par retour de sortie du robot Lego pour différents états initiaux avec discrétisation}}
+		\label{fig:robot_discret}%
+\end{figure}
+\vspace{0.5cm}
+
+
 \newpage
 \section{Robot Lego NXT}
 
 \newpage
-\section{Conclusion}
+\section*{Conclusion}
+\addcontentsline{toc}{section}{\protect\numberline{}Conclusion}
 
 
 \end{document}
