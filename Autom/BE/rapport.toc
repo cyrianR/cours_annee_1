@@ -9,7 +9,7 @@
 \contentsline {subsection}{\numberline {2.1}Contrôle par retour d'état}{10}{}%
 \contentsline {subsubsection}{\numberline {2.1.1}Analyse du modèle théorique du robot}{10}{}%
 \contentsline {subsubsection}{\numberline {2.1.2}Simulation du modèle sur Simulink}{10}{}%
-\contentsline {subsection}{\numberline {2.2}Contrôle par retour de sortie avec capteur}{12}{}%
-\contentsline {subsection}{\numberline {2.3}Modèle hybride par discrétisation}{14}{}%
-\contentsline {section}{\numberline {3}Robot Lego NXT}{16}{}%
-\contentsline {section}{\numberline {}Conclusion}{17}{}%
+\contentsline {subsection}{\numberline {2.2}Contrôle par retour de sortie avec capteur}{11}{}%
+\contentsline {subsection}{\numberline {2.3}Modèle hybride par discrétisation}{13}{}%
+\contentsline {section}{\numberline {3}Robot Lego NXT}{15}{}%
+\contentsline {section}{\numberline {}Conclusion}{16}{}%

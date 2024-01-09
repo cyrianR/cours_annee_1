@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.12.12)  16 DEC 2023 22:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.12.12)  20 DEC 2023 19:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -103,6 +103,43 @@ Package caption Info: float package is loaded.
 \c@lotdepth=\count270
 \sf@top=\skip55
 \sf@bottom=\skip56
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count271
+\lst@gtempboxa=\box52
+\lst@token=\toks20
+\lst@length=\count272
+\lst@currlwidth=\dimen150
+\lst@column=\count273
+\lst@pos=\count274
+\lst@lostspace=\dimen151
+\lst@width=\dimen152
+\lst@newlines=\count275
+\lst@lineno=\count276
+\lst@maxwidth=\dimen153
+ (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count277
+\lst@skipnumbers=\count278
+\lst@framebox=\box53
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+ (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
 ) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2021/10/15 v2.17l AMS math features
 \@mathmargin=\skip57
@@ -112,49 +149,49 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2021/08/26 v2.01 AMS text
  (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks20
-\ex@=\dimen150
+\@emptytoks=\toks21
+\ex@=\dimen154
 )) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen151
+\pmbraise@=\dimen155
 ) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2021/08/26 v2.02 operator names
 )
-\inf@bad=\count271
+\inf@bad=\count279
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count272
-\leftroot@=\count273
+\uproot@=\count280
+\leftroot@=\count281
 LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count274
-\DOTSCASE@=\count275
+\classnum@=\count282
+\DOTSCASE@=\count283
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box52
-\strutbox@=\box53
-\big@size=\dimen152
+\Mathstrutbox@=\box54
+\strutbox@=\box55
+\big@size=\dimen156
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count276
-\c@MaxMatrixCols=\count277
+\macc@depth=\count284
+\c@MaxMatrixCols=\count285
 \dotsspace@=\muskip16
-\c@parentequation=\count278
-\dspbrk@lvl=\count279
-\tag@help=\toks21
-\row@=\count280
-\column@=\count281
-\maxfields@=\count282
-\andhelp@=\toks22
-\eqnshift@=\dimen153
-\alignsep@=\dimen154
-\tagshift@=\dimen155
-\tagwidth@=\dimen156
-\totwidth@=\dimen157
-\lineht@=\dimen158
-\@envbody=\toks23
+\c@parentequation=\count286
+\dspbrk@lvl=\count287
+\tag@help=\toks22
+\row@=\count288
+\column@=\count289
+\maxfields@=\count290
+\andhelp@=\toks23
+\eqnshift@=\dimen157
+\alignsep@=\dimen158
+\tagshift@=\dimen159
+\tagwidth@=\dimen160
+\totwidth@=\dimen161
+\lineht@=\dimen162
+\@envbody=\toks24
 \multlinegap=\skip58
 \multlinetaggap=\skip59
-\mathdisplay@stack=\toks24
+\mathdisplay@stack=\toks25
 LaTeX Info: Redefining \[ on input line 2938.
 LaTeX Info: Redefining \] on input line 2939.
 ) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
@@ -168,15 +205,15 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 ) (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
-\thm@style=\toks25
-\thm@bodyfont=\toks26
-\thm@headfont=\toks27
-\thm@notefont=\toks28
-\thm@headpunct=\toks29
+\thm@style=\toks26
+\thm@bodyfont=\toks27
+\thm@headfont=\toks28
+\thm@notefont=\toks29
+\thm@headpunct=\toks30
 \thm@preskip=\skip60
 \thm@postskip=\skip61
 \thm@headsep=\skip62
-\dth@everypar=\toks30
+\dth@everypar=\toks31
 ) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
@@ -184,22 +221,22 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
  (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
-\Gm@cnth=\count283
-\Gm@cntv=\count284
-\c@Gm@tempcnt=\count285
-\Gm@bindingoffset=\dimen159
-\Gm@wd@mp=\dimen160
-\Gm@odd@mp=\dimen161
-\Gm@even@mp=\dimen162
-\Gm@layoutwidth=\dimen163
-\Gm@layoutheight=\dimen164
-\Gm@layouthoffset=\dimen165
-\Gm@layoutvoffset=\dimen166
-\Gm@dimlist=\toks31
+\Gm@cnth=\count291
+\Gm@cntv=\count292
+\c@Gm@tempcnt=\count293
+\Gm@bindingoffset=\dimen163
+\Gm@wd@mp=\dimen164
+\Gm@odd@mp=\dimen165
+\Gm@even@mp=\dimen166
+\Gm@layoutwidth=\dimen167
+\Gm@layoutheight=\dimen168
+\Gm@layouthoffset=\dimen169
+\Gm@layoutvoffset=\dimen170
+\Gm@dimlist=\toks32
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count286
-\l__pdf_internal_box=\box54
+\l__color_backend_stack_int=\count294
+\l__pdf_internal_box=\box56
 )
 
 LaTeX Warning: Unused global option(s):
@@ -208,33 +245,33 @@ LaTeX Warning: Unused global option(s):
 (./rapport.aux)
 \openout1 = `rapport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count287
-\scratchdimen=\dimen167
-\scratchbox=\box55
-\nofMPsegments=\count288
-\nofMParguments=\count289
-\everyMPshowfont=\toks32
-\MPscratchCnt=\count290
-\MPscratchDim=\dimen168
-\MPnumerator=\count291
-\makeMPintoPDFobject=\count292
-\everyMPtoPDFconversion=\toks33
+\scratchcounter=\count295
+\scratchdimen=\dimen171
+\scratchbox=\box57
+\nofMPsegments=\count296
+\nofMParguments=\count297
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count298
+\MPscratchDim=\dimen172
+\MPnumerator=\count299
+\makeMPintoPDFobject=\count300
+\everyMPtoPDFconversion=\toks34
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -243,7 +280,9 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count301
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -282,20 +321,20 @@ Package caption Info: End \AtBeginDocument code.
 <inp_n7.png, id=1, 803.0pt x 142.5325pt>
 File: inp_n7.png Graphic file (type png)
 <use inp_n7.png>
-Package pdftex.def Info: inp_n7.png  used on input line 31.
+Package pdftex.def Info: inp_n7.png  used on input line 58.
 (pdftex.def)             Requested size: 227.62204pt x 40.40251pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 45.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 72.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 45.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 72.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 <segway.png, id=2, 982.67125pt x 587.19376pt>
 File: segway.png Graphic file (type png)
 <use segway.png>
-Package pdftex.def Info: segway.png  used on input line 45.
+Package pdftex.def Info: segway.png  used on input line 72.
 (pdftex.def)             Requested size: 398.33858pt x 238.0272pt.
  [1
 
@@ -303,58 +342,73 @@ Package pdftex.def Info: segway.png  used on input line 45.
 \tf@toc=\write3
 \openout3 = `rapport.toc'.
 
- [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 59--60
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
 
  []
 
-<pendule_inverse.png, id=20, 221.82875pt x 401.5pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--88
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--88
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--88
+
+ []
+
+
+Overfull \hbox (10.74802pt too wide) in paragraph at lines 89--90
+\OT1/cmr/m/n/10.95 math^^Sematique ^^Ra des simulations de mod^^Reles cr^^Se^^Ses sur Simulink et enfin de l'impl^^Sementation
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
+
+ []
+
+<pendule_inverse.png, id=21, 221.82875pt x 401.5pt>
 File: pendule_inverse.png Graphic file (type png)
 <use pendule_inverse.png>
-Package pdftex.def Info: pendule_inverse.png  used on input line 89.
+Package pdftex.def Info: pendule_inverse.png  used on input line 127.
 (pdftex.def)             Requested size: 85.35826pt x 154.48914pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
+Underfull \hbox (badness 10000) in paragraph at lines 141--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--121
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
-
- []
-
-[4 <./pendule_inverse.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--134
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 149--150
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
 
  []
 
@@ -363,164 +417,149 @@ Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 176--177
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
+[4 <./pendule_inverse.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--196
+Underfull \hbox (badness 10000) in paragraph at lines 173--174
 
  []
 
-<simulink_controle_pend_inv.png, id=36, 923.45pt x 412.54124pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 201--202
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--228
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
+
+ []
+
+<simulink_controle_pend_inv.png, id=37, 923.45pt x 412.54124pt>
 File: simulink_controle_pend_inv.png Graphic file (type png)
 <use simulink_controle_pend_inv.png>
-Package pdftex.def Info: simulink_controle_pend_inv.png  used on input line 199.
+Package pdftex.def Info: simulink_controle_pend_inv.png  used on input line 237.
 (pdftex.def)             Requested size: 256.0748pt x 114.39656pt.
 [5]
-<systeme_pend_inv.png, id=42, 1728.4575pt x 529.98pt>
+<systeme_pend_inv.png, id=43, 1728.4575pt x 529.98pt>
 File: systeme_pend_inv.png Graphic file (type png)
 <use systeme_pend_inv.png>
-Package pdftex.def Info: systeme_pend_inv.png  used on input line 208.
+Package pdftex.def Info: systeme_pend_inv.png  used on input line 246.
 (pdftex.def)             Requested size: 540.60236pt x 165.75581pt.
 
-Overfull \hbox (69.40186pt too wide) in paragraph at lines 208--209
+Overfull \hbox (69.40186pt too wide) in paragraph at lines 246--247
  [][] 
  []
 
-<controle_pend_inv.png, id=43, 831.105pt x 330.23375pt>
+<controle_pend_inv.png, id=44, 831.105pt x 330.23375pt>
 File: controle_pend_inv.png Graphic file (type png)
 <use controle_pend_inv.png>
-Package pdftex.def Info: controle_pend_inv.png  used on input line 216.
+Package pdftex.def Info: controle_pend_inv.png  used on input line 254.
 (pdftex.def)             Requested size: 312.9803pt x 124.36139pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 240--241
+Underfull \hbox (badness 10000) in paragraph at lines 278--279
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 242--243
+Underfull \hbox (badness 10000) in paragraph at lines 280--281
 
  []
 
 [6 <./simulink_controle_pend_inv.png> <./systeme_pend_inv.png> <./controle_pend_inv.png>]
-<tp2_cas_11.png, id=50, 756.8275pt x 485.815pt>
+<tp2_cas_11.png, id=51, 756.8275pt x 485.815pt>
 File: tp2_cas_11.png Graphic file (type png)
 <use tp2_cas_11.png>
-Package pdftex.def Info: tp2_cas_11.png  used on input line 249.
+Package pdftex.def Info: tp2_cas_11.png  used on input line 287.
 (pdftex.def)             Requested size: 256.0748pt x 164.37431pt.
-<tp2_cas_12.png, id=51, 756.8275pt x 485.815pt>
+<tp2_cas_12.png, id=52, 756.8275pt x 485.815pt>
 File: tp2_cas_12.png Graphic file (type png)
 <use tp2_cas_12.png>
-Package pdftex.def Info: tp2_cas_12.png  used on input line 249.
+Package pdftex.def Info: tp2_cas_12.png  used on input line 287.
 (pdftex.def)             Requested size: 256.0748pt x 164.37431pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
+Underfull \hbox (badness 10000) in paragraph at lines 293--294
 
  []
 
-<tp2_cas_13.png, id=52, 756.8275pt x 485.815pt>
+<tp2_cas_13.png, id=53, 756.8275pt x 485.815pt>
 File: tp2_cas_13.png Graphic file (type png)
 <use tp2_cas_13.png>
-Package pdftex.def Info: tp2_cas_13.png  used on input line 262.
+Package pdftex.def Info: tp2_cas_13.png  used on input line 300.
 (pdftex.def)             Requested size: 256.0748pt x 164.37431pt.
-<tp2_cas_14.png, id=53, 756.8275pt x 485.815pt>
+<tp2_cas_14.png, id=54, 756.8275pt x 485.815pt>
 File: tp2_cas_14.png Graphic file (type png)
 <use tp2_cas_14.png>
-Package pdftex.def Info: tp2_cas_14.png  used on input line 262.
+Package pdftex.def Info: tp2_cas_14.png  used on input line 300.
 (pdftex.def)             Requested size: 256.0748pt x 164.37431pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 268--269
+Underfull \hbox (badness 10000) in paragraph at lines 306--307
 
  []
 
-<tp2_cas_15.png, id=54, 756.8275pt x 485.815pt>
+<tp2_cas_15.png, id=55, 756.8275pt x 485.815pt>
 File: tp2_cas_15.png Graphic file (type png)
 <use tp2_cas_15.png>
-Package pdftex.def Info: tp2_cas_15.png  used on input line 275.
+Package pdftex.def Info: tp2_cas_15.png  used on input line 313.
 (pdftex.def)             Requested size: 256.0748pt x 164.37431pt.
-<tp2_cas_16.png, id=55, 756.8275pt x 485.815pt>
+<tp2_cas_16.png, id=56, 756.8275pt x 485.815pt>
 File: tp2_cas_16.png Graphic file (type png)
 <use tp2_cas_16.png>
-Package pdftex.def Info: tp2_cas_16.png  used on input line 275.
+Package pdftex.def Info: tp2_cas_16.png  used on input line 313.
 (pdftex.def)             Requested size: 256.0748pt x 164.37431pt.
 [7 <./tp2_cas_11.png> <./tp2_cas_12.png> <./tp2_cas_13.png> <./tp2_cas_14.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 286--287
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--289
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
 
  []
 
-<simulink_capteur_pend_inv.png, id=65, 1040.88875pt x 315.1775pt>
+<simulink_capteur_pend_inv.png, id=66, 1040.88875pt x 315.1775pt>
 File: simulink_capteur_pend_inv.png Graphic file (type png)
 <use simulink_capteur_pend_inv.png>
-Package pdftex.def Info: simulink_capteur_pend_inv.png  used on input line 292.
+Package pdftex.def Info: simulink_capteur_pend_inv.png  used on input line 330.
 (pdftex.def)             Requested size: 341.43306pt x 103.3837pt.
-<predicteur_pend_inv.png, id=66, 1002.74625pt x 195.73125pt>
+<predicteur_pend_inv.png, id=67, 1002.74625pt x 195.73125pt>
 File: predicteur_pend_inv.png Graphic file (type png)
 <use predicteur_pend_inv.png>
-Package pdftex.def Info: predicteur_pend_inv.png  used on input line 300.
+Package pdftex.def Info: predicteur_pend_inv.png  used on input line 338.
 (pdftex.def)             Requested size: 312.9803pt x 61.09119pt.
-<capteur_pend_inv.png, id=67, 1040.88875pt x 225.84375pt>
+<capteur_pend_inv.png, id=68, 1040.88875pt x 225.84375pt>
 File: capteur_pend_inv.png Graphic file (type png)
 <use capteur_pend_inv.png>
-Package pdftex.def Info: capteur_pend_inv.png  used on input line 308.
+Package pdftex.def Info: capteur_pend_inv.png  used on input line 346.
 (pdftex.def)             Requested size: 312.9803pt x 67.90526pt.
 [8 <./tp2_cas_15.png> <./tp2_cas_16.png> <./simulink_capteur_pend_inv.png> <./predicteur_pend_inv.png> <./capteur_pend_inv.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 333--334
-
- []
-
-<tp2_cas_21.png, id=76, 824.07875pt x 520.94624pt>
-File: tp2_cas_21.png Graphic file (type png)
-<use tp2_cas_21.png>
-Package pdftex.def Info: tp2_cas_21.png  used on input line 341.
-(pdftex.def)             Requested size: 256.0748pt x 161.88116pt.
-<tp2_cas_22.png, id=77, 817.0525pt x 531.9875pt>
-File: tp2_cas_22.png Graphic file (type png)
-<use tp2_cas_22.png>
-Package pdftex.def Info: tp2_cas_22.png  used on input line 341.
-(pdftex.def)             Requested size: 256.0748pt x 166.73273pt.
-<tp2_cas_23.png, id=78, 817.0525pt x 531.9875pt>
-File: tp2_cas_23.png Graphic file (type png)
-<use tp2_cas_23.png>
-Package pdftex.def Info: tp2_cas_23.png  used on input line 342.
-(pdftex.def)             Requested size: 256.0748pt x 166.73273pt.
-[9 <./tp2_cas_21.png> <./tp2_cas_22.png> <./tp2_cas_23.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 352--353
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 356--357
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 367--368
 
  []
@@ -531,140 +570,220 @@ Underfull \hbox (badness 10000) in paragraph at lines 369--370
  []
 
 
-Overfull \hbox (2.86992pt too wide) in paragraph at lines 371--372
-\OT1/cmr/m/n/10.95 prendra les valeurs propres contenues dans $\OML/cmm/m/it/10.95 V \OT1/cmr/m/n/10.95 = (\OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 136\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 5905\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 2\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 6555\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 3\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 5026\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 5\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 9946)$. 
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 371--372
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 375--376
+<tp2_cas_21.png, id=77, 824.07875pt x 520.94624pt>
+File: tp2_cas_21.png Graphic file (type png)
+<use tp2_cas_21.png>
+Package pdftex.def Info: tp2_cas_21.png  used on input line 379.
+(pdftex.def)             Requested size: 256.0748pt x 161.88116pt.
+<tp2_cas_22.png, id=78, 817.0525pt x 531.9875pt>
+File: tp2_cas_22.png Graphic file (type png)
+<use tp2_cas_22.png>
+Package pdftex.def Info: tp2_cas_22.png  used on input line 379.
+(pdftex.def)             Requested size: 256.0748pt x 166.73273pt.
+<tp2_cas_23.png, id=79, 817.0525pt x 531.9875pt>
+File: tp2_cas_23.png Graphic file (type png)
+<use tp2_cas_23.png>
+Package pdftex.def Info: tp2_cas_23.png  used on input line 380.
+(pdftex.def)             Requested size: 256.0748pt x 166.73273pt.
+[9 <./tp2_cas_21.png> <./tp2_cas_22.png> <./tp2_cas_23.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 390--391
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+Underfull \hbox (badness 10000) in paragraph at lines 394--395
 
  []
 
-<simulink_tp3_1.png, id=85, 488.82625pt x 406.51875pt>
+
+Overfull \hbox (9.44016pt too wide) in paragraph at lines 398--400
+ \OT1/cmr/m/n/10.95 L'^^Sequation d'^^Setat reste la m^eme que dans 1.1.1 (voir (2)) mais $\OML/cmm/m/it/10.95 f$ \OT1/cmr/m/n/10.95 est d^^Sefinie diff^^Seremment.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 405--406
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 407--408
+
+ []
+
+
+Overfull \hbox (2.86992pt too wide) in paragraph at lines 409--410
+\OT1/cmr/m/n/10.95 prendra les valeurs propres contenues dans $\OML/cmm/m/it/10.95 V \OT1/cmr/m/n/10.95 = (\OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 136\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 5905\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 2\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 6555\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 3\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 5026\OML/cmm/m/it/10.95 ; \OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 5\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 9946)$. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--414
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 415--416
+
+ []
+
+<simulink_tp3_1.png, id=86, 488.82625pt x 406.51875pt>
 File: simulink_tp3_1.png Graphic file (type png)
 <use simulink_tp3_1.png>
-Package pdftex.def Info: simulink_tp3_1.png  used on input line 381.
-(pdftex.def)             Requested size: 341.43306pt x 283.94708pt.
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 402--403
+Package pdftex.def Info: simulink_tp3_1.png  used on input line 419.
+(pdftex.def)             Requested size: 227.62204pt x 189.29599pt.
+[10 <./simulink_tp3_1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 440--441
 
  []
 
-<tp3_cas_11.png, id=90, 682.55pt x 415.5525pt>
+<tp3_cas_11.png, id=92, 682.55pt x 415.5525pt>
 File: tp3_cas_11.png Graphic file (type png)
 <use tp3_cas_11.png>
-Package pdftex.def Info: tp3_cas_11.png  used on input line 408.
+Package pdftex.def Info: tp3_cas_11.png  used on input line 446.
 (pdftex.def)             Requested size: 256.0748pt x 155.90788pt.
-<tp3_cas_12.png, id=91, 682.55pt x 415.5525pt>
+<tp3_cas_12.png, id=93, 682.55pt x 415.5525pt>
 File: tp3_cas_12.png Graphic file (type png)
 <use tp3_cas_12.png>
-Package pdftex.def Info: tp3_cas_12.png  used on input line 408.
+Package pdftex.def Info: tp3_cas_12.png  used on input line 446.
 (pdftex.def)             Requested size: 256.0748pt x 155.90788pt.
-<tp3_cas_13.png, id=92, 682.55pt x 415.5525pt>
+<tp3_cas_13.png, id=94, 682.55pt x 415.5525pt>
 File: tp3_cas_13.png Graphic file (type png)
 <use tp3_cas_13.png>
-Package pdftex.def Info: tp3_cas_13.png  used on input line 409.
+Package pdftex.def Info: tp3_cas_13.png  used on input line 447.
 (pdftex.def)             Requested size: 256.0748pt x 155.90788pt.
-[11 <./simulink_tp3_1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 419--420
+
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 421--422
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
 
  []
 
-<simulink_tp3_2_systeme.png, id=97, 772.8875pt x 343.2825pt>
+<simulink_tp3_2_systeme.png, id=95, 772.8875pt x 343.2825pt>
 File: simulink_tp3_2_systeme.png Graphic file (type png)
 <use simulink_tp3_2_systeme.png>
-Package pdftex.def Info: simulink_tp3_2_systeme.png  used on input line 425.
+Package pdftex.def Info: simulink_tp3_2_systeme.png  used on input line 463.
 (pdftex.def)             Requested size: 341.43306pt x 151.64713pt.
-<simulink_tp3_2_capteur.png, id=98, 676.5275pt x 152.57pt>
+[11 <./tp3_cas_11.png> <./tp3_cas_12.png> <./tp3_cas_13.png>]
+<simulink_tp3_2_capteur.png, id=102, 676.5275pt x 152.57pt>
 File: simulink_tp3_2_capteur.png Graphic file (type png)
 <use simulink_tp3_2_capteur.png>
-Package pdftex.def Info: simulink_tp3_2_capteur.png  used on input line 433.
+Package pdftex.def Info: simulink_tp3_2_capteur.png  used on input line 471.
 (pdftex.def)             Requested size: 341.43306pt x 77.00183pt.
-[12 <./tp3_cas_11.png> <./tp3_cas_12.png> <./tp3_cas_13.png> <./simulink_tp3_2_systeme.png>]
-<simulink_tp3_2_predicteur.png, id=106, 861.2175pt x 331.2375pt>
+<simulink_tp3_2_predicteur.png, id=103, 861.2175pt x 331.2375pt>
 File: simulink_tp3_2_predicteur.png Graphic file (type png)
 <use simulink_tp3_2_predicteur.png>
-Package pdftex.def Info: simulink_tp3_2_predicteur.png  used on input line 441.
+Package pdftex.def Info: simulink_tp3_2_predicteur.png  used on input line 479.
 (pdftex.def)             Requested size: 341.43306pt x 131.32005pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--448
+Underfull \hbox (badness 10000) in paragraph at lines 485--486
 
  []
 
-<tp3_cas_21.png, id=107, 694.595pt x 440.64626pt>
+<tp3_cas_21.png, id=104, 694.595pt x 440.64626pt>
 File: tp3_cas_21.png Graphic file (type png)
 <use tp3_cas_21.png>
-Package pdftex.def Info: tp3_cas_21.png  used on input line 453.
+Package pdftex.def Info: tp3_cas_21.png  used on input line 491.
 (pdftex.def)             Requested size: 256.0748pt x 162.45831pt.
-<tp3_cas_22.png, id=108, 694.595pt x 440.64626pt>
+<tp3_cas_22.png, id=105, 694.595pt x 440.64626pt>
 File: tp3_cas_22.png Graphic file (type png)
 <use tp3_cas_22.png>
-Package pdftex.def Info: tp3_cas_22.png  used on input line 453.
+Package pdftex.def Info: tp3_cas_22.png  used on input line 491.
 (pdftex.def)             Requested size: 256.0748pt x 162.45831pt.
-<tp3_cas_23.png, id=109, 694.595pt x 440.64626pt>
+<tp3_cas_23.png, id=106, 694.595pt x 440.64626pt>
 File: tp3_cas_23.png Graphic file (type png)
 <use tp3_cas_23.png>
-Package pdftex.def Info: tp3_cas_23.png  used on input line 454.
+Package pdftex.def Info: tp3_cas_23.png  used on input line 492.
 (pdftex.def)             Requested size: 256.0748pt x 162.45831pt.
-[13 <./simulink_tp3_2_capteur.png> <./simulink_tp3_2_predicteur.png> <./tp3_cas_21.png> <./tp3_cas_22.png> <./tp3_cas_23.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 464--465
+[12 <./simulink_tp3_2_systeme.png> <./simulink_tp3_2_capteur.png> <./simulink_tp3_2_predicteur.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 502--503
 
  []
 
-<simulink_tp3_3_capteur.png, id=119, 1357.07pt x 253.94875pt>
+<simulink_tp3_3_capteur.png, id=113, 1357.07pt x 253.94875pt>
 File: simulink_tp3_3_capteur.png Graphic file (type png)
 <use simulink_tp3_3_capteur.png>
-Package pdftex.def Info: simulink_tp3_3_capteur.png  used on input line 468.
+Package pdftex.def Info: simulink_tp3_3_capteur.png  used on input line 506.
 (pdftex.def)             Requested size: 341.43306pt x 63.89001pt.
-<simulink_tp3_3_predicteur.png, id=120, 1214.5375pt x 459.7175pt>
+<simulink_tp3_3_predicteur.png, id=114, 1214.5375pt x 459.7175pt>
 File: simulink_tp3_3_predicteur.png Graphic file (type png)
 <use simulink_tp3_3_predicteur.png>
-Package pdftex.def Info: simulink_tp3_3_predicteur.png  used on input line 476.
+Package pdftex.def Info: simulink_tp3_3_predicteur.png  used on input line 514.
 (pdftex.def)             Requested size: 341.43306pt x 129.23209pt.
-<tp3_cas_31.png, id=121, 703.62875pt x 431.6125pt>
+[13 <./tp3_cas_21.png> <./tp3_cas_22.png> <./tp3_cas_23.png> <./simulink_tp3_3_capteur.png>]
+<tp3_cas_31.png, id=123, 703.62875pt x 431.6125pt>
 File: tp3_cas_31.png Graphic file (type png)
 <use tp3_cas_31.png>
-Package pdftex.def Info: tp3_cas_31.png  used on input line 489.
+Package pdftex.def Info: tp3_cas_31.png  used on input line 527.
 (pdftex.def)             Requested size: 256.0748pt x 157.07294pt.
-<tp3_cas_32.png, id=122, 703.62875pt x 431.6125pt>
+<tp3_cas_32.png, id=124, 703.62875pt x 431.6125pt>
 File: tp3_cas_32.png Graphic file (type png)
 <use tp3_cas_32.png>
-Package pdftex.def Info: tp3_cas_32.png  used on input line 489.
+Package pdftex.def Info: tp3_cas_32.png  used on input line 527.
 (pdftex.def)             Requested size: 256.0748pt x 157.07294pt.
-<tp3_cas_33.png, id=123, 703.62875pt x 431.6125pt>
+<tp3_cas_33.png, id=125, 703.62875pt x 431.6125pt>
 File: tp3_cas_33.png Graphic file (type png)
 <use tp3_cas_33.png>
-Package pdftex.def Info: tp3_cas_33.png  used on input line 490.
+Package pdftex.def Info: tp3_cas_33.png  used on input line 528.
 (pdftex.def)             Requested size: 256.0748pt x 157.07294pt.
-[14 <./simulink_tp3_3_capteur.png> <./simulink_tp3_3_predicteur.png>] [15 <./tp3_cas_31.png> <./tp3_cas_32.png> <./tp3_cas_33.png>] [16] [17] (./rapport.aux) ) 
+ [14 <./simulink_tp3_3_predicteur.png> <./tp3_cas_31.png> <./tp3_cas_32.png> <./tp3_cas_33.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 539--540
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--542
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 543--544
+
+ []
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+)
+Underfull \hbox (badness 10000) in paragraph at lines 555--556
+
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 588--589
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 590--591
+
+ []
+
+[16] (./rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 6019 strings out of 480247
- 100347 string characters out of 5896150
- 402666 words of memory out of 5000000
- 23865 multiletter control sequences out of 15000+600000
- 480385 words of font info for 68 fonts, out of 8000000 for 9000
+ 8277 strings out of 480247
+ 129872 string characters out of 5896150
+ 716017 words of memory out of 5000000
+ 26095 multiletter control sequences out of 15000+600000
+ 481426 words of font info for 72 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 69i,11n,79p,684b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on rapport.pdf (17 pages, 1125035 bytes).
+ 69i,11n,79p,823b,1224s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on rapport.pdf (16 pages, 1162245 bytes).
 PDF statistics:
- 220 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
+ 228 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  166 words of extra memory for PDF output out of 10000 (max. 10000000)
 
