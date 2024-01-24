@@ -1,0 +1,24 @@
+module max_tab(rst, clk, cal, ad1[7..0], ad2[7..0] : max[31..0], adMax[7..0])
+	cal_max (rst, clk, cal, ad1[7..0], ad2[7..0], elemCour[31..0] : adCour[7..0], max[31..0], adMax[7..0], INITAD, INITMAX, MAJMAX, FINI)
+	$ram_aread_swrite(clk, 0, adCour[7..0], elemCour[31..0] : elemCour[31..0])
+end module
+
+module cal_max (rst, clk, cal, ad1[7..0], ad2[7..0], elemCour[31..0] : adCour[7..0], max[31..0], adMax[7..0], INITAD, INITMAX, MAJMAX, FINI)
+	etats_cal_max (rst,clk,cal,finTab : INITAD,INITMAX, MAJMAX, FINI)
+   Incr8(adCour[7..0] : s_incr[7..0])
+   s_mux[7..0] = /INITAD * s_incr[7..0] + INITAD * ad1[7..0]
+   adCour[7..0] := s_mux[7..0] on clk reset when rst enabled when (MAJMAX + INITAD + INITMAX)
+   ucmp8(adCour[7..0], ad2[7..0] : finTab, eq8)
+   max[31..0] := elemCour[31..0] on clk reset when rst enabled when s_ou
+   s_ou = INITMAX + s_et
+   adMax[7..0] := adCour[7..0] on clk reset when rst enabled when s_ou
+   s_et = s_ucmp32 * MAJMAX * /finTab
+   ucmp32(elemCour[31..0], max[31..0] : s_ucmp32, eq32)
+end module
+
+module etats_cal_max (rst,clk,cal,finTab : INITAD,INITMAX, MAJMAX, FINI)
+	INITAD := /cal on clk set when rst
+   INITMAX := INITAD*cal on clk, reset when rst
+   MAJMAX := INITMAX * cal + /finTab * cal * MAJMAX  on clk, reset when rst
+   FINI := MAJMAX*finTab*cal + FINI*cal  on clk, reset when rst
+end module
