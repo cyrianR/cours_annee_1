@@ -1,6 +1,6 @@
-Nom       : 
-Prénom    : 
-Groupe TP : 
+Nom       : Ragot
+Prénom    : Cyrian
+Groupe TP : K
 
 
 Consigne :  Ci-dessous, répondre à la place des « ... ».
@@ -8,7 +8,7 @@ Consigne :  Ci-dessous, répondre à la place des « ... ».
 
 =====[ Temps ]==================================================================
 
-Temps passé sur la V1 : ... heures ... minutes
+Temps passé sur la V1 : 3 heures 0 minutes
 Temps passé sur la V2 : ... heures ... minutes
 Pour la V2 on ne tiendra pas compte du temps passé sur la V1.
 Bien sûr, les temps renseignés ici ne sont pas pris en compte dans la notation.
@@ -19,13 +19,15 @@ Bien sûr, les temps renseignés ici ne sont pas pris en compte dans la notation
 Indiquer la relation UML entre Cercle et le Point centre du cercle.
 -------------------------------------------------------------------
 
-...
+Il y a une relation de dépendance, la classe Cercle dépend de la classe Point.
 
 
 Comment est réalisée l'exigence E18 ?
 -------------------------------------
 
-...
+Les attributs de la classe Cercle ont tous un modifieur private donc un utilisateur 
+ne peut pas les changer les caractéristiques d'un cercle autrement qu'avec les méthodes 
+fournies par la classe.
 
 
 
@@ -34,4 +36,11 @@ Comment est réalisée l'exigence E18 ?
 (Facultatif) Donner ici les explications supplémentaires utiles à la
 compréhension du travail rendu.
 
-...
+J'aurais voulu faire du chaînage de constructeurs pour éviter la redondance de code
+mais le mini projet nous impose des fichiers de tests et donc une structure fixe
+la classe Cercle. En effet, pour appeler un autre constructeur dans un constructeur
+on utilise this() qui doit être placé en première position et donc cela empêche 
+de définir les pré-conditions (avec assert) nécessaires aux tests de robustesse des
+constructeurs. Sans cette contrainte liée au fichier test de robustesse, on aurait pu 
+utiliser une méthode de fabrique à la place des constructeurs. (et bien sûr modifier le
+fichier de test pour tester ces fabriques à la place d'appeler les constructeurs)

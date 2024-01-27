@@ -21,8 +21,7 @@ public class Cercle implements Mesurable2D {
    */
   public Cercle(Point centre, double rayon) {
     assert rayon > 0 && centre != null;
-    Point centre_mem = new Point(centre.getX(), centre.getY());
-    this.centre = centre_mem;
+    this.centre = new Point(centre.getX(), centre.getY());
     this.rayon = rayon;
     this.couleur = Color.BLUE;
   }
@@ -49,7 +48,6 @@ public class Cercle implements Mesurable2D {
     assert p1 != null && p2 != null && couleur != null && (p1.getX() != p2.getX() || p1.getY() != p2.getY());
     this.centre = new Point((p1.getX()+p2.getX())/2,(p1.getY()+p2.getY())/2);
     this.rayon = p1.distance(p2)/2;
-    this.couleur = couleur;
     this.couleur = couleur;
   }
 
