@@ -1,24 +1,165 @@
 # ULM
 
-#### Classe :
+## Diagramme d'analyse
+
+#### Forme :
+| Nom de la classe |
+| ---------------- |
+| Requêtes         | 
+| Commandes        |
+| Constructeurs    |
+
+**Requêtes** : attributs et opérations sans effets de bords  
+**Commandes** : opérations avec effets de bords (on leur met des 'ensures' et 'requires' pour préciser les post et pré conditions)
+
+Cas interface : mettre "interface" dans le titre du diagramme  
+Méthodes abstraites : italique ou {abstract} devant
+
+#### Exemple :
+Nom : Point  
+
+Requêtes : 
+- x,y : réel
+- argument, module : réel
+- nom : string
+- distance(a : Point) : réel  
+- ...
+
+Commandes :
+- translater(dx,dy : réel)
+  - ensures
+    - x = \old(x) + dx
+    - y = \old(y) + dy
+- setArgument(arg : réel)
+  - requires
+    - a dans [0,2pi[
+    - module =/ 0
+  - ensures
+    - ...
+- ...
+
+Constructeur :
+- Point(vx,vy : réel)
+
+
+
+## Diagramme de classe
+
+#### Forme :
 | Nom de la classe |
 | ---------------- |
 | Attributs        |
 | Opérations       |
+| Constructeur     |
 
 #### Exemple :
-
 Nom :```Equation```  
-Attribut : ```coeffA : double```  
-Opération : ```résoudre``` 
+Attribut : ```-coeffA : double```  
+Opération : ```+résoudre() : double```  
+Constructeur : ```+Equation(a,b,c : double)```
 
 #### Droits d'accès :
-
 ![](/images/droit_acces_ulm.png)
 
 #### Membres de classe :
+- Souligner le membre de classe (ou mettre le préfixe $)
 
-Souligner le membre de classe (ou mettre le préfixe $)
+## Relations entre classes
+
+**Relation de dépendance :** 
+- la classe A fait référence à la classe B dans sont texte
+- flèche en traits interrompus de A vers B
+- peu utiles en UML  
+
+![](/images/reldep.png)
+
+**Lien de dépendance :** 
+- il A dépend de B, il y a lien de dépendance entre un objet de A et un objet de B
+- lien est instance de relation comme objet est instance de classe  
+
+![](/images/liendep.png)
+
+**Relation structurelle :** 
+- relation de dépendance qui dure dans le temps
+- exemple : B est le type d'un attribut de la classe A
+
+**Relations de la plus générale à la plus précise :**
+- association
+- agrégation
+- composition
+
+**Relation d'association :**
+- couplage faible : chaque classe pourrait être considérée indépendamment l'une de l'autre 
+- durées de vie pas liées
+- nommer relation par verbe au milieu, direction pour indiquer sens de lecture
+- rôle joué par les objets dans la relation
+  - rôles peuvent avoir droits d'accès
+  - rôle omis => nom de classe utilisé
+- multiplicité
+  - forme générale : min..max
+  - entier : 4..4
+  - option : 0..1
+  - 0 ou plusieurs : 0..*
+  - au au moins : 1..*
+- navigation
+  - traverser une relation
+  - peut être bidirectionnelle
+  - utilisation des rôles
+  - sens précisé aux extrémités par une flèche (la relation peut être traversée dans ce sens) ou une croix (sens interdit)  
+
+![](/images/relassoc.png)
+![](/images/relassocex.png)
+![](/images/relassoc2.png)
+![](/images/relassoc3.png)
+![](/images/relassoc4.png)
+
+**Relation d'agrégation :**
+- cas particulier de l'association
+- une classe est prépondérante par rapport à une autre : ses objets (le tout) agrègent d'autres objets (les parties)
+- notation : losange
+- permet le partage : même objet peut appartenir à plusieurs liens d'agrégation
+- relation subjective
+- exemples : un objet appartient au tout et les autres aux parties, les opérations du tout se propagent sur les parties, il est difficile de parler du tout sans parler de ses parties  
+
+![](/images/relagreg.png)
+
+**Relation de composition :**
+- cas particulier de l'agrégation
+- durés de vie liées : si le tout est détruit, les parties aussi
+- notation : losange plein 
+- pas de partage : un même objet ne peut appartenir qu'à un seul lien de composition
+
+![](/images/relcomp.png)
+
+**Attribut d'association :**
+- caractérise la relation et pas seulement une des extrémités
+- attribut d'association peut être une classe selon comment on voit
+
+![](/images/attassoc.png)
+
+**Qualificatif :** 
+- améliore la précision sémantique
+- se traduit en code par un tableau associatif (map), une base de donnée...
+
+![](/images/qual1.png)
+![](/images/qual2.png)
+
+**Représentation des objets :**
+
+![](/images/diagobjet.png)
+
+**Conformité diagramme objet/diagramme classe :**
+- tout objet du diagramme d’objet est instance d’une classe du diagramme de classe
+- tout lien du diagramme d’objet est instance d’une relation du diagramme de classe
+- le nombre de liens respecte les multiplicités exprimées sur le diagramme de classe
+- la relation de composition est respectée : objet est extrémité que d'un seul lien de composition
+
+**Relation de réalisation :**
+- pour les interfaces
+- cas particulier de dépendance : si I change il faut changer R
+
+![](/images/relreal.png)
+
 
 # Outils du JDK
 
@@ -26,8 +167,6 @@ Compiler en .class : ```javac NomDeClasse.java```
 Executer la classe : ```java NomDeClasse```  
 Engendrer la documentation : ```javadoc -d doc *.java```  
 Désassembler les .class : ```javap```  
-
-
 
 
 # Modularité : classes
@@ -223,6 +362,76 @@ import static java.lang.System.out
 import static java.lang.Math
 ```
 Utile pour écrire directement ```sqrt``` au lieu de ```Math.sqrt```
+
+# Interfaces
+
+**Dans interface :**
+- tout public
+- méthodes abstraites d'instance seulement (implicite)
+- attributs de classe et constants seulement (implicite)
+
+Une classe peut réaliser plusieurs interfaces : ```class R implements I, J, K {...}```
+
+**Classe abstraite :** ne définit pas toutes les méthodes des interfaces qu'elle réalise (ne peut pas être instanciée) ```abstract class E implements {...}```
+
+## Sous-typage
+- si une classe C réalise une interface I alors le type C est un sous type du type I
+- si un type T1 est un sous type de T2 alors partout ou T2 est déclaré on peut utiliser un objet de type T1
+
+```java
+Point p1 = new PointCartesien(1,2); // OK
+PointPolaire pp = new PointCartesien(1,2); // NON
+``` 
+
+Deux notions pour une méthode appliquée sur une poignée :
+- **Liaison statique** (résolution de la surcharge)
+  - le compilateur vérifie que l'appel est correct en s'appuyant sur le type de la poignée
+  - si appel incorrect => erreur compilation
+- **Liaison dynamique** (tardive)
+  - la méthode exécutée est celle qui est définie sur la classe de l'objet attaché à la poignée
+  - classe connue qu'à l'exécution en général
+  - dès qu'on a une poignée non nulle on peut appliquer dessus toute méthode spécifiée par le type de la poignée 
+
+**Remarques :**
+- Un objet est toujours instance d’une et une seule classe qui ne peut pas changer
+- Une poignée est déclarée d’un et un seul type qui ne peut pas changer
+- Un objet peut avoir plusieurs types : sa classe, toute interface réalisée par sa classe, etc
+- Une poignée peut donner accès à des objets de classes différentes
+ 
+Exemple :
+```java
+                // type poignée (apparent)   // classe objet (réel)
+D d = new D();  // D                         // D
+J i = d;        // J                         // D
+I i = d;        // I                         // D
+i = new C();    // I                         // C
+i = null;       // I                         // -
+```
+
+**Type apparent** : type de déclaration de la poignée (compilateur connait que celui ci)  
+**Type réel** : classe de l'objet attaché à la poignée (seulement connu de la JVM)
+
+Exemple :
+```java
+// Dans Point
+public double distance(Point autre) {
+  double dx2 = Math.pow(autre.getX() - this.getX(), 2);
+  double dy2 = Math.pow(autre.getY() - this.getY(), 2);
+  return Math.sqrt(dx2 + dy2);
+}
+// Utilisation
+PointCartesien pc = new PointCartesien(6,3);
+PointPolaire pp = new PointPolaire(10,0);
+assert 5 == pc.distance(pp);
+```
+
+![](/images/interfaceutilisation.png)
+
+## Affectation renversée et transtypage
+
+
+
+
 
 
 
