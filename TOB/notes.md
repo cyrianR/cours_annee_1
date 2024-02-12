@@ -429,6 +429,163 @@ assert 5 == pc.distance(pp);
 
 ## Affectation renversée et transtypage
 
+**Problème :**
+
+![](/images/liensex.png)
+
+**Type apparent VS type réel :**  
+```java
+C p1 = new C(); // on a accès à tout ce qui est spécifié sur C, réel
+I p2 = new C(); // on a accès qu'à ce qui est spécifié sur I, apparent
+```
+```java
+I p = new C();  // accepté : C sous type de I
+C q = p;        // refusé : I, type de P, n'est pas un sous type de C 
+                // (même si le type réel de p est C)
+
+I p = new C();  // l'objet C est accessible par la poignée p de type I
+p.m3();         // refusé
+C q = p;        // affectation refusée
+q.m3();         // accepté, porte bien sur l'objet C
+```
+
+**Solution : Transtypage**
+```java
+C q = (C) p; // accepté par compilateur mais contrôlé à exécution
+             // exception ClassCastException si la classe de l'objet
+             // associé à p n'est pas du type C
+```
+
+**Interrogation dynamique de type :**  
+Utiliser avec modération : mauvaise conception généralement 
+```java
+if (p instanceof C) {
+  C c = (C) p;
+  c.m3();
+}
+
+if (p instanceof C) {
+  ((C) p).m3(); // Bof !
+  // . prioritaire sur (C)
+}
+
+if (p instanceof C c) {
+  c.m3();
+  // depuis Java 16
+}
+```
+
+**Surcharge :** le compilateur résoud la surcharge que sur le type apparent  
+
+## Compléments
+
+**Classe anonyme :**  
+```java
+public class ExempleClasseAnonyme {
+  public static void main(String[] args) {
+    Trieur trieur = new Trieur();
+    int[] t1 = { 5, 4, 1, 2, 4, 3, 10 };
+    trieur.trier(t1, new Comparateur() {
+      public int compare(int n1, int n2) {
+        return n2 - n1;
+      }
+    });
+    trieur.afficher("Décroissant   : ", t1);
+} }
+```
+- peu lisible
+- évite de nommer classe
+- permet d'accéder aux var locales
+- engendre bien un .class en arriere plan
+
+**Contrats et invariants :** s'appliquent sur les réalisations de l'interface
+
+**Interfaces fonctionnelles et lambdas (java8) :**  
+
+Interface fonctionnelle : contient une seule méthode
+```java
+public class ExempleLambdaExpression {
+  // Cette méthode a la même signature que l’unique méthode abstraite 
+  // de l’interface Comparable.
+  static public int paireAvantImpaire(Integer n1, Integer n2) {
+    return n1 % 2 - n2 % 2;
+  }
+
+
+  public static void main(String[] args) {
+    Trieur trieur = new Trieur();
+    Integer[] t1 = { 5, 4, 1, 2, 4, 3, 10 };
+    // Utilisation d’une méthode là où une interface est utilisée
+    trieur.trier(t1, ExempleLambdaExpression::paireAvantImpaire);
+    trieur.afficher("Pair / Impair : ", t1);
+    // Utilisation d’une lambda (fonction anonyme)
+    trieur.trier(t1, (n1, n2) -> n1 - n2);
+    trieur.afficher("Croissant    : ", t1);
+} }
+```
+
+**Méthodes par défaut :** 
+- abstraites
+- peuvent ne pas être définies par les réalisations
+- ont un code par défaut
+- modifieur : ```default```
+- on peut aussi utiliser des méthodes static dans interfaces
+
+
+# Généricité
+
+```java
+public class Couple<A,B>{ // marche aussi avec interfaces
+  public A premier;
+  public B second;
+
+  public Couple(A premier, B second) {
+    this.premier = premier;
+    this.second = second;
+  }
+}
+
+// Utilisation 
+
+Couple<String, Color> c1 = new Couple<String, Color>("rouge", Color.RED);
+```
+
+- convention : le nom d'un paramètre de généricité est une majuscule qui correspond à l'initiale de l'information représentée (ex : E element, K key, V value)
+- compilateur détecte les erreurs de type
+- paramètres de généricité est nécessairement un type de référence (tout type sauf type primitif)
+- pour donner un type primitif à un paramètre de généricité, utliser la classe enveloppe du type primitif (Integer, Double)
+- on peut faire généricitéception :
+```java
+Couple<Couple<String, Point>, Couple<Integer, String>>
+```
+
+**Méthodes génériques :**
+```java
+public <E> void trier(E[] tab, Comparateur<E> comparateur) {
+  E unObjet = ...; }
+```
+- utilisation :
+```java
+static void utiliserTrier() {
+  Trieur trieur = new Trieur();
+  Comparateur<Integer> croissant = new IntOrdreCroissant();
+  Integer[] t1 = { 5, 4, 1, 2, 4, 3, 10 };
+  trieur.trier(t1, croissant); // compilateur infère tout seul E
+  trieur.<Integer>trier(t1, croissant); // En précisant la valeur de E
+  trieur.afficher("t1 = ", t1);
+}
+```
+
+**Généricité contrainte :**
+- si besoin que E ait une méthode d'un autre type : on peut imposer que E soit un sous type avec ```extends```  
+```java
+public static <E extends Comparable<E>> E max(E[] tab) { ... }
+// on peut donc utiliser les méthodes de Comparable sur les éléments de type E dans la méthode
+```
+- imposer plusieurs contraintes : 
+```java
+<T extends C & I1 & I2 & ... & In >
+```
 
 
 

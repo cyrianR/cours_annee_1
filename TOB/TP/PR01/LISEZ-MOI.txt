@@ -9,7 +9,7 @@ Consigne :  Ci-dessous, répondre à la place des « ... ».
 =====[ Temps ]==================================================================
 
 Temps passé sur la V1 : 3 heures 0 minutes
-Temps passé sur la V2 : ... heures ... minutes
+Temps passé sur la V2 : 1 heures 0 minutes
 Pour la V2 on ne tiendra pas compte du temps passé sur la V1.
 Bien sûr, les temps renseignés ici ne sont pas pris en compte dans la notation.
 
