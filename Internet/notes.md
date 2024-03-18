@@ -187,4 +187,158 @@ DNS : annuaire distribué entre adresse IP et nom d'un service
 ARP : correspondance entre une adresse IP et MAC, des messages, un cache, possibilité de proxy
 
 
+# CHAPITRE 3 : TCP
 
+**Besoin de transport** : protocole TCP ou UDP qui transmet les messages des applications (pont entre application et IP)
+
+Multiplexage appliatif :
+- notion de port : source et destination
+- socket : adresse ip + protocole transfert + port
+
+**Gérer bon envoi des messages** :
+- IP ne le fait pas
+- protocole s'en charge
+
+**Principe SEND&WAIT :**
+- récepteur renvoie un accusé de réception dans un temps imparti
+- si pas de réponse après le temps : message considéré perdu
+
+![](/images/pb1.png)
+
+- problème si c'est l'accusé de réception qui est perdu
+
+![](/images/pb2.png)
+
+- solution : numéroter messages et accusés de réception (car problème si récepteur est occupé pendant le temps d'attente de l'accusé de réception)
+
+![](/images/pb3.png)
+
+**Risque de ne pas être efficace (lent) :**
+- sol augmenter débit : bof
+- sol raccourcir distance : bof
+- sol augmenter taille messages : compromis, limite
+- vrai solution : protocole à fenêtre
+
+**Protocole à fenêtre :**
+- continuer d'envoyer des messages dans une fenêtre de n messages même sans recevoir le ACK
+- objectif : calcul de la fenêtre idéal
+- émetteur garde en mémoire les n premiers messages pour lesquelles il a pas reçu d'accusé de réception
+- récepteur : si il est pas dispo : contrôle de flux avec une fenêtre de reception de même taille que la fenêtre d'émission, il y stocke les messages
+- nécessite des contrôles si la fenêtre est pleine : messages de contrôles de flux
+- gérer erreurs : sur récepteur on fait rien (il a pas reçu le message), messages suivants inutilisables car dans le désordre MAIS émetteur a retenu les messages dans sa fenêtre et lorsqu'il reçoit le ACK du message perdu il le retransmet que lui (les autres messages ayant été bien envoyé et le récepteur a retenu tous les autres messages)
+- récepteur n'envoie pas d'instruction pour des messages reçus hors séquence : il a plus de place pour les stocker de toute façon
+
+**Format message TCP :** 
+- signalisation :
+  - début de message : en-tête/header
+  - fin de message : souvent du contrôle
+  - pas dans TCP
+- données :
+  - ici segment applicatif
+  - données/corps/charge utile/data/payload
+- message TCP = segment TCP = morceaux du flux de données de l'application, numérotation des segments sur 4 octets
+- connexion : négocier la taille de la fenêtre et le numéro de séquence initial (ISN)
+- premier état de connexion en trois messages : SYN (client->server), SYN ACK(server->client) et ACK (client->server)
+
+![](/images/tcpsegment.png)
+
+![](/images/maxsegment.png)
+
+**Piggybacking :**
+- profiter communication pour envoyer des accusés de réception (car récepteur est aussi souvent émetteur)
+- comment ? chamsp ACK tjrs présent dans un segment TCP
+
+**Message erroné :**
+- champs de contrôle dans en-tête : checksum
+- sur 2 octet
+- message détruit si checksum correspond pas
+
+**Fiabilisation :**
+- déterminer le temps avant de considérer que le message n'a pas été transmis (le RTO)
+- basé sur un temps d'aller-retour (le RTT)
+- si ce temps est écoulé : retransmission premier message
+
+**Contrôle du flux :**
+- modifier la taille de la fenêtre de réception dynamiquement, réduction progressive et donc émetteur arrête d'émettre quand on fenêtre récepteur arrive à 0 
+
+**Segment TCP :**
+
+![](/images/segmenttcp.png)
+
+# CHAPITRE 4 : RIP
+
+Problème : configurer tables de chaque touteur sachant qu'il y a des entités différentes (FAI, pays, entreprises)  
+
+**Critères :**
+- fiabilité
+- économie
+- bnade passante
+- adaptation
+- reconfiguration
+- charges
+- pannes
+- implantation
+
+**Solution :**
+- chaque entité gère le problème à son échelle
+- interconnexion = échange de routes
+
+**Collecte d'information :**
+- à la main / protocole
+- infos collectées : dépend des critères pour le calcul des routes
+  - vecteur de distances : algo Bellman Ford
+  - états des liaisons : algo Dijkstra
+
+**Meilleure route :** plus courte (distance en sauts)
+
+### Principe 
+
+Base de données :
+- adresses ip destinations
+- distances en sauts
+- timers
+
+Emission pèriodique d'un extrait de la base de donnée pour découverte du réseau
+
+Initialisation :
+- chaque routeur connait ses voisins
+
+Algorithme :
+- si destination inconnue et métrique non infinie alors
+  - ajout route avec 
+    - gateway = émétteur
+    - métrique = métrique + 1
+  - sinon si nouvelle route meilleure
+    - remplacement route
+  - sinon si même chemin
+    - modifier route
+  -sinon rien
+
+![](/images/rip1.png)
+![](/images/rip2.png)
+
+### Format des messages RIP
+
+### Problèmes
+- basé sur topologie fixe : il faut détecter les changement
+- boucles infinies
+- distances infinies
+- convergence lente
+- instable
+- sécurité ?
+- détection pannes
+- détection messages corrompus
+
+### Solutions
+- limiter infini : max 16 (inconvénient : limite l'AS à 15 bonds)
+- ne pas informer voisins des routes qui passent par soit même
+  - résolution partielle du problème de rebond
+- triggered update : diffusion immédiate route lorsque détection panne
+- détection stations inaccessibles
+  - entrées dans table de routage à durée bornée (3 min)
+- figer l'inaccessibilité 
+  - entrées à infini lorsque 4 pèriodes de maj
+- diffusion de l'inaccessibilité
+  - ajout des routes inaccessibles au message de routage
+    - on envoie à une station voisine une route infinie pour chacune des routes ou l'on passe par elle
+  - inconvénient : taille messages grande

@@ -1,0 +1,109 @@
+Nom       : Ragot
+Prénom    : Cyrian
+Groupe TP : K
+
+Les « ... » indiquent les endroits à compléter.
+
+=====[ Temps passé ]============================================================
+
+Ces informations de temps sont demandées à titre indicatif et ne sont pas
+prises en compte dans la notation du projet.
+
+
+* Temps passé sur la V1 : 20 heures 0 minutes
+* Temps passé sur la V2 : ... heures ... minutes
+
+Pour la V2 on ne tiendra pas compte du temps passé sur la V1.
+
+
+=====[ Questions ]==============================================================
+
+--------------------------------------------------------------------------------
+Pourquoi l'exception OperationInterditeException ne peut pas être définie
+comme vérifiée par le compilateur ?
+--------------------------------------------------------------------------------
+
+Cette exception est non vérifiée par le compilateur car il n'est pas possible de prévoir si 
+l'utilisateur va choisir de tricher ou non. De plus, on ne sait pas à l'avance quelles stratégies
+seront employées pour les joueurs qui s'affrontent (on ne sait pas si il y auras un tricheur ou non). 
+
+
+--------------------------------------------------------------------------------
+Expliquer ce qu'il faut faire pour ajouter un nouveau niveau de jeu, par
+exemple la stratégie lente (C13).  Pour plus de précision, on numérotera
+les étapes à faire.
+--------------------------------------------------------------------------------
+
+Pour ajouter un niveau de jeu :
+1. Créer une nouvelle classe (dans le sous-package "strategie")
+qui hérite de la classe abstraite "Strategie" ou "StrategieTrichable" selon si
+on souhaite une simple stratégie ou une stratégie avec laquelle on peut tricher.
+La nouvelle stratégie devra implémenter "StrategieScanner" si elle nécessite
+une entrée utilisateur.
+2. On importe "allumettes.Jeu" dans cette classe.
+3. Dans le cas de la stratégie lente qui n'est pas trichable, on implémente le contructeur 
+de la nouvelle stratégie, renvoyant le nom choisit pour celle-ci au constructeur de la super classe.
+4. On implémente la méthode "choixPrise" qui définit le fonctionnement de la stratégie.
+5. On peut maintenant instancier cette stratégie et l'ajouter dans la hashmap "STRATEGIES" de "Jouer"
+de la même manière qu'on l'a fait pour les autres stratégies (voir méthode "ajouterStrategie" de "Jouer").
+
+
+--------------------------------------------------------------------------------
+Expliquer ce qui permet, dans votre conception, de changer dynamiquement
+(en cours d'exécution du programme) la stratégie d'un joueur (C14).
+--------------------------------------------------------------------------------
+
+Un joueur possède la stratégie comme attribut qui peut être modifié pendant
+l'exécution du programme via la méthode "setStrategie" de "Joueur". De plus,
+à chaque appel de "getPrise" le joueur utilise la stratégie actuelle qu'il possède
+comme attribut. Si l'attribut "strategie" a changé, cet appel utilisera la nouvelle stratégie.
+
+
+=====[ Explications ]===========================================================
+
+--------------------------------------------------------------------------------
+Donner ici les explications supplémentaires utiles à la compréhension du
+travail rendu.
+--------------------------------------------------------------------------------
+
+1. On aurait pu s'arrêter à la classe abstraite "Strategie" pour le soucis d'extensibilité demandé 
+dans le sujet mais j'ai aussi créé la classe abstraite "StrategieTrichable" qui hérite de "Strategie" pour
+deux raison : 
+  -> Comme les stratégies "Humain" et "Tricheur" peuvent toutes les deux tricher et donc nécessitent 
+  des méthodes similaires, cela permet de factoriser plus de code et le rendre plus lisible.
+  -> Ceci permet aussi de pouvoir étendre la capacité de tricherie à toute nouvelle stratégie,
+  on ajoute donc encore plus d'extensibilité possible pour de futurs extensions du jeu.
+
+2. De même, l'interface "StrategieScanner" permet de donner à une stratégie la capacité de
+demander une entrée utilisateur via un seul Scanner static instancié par cette interface, il
+suffit qu'une stratégie implémente cette interface pour utiliser le scanner. Cela permet aussi
+plus d'extensibilité.  
+
+3. J'ai choisis de faire un switch case pour le traitement des arguments pour pouvoir ajouter 
+facilement des paramètres de ligne de commande en "-nom_parametre". Les autres arguments
+étant considérés comme les joueurs en "Nom@Strategie". On pourrait améliorer ce traitement d'arguments
+pour le rendre plus modulable au travers d'une autre classe peut être.
+
+4. Le register de joueurs nous permet d'avoir autant de joueurs que l'on souhaite dans une partie.
+On peut ainsi facilement en ajouter et itérer en boucle sur tous les joueurs présents dans le register pour
+traiter leurs tours 1 à 1 (grâce à la méthode "obtenirProchainJoueur"). L'arbitre n'utilise donc que ce register
+dans lequel on auras placé nos joueurs en début de partie à l'aide de la méthode "ajouterJoueur". On peut alors 
+aussi supprimer un joueur en cours de partie selon son identifiant unique (on peut imaginer que si on joueur triche
+on le supprime de la partie en guise de punition).
+
+5. L'identifiant unique d'un joueur est créé lors de l'instanciation du joueur avec l'attribut "id" grace au paramètre
+static final "AtomicLong" de "Joueur". Ceci assure que tout joueur instancié a un identifiant unique que l'on ne peut
+pas changer (pas de méthdoe get) mais que l'on peut récupérer avec un setter.
+
+6. Les stratégies utilisent le paramètre "PRISE_MAX" de "Jeu" de manière à ce qu'elles fonctionnent toujours lorsque
+l'on souhaite changer la prise maximum du jeu. De plus, cette constante est utilsée dans la robustesse, de manière à toujours
+être robuste.
+
+7. J'ai passé le nombre d'allumettes initiales du jeu et le nombre de joueurs comme paramètres constants
+de la classe "Jouer" pour permettre de les changer plus simplement que d'utiliser "en dur" des nombres ou
+des variables locales.
+
+8. J'ai quelques similitudes dans les fichiers d'évaluation automatique, j'en ai corrigé quelques unes qui n'étaient pas géniales
+mais il ne me semble pas que les similitudes restantes reflètent un réel problème de structuration du code.
+
+--------------------------------------------------------------------------------

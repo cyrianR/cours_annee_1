@@ -1,0 +1,11 @@
+Repetition avec le constructeur de StrategieTrichable : essayer de faire une interface ?
+Rendre une stratégie avec une entrée
+Patron conception fabrique pour les stratégies ?
+Tenter introspection ou annotations pour strategies
+Ameliorer expert (et même toutes les stratégies) pour marcher avec toutes prises possible
+Exceptions / Robustesse
+Verifier javadoc partout
+Verifier commentaires
+Mettre les hasEntree dans le joueur et non pas dans les strategies, donc
+gerer le scanner par le joueur et non la strategie.
+

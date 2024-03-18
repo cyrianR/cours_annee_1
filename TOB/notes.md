@@ -160,6 +160,84 @@ Constructeur : ```+Equation(a,b,c : double)```
 
 ![](/images/relreal.png)
 
+### Héritage et UML
+
+- classes parentes au-dessus
+- nom des classes et méthodes abstraites en italique ou on peut utiliser la contrainte {abstract} ou le stéréotype <<abstract>>
+- dans sous-classe UML on met que les méthodes définies ou redéfinies par cette sous-classe
+
+![](/images/heritageuml.png)
+
+## Diagramme de cas d'utilisation
+
+Modéliser les fonctions du système telle qu'elles apparaissent aux utilisateurs sans en révéler la structure.
+- rester au niveau du problème (besoins) et non de la solution
+- description textuelle peut être complétée par pseudo code, diagrammes d'activité etc...
+
+![](/images/casutil1.png)
+
+**Acteur :** rôle joué par un utilisateur ou un élément qui intéragit avec le système
+- une personne physique peut correpsondre à plusieurs acteurs (rôles)
+- exemples :acteurs principaux, acteurs secondaires, matériel externe, autres systèmes
+- possibilité de généralisation entre acteurs
+
+**Définition d'un cas d'utilisation :** le graphique ne suffit pas
+
+![](/images/casutil2.png)
+
+**Elements d'un cas d'utilisation :** 
+- flots d'évènements : un principal, un ou plusieurs alternatifs, un ou plusieurs d'exception
+- description textuelle :
+  - début du cas d'utilisation : évt déclencheur et condition
+  - fin du cas d'utilisation : évt de fin et condition$
+  - échanges d'infos entre acteurs et système
+  - chronologie et origine des infos
+  - répétitions de comportement (pseudo code)
+  - situations optionnelles
+
+**Relations entre cas d'utilisation :** 
+- généralisation (ex : un virement par internet est un virement)
+- inclusion (<<include>>) (ex : dans tout virement il y a identification)
+- extension (<<extend>>) : le cas d'extension source ajoute son comportement au cas d'utilisation destination, l'extension peut être soumise à une condition (ex : pendant un virement il peut y avoir verif de solde, à lieu après l'identification (point d'insertion) si le montant est supèrieur à 50euro (condition de déclenchement))
+
+ATTENTION : pas confondre avec java, pas même vocab
+
+![](/images/casutil3.png)
+
+**Scénarios :** instance d'un cas d'utilisation, décrit un exemple d'interaction entre système et acteurs
+- but : valider un cas d'utilisation
+- définir plusieurs :
+  - le scénario nominale
+  - scénarios nominaux moins fréquents
+  - scénarios d'exeption
+- formalisé dans un diagramme de séquence ou de communication
+
+## Diagramme de séquence
+
+Décrire les interactions entre objets en privilégiant le temps.
+
+#### Retour de méthode
+![](/images/seq1.png)
+
+#### Création, destruction d'objets
+![](/images/seq2.png)
+
+#### Raffinages à diagramme séquence
+![](/images/seq3.png)
+
+- loop
+![](/images/seq4.png)
+
+- conditions
+![](/images/seq5.png)
+
+**Cadres d'interaction :**
+- alt : alternatives
+- loop : répétition 
+- opt : optionnel
+- par : exécution parallèle
+- negative : une interaction invalide
+
 
 # Outils du JDK
 
@@ -586,6 +664,221 @@ public static <E extends Comparable<E>> E max(E[] tab) { ... }
 ```java
 <T extends C & I1 & I2 & ... & In >
 ```
+
+# Héritage
+
+## Héritage simple
+```java
+public class PointNomme extends Point { ... }
+```
+- PointNomme spécialise Point
+- Point généralise PointNomme
+- relation de sous-typage entre les deux classes
+- ajouter une nouvelle méthode dans une sous classe s'entend au sens de la surcharge
+
+**Constructeur sous classe :**  
+```java
+public PointNomme(...) {
+  super(vx,vy);
+  this.nom = nom;
+}
+```
+- super tjrs en premier
+- la super-classe tjrs initialisée avant sous-classe
+- si aucun appel à super => utilisation constructeur par défaut de la super-classe : DANGER
+
+**Redéfinition :**  
+```java
+// dans PointNomme
+@Override
+public void afficher() {
+  System.out.print(getNom() + ":");
+  super.afficher();
+} 
+```
+- une sous-classe n'aura accès qu'à la redéfinition
+- surcharge /= redéfinition
+
+**Principe de substitution :**  
+```java
+Point p1 = new Point(3, 4);
+PointNomme pn1 = new PointNomme("A", 30, 40);
+Point q;        //(type apparent : Point)
+q = p1;         // OK, p1 et q même type Point
+q.afficher();   // afficher() de Point
+q = pn1;        // OK, pn1 est PointNomme sous-type de Point et q est Point
+q.afficher();   // afficher() de PointNomme (liaison dynamique)
+PointNomme qn;  //(type apparent : PointNomme)
+qn = p1;        // ERREUR, p1 Point n'est pas sous-type de PointNomme
+qn = pn1;       // OK, pn1 et qn même type PointNomme 
+qn.afficher();  // afficher() de PointNomme
+```
+- **liaison statique** : le type de la poignée permet de selectionner la signature (résolution de la surcharge à la compilation, recherche d'une méthode dans le type apparent ayant la bonne signature)
+- **liaison dynamique** : son implémentation est cherchée dans le type de réel de l'objet attaché à la poignée (recherche la dernière redéfinition rencontytrée en partant du type apparent vers les type réel, à l'exécution)
+
+**Transtypage :**  
+```java
+Point p = new PointNomme("A", 1, 2);
+PointNomme q;
+q = p;              // ERREUR
+q = (PointNomme) p  // OK
+```
+
+**Interrogation dynamque de type : opérateur instanceof :**
+```java
+if (p instanceof PointNomme) {
+  ((PointNomme) p).nommer("B");
+}
+if (p instanceof PointNomme) {
+  PointNomme q = (PointNomme) p;
+  q.nommer("B");
+}
+```
+
+**Modifieur final :**
+- variable locale : constante
+- attribut classe/instance : attribut que affecté une fois
+- méthode : ne peut pas être redéfinie par une sous-classe, elle ne peut pas être polymorphe
+- classe : la classe ne peut pas être spécialisée (pas de sous-classe et méthodes pas polymorphes)
+
+**Classe Object :**  
+- ancêtre commun à tous les objets
+```java
+// contient les méthodes
+
+protected void finalize(); // appelée lorsque le ramasse-miette récupère la mémoire d'un objet
+public String toString(); // représentation de l'objet sous forme d'un String
+public boolean equals(Object obj); // égalité logique de this et obj
+```
+
+**Droits d'accès :**  
+La sous-classe peut utiliser de la super-classe :  
+- ce qui est public
+- ce qui est protected
+- ce qui est en droit d'accès paquetage 
+
+Que devient le droit d'accès d'une méthode héritée :
+- par défaut : reste inchangé
+- peut être augmenté par la sous-classe si elle y accède
+
+## Classe abstraite
+
+**Classe abstraite :**
+- ```abstract class ClassAbstraite{ ... }```
+- ne permet pas de créer d'objets
+- méthodes doivent être abstraites
+- abstract incompatible avec static et final pour les méthodes
+- peut définir des constructeurs
+
+**Intérêt :**
+- savoir qu'on a oublié de définir une méthode dans la sous-classe
+- signalé par compilateur
+
+## Héritage multiple
+
+On passe par des interfaces :
+- une interface peut spécialiser plusieurs interfaces :
+```interface I extends I1, I2 { ... }```
+- attention : deux méthodes ayant même signature sont considérées comme la même méthode
+
+# Exceptions
+
+**Lever exception :** ```throw new ClasseException(<paramètres>)```
+- le paramètre est l'explication de l'anomalie détectée
+
+**Propagation d'exception :** exception remonte les appels et blocs
+
+**Récupérer une exception :** 
+```java
+try {
+
+} catch (ArithmeticException e) {
+  // exécuté que si exception levée
+} finally {
+  // toujours exécuté, qu'une exception soit levée ou non
+  // utile pour libérer une ressource
+}
+```
+
+### Hiérarchie des exceptions
+![](/images/exceptions.png)
+- **Error** : anomalies qui ne peuvent pas être traitées pendant l'exécution du programme
+  - ```OutOfMemoryError```, ```AssertionError```, ```StackOverflowError```, ```NoClassDefFoundError```
+- **RuntimeException** : erreurs de programmation (correction)
+  - ```NullPointerException```, ```IndexOutOfBoundsException```, ```ArithmeticException```
+- **Exception** : anomalies liées à la robustesse
+  - ```FileNotFoundException```, ```IOException```
+
+**Classe java.lang.Throwable :**
+- constructeurs :
+  - ```Throwable(String message)``` : avec message sur l'origine de l'exception
+  - ```Throwable(Throwable cause)``` : exception résulant d'une autre exception
+  - ```Throwable(String message, Throwable cause)```
+- méthodes :
+  - ```getMessage()``` : le message associé à l'exception
+  - ```printStackTrace()``` : afficher la trace des appels
+  - ```getCause()``` : la cause de l'exception
+
+### Exceptions et Junit4
+- on précise la classe de l'exception attendue avec ```excepted```
+```java
+public class ExceptionTest {
+  @Test(expected=NumberFormatException.class)
+  public void testerException {
+    Integer.parseInt("quinze");
+  }
+}
+``` 
+
+### Exception et javadoc
+```java
+/**
+ * @throws NullPointerException if the specified element is null and 
+ * this collection does not permit null elements (optional)
+ */
+```
+
+### Spécifier les exceptions
+```java
+public class FileReader {
+  public FilerReader(String fileName) throws FileNotFoundException;
+    // le constructeur de FileReader peut donc laisser se propager
+    // l'exception FileNotFoundException
+```
+- on peut spécifier plusieurs exeptions : ```throws E1, E2, E3```
+- le programmeur doit soit traiter soit propager l'exception ensuite
+- une méthode ne peut propager que les exception qui sont 
+  - descendantes de RuntimeException ou Error
+  - descendantes d'une des exceptions listées dans la clause throws
+- sous-typage permet de :
+  - limiter le nombre d'exceptions à déclarer
+  - de récuprérer plusieurs exceptions dans un même catch
+  - ATTENTION : perte de précision dans les deux cas
+- contrainte sur la redéfinition des méthodes :
+  - une méthode redéfinie ne peut pas lever de nouvelles exceptions non spécifiées par sa déclaration dans la classe parente
+
+### Définition d'exceptions
+- ne pas hériter directement de Throwable
+- bien choisir la classe parente :
+  - si on pense que l'appelant peut récuprérer l'exception pour la traiter : exception vérifiée (Exception ou RuntimeException)
+  - si il ne doit pas la récupérer : exception non vérifiée (Error)
+
+### Traiter une exception
+- Réparer le problème et exécuter de nouveau
+- Rétablir un état cohérent et continuer sans recommencer
+- Calculer un autre résultat remplaçant celui de la méthode
+- Réparer localement le problème et propager l'exception (finally)
+- Réparer localement le problème et lever nouvelle exception
+- Terminer le programme
+
+**Meilleure solution pour libérer une ressource :**
+
+![](/images/autoclose.png)
+
+
+
+
+
 
 
 

@@ -1,0 +1,5 @@
+public class EnsembleChaineOrdonne<T extends Comparable<T>> implements EnsembleOrdonne<T extends Comparable<T>> {
+
+
+
+}

@@ -26,7 +26,7 @@ public class Cercle implements Mesurable2D {
   public Cercle(Point centre, double rayon) {
     assert rayon > 0 && centre != null;
     this.rayon = rayon;
-    this.centre = new Point(centre.getX(), centre.getY());
+    this.centre = new Point(this.centre.getX(), this.centre.getY());
     this.couleur = Color.BLUE;
   }
 
@@ -74,8 +74,7 @@ public class Cercle implements Mesurable2D {
    * @return centre du cercle
    */
   public Point getCentre() {
-    Point centreMem = new Point(centre.getX(), centre.getY());
-    return centreMem;
+    return new Point(centre.getX(), centre.getY());
   }
 
   /**
@@ -92,7 +91,7 @@ public class Cercle implements Mesurable2D {
    * @return rayon du cercle
    */
   public double getRayon() {
-    return rayon;
+    return this.rayon;
   }
 
   /**
@@ -127,7 +126,7 @@ public class Cercle implements Mesurable2D {
    * @param dy déplacement suivant l'axe y
    */
   public void translater(double dx, double dy) {
-    centre.translater(dx, dy);
+    this.centre.translater(dx, dy);
   }
 
   /**
@@ -135,7 +134,7 @@ public class Cercle implements Mesurable2D {
    * @return diamètre du cercle
    */
   public double getDiametre() {
-    return rayon * 2;
+    return this.rayon * 2;
   }
 
   /**
@@ -154,7 +153,7 @@ public class Cercle implements Mesurable2D {
    */
   public boolean contient(Point p) {
     assert p != null;
-    return p.distance(centre) <= rayon;
+    return p.distance(this.centre) <= this.rayon;
   }
 
   /**
@@ -164,19 +163,30 @@ public class Cercle implements Mesurable2D {
     System.out.println(this.toString());
   }
 
+  /**
+   * Obtenir une représentation du cercle en texte.
+   * @return la représenation du cercle en texte
+   */
+  public String toString() {
+    return "C" + this.rayon + "@" + this.centre.toString();
+  }
+
+  /**
+   * Obtenir le perimètre du cercle.
+	 * @return le perimètre
+	 */
   @Override
   public double perimetre() {
-    return 2 * PI * rayon;
+    return 2 * PI * this.rayon;
   }
 
+  /**
+   * Obtenir l'aire du cercle.
+	 * @return l'aire
+	 */
   @Override
   public double aire() {
-    return PI * rayon * rayon;
-  }
-
-  @Override
-  public String toString() {
-    return "C" + rayon + "@" + centre.toString();
+    return PI * this.rayon * this.rayon;
   }
 
 }

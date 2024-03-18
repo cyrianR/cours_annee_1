@@ -24,12 +24,6 @@ public class CercleTest {
     C = new Point(4, 1);
     D = new Point(8, 1);
     E = new Point(8, 4);
-
-    // Construire les cercles
-    C2 = new Cercle(C, D);
-    C2bis = new Cercle(C , D, Color.yellow);
-    C4 = new Cercle(A, B);
-    C3 = Cercle.creerCercle(D, E);
   }
 
   /** Vérifier si deux points ont mêmes coordonnées.
@@ -41,8 +35,14 @@ public class CercleTest {
     assertEquals(message + " (y)", p1.getY(), p2.getY(), EPSILON);
 	}
 
+  /* 
+   * Test de construction d'un cercle à partir de deux points diamétralement
+   * opposés (Exigence 12)
+   */
   @Test
   public void testerE12() {
+    C2 = new Cercle(C, D);
+    C4 = new Cercle(A, B);
     memesCoordonnees("TEST", new Point(0, 6),
       C4.getCentre());
     memesCoordonnees("E12 : Centre du cercle incorrect",
@@ -53,12 +53,6 @@ public class CercleTest {
         2.0, C2.getCentre().distance(D), EPSILON);
     assertEquals("E12 : Diamètre incorrect", C.distance(D),
       C2.getDiametre(), EPSILON);
-    //assertTrue("E12 : Le cercle est ovale", 
-    //  C2.contient(new Point(6, 3 - EPSILON)));
-    //assertTrue("E12 : Le cercle est ovale", 
-    //  C2.contient(new Point(6, -1 + EPSILON)));
-    //assertTrue("E12 : Le cercle contient les points opposés de construction", C2.contient(C));
-    //assertTrue("E12 : Le cercle contient les points opposés de construction", C2.contient(D));
     assertEquals("E12 : Rayon de C2 incorrect",
         2, C2.getRayon(), EPSILON);
     assertEquals("E12 : Diamètre devrait être deux fois le rayon",
@@ -66,8 +60,13 @@ public class CercleTest {
     assertEquals("E12 : Couleur incorrect", Color.blue, C2.getCouleur());
   }
 
+  /* 
+   * Test de construction d'un cercle à partir de deux points diamétralement
+   * opposés et de sa couleur (Exigence 13)
+   */
   @Test
   public void testerE13() {
+    C2bis = new Cercle(C , D, Color.yellow);
     memesCoordonnees("E13 : Centre du cercle incorrect",
       new Point(6, 1), C2bis.getCentre());
     assertEquals("E13 : Point C pas sur la circonférence de C2bis",
@@ -81,8 +80,14 @@ public class CercleTest {
     assertEquals("E13 : Couleur incorrect", Color.yellow, C2bis.getCouleur());
   }
 
+  /* 
+   * Test de construction d'un cercle à partir de deux points dont
+   * l'un est le centre du cercle et l'autre est un point
+   * sur le cercle (Exigence 14)
+   */
   @Test
   public void testerE14() {
+    C3 = Cercle.creerCercle(D, E);
     memesCoordonnees("E14 : Centre de C3 incorrect", D, C3.getCentre());
     assertEquals("E14 : Rayon de C3 incorrect",
         3.0, C3.getRayon(), EPSILON);

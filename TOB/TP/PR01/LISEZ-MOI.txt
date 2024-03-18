@@ -19,16 +19,16 @@ Bien sûr, les temps renseignés ici ne sont pas pris en compte dans la notation
 Indiquer la relation UML entre Cercle et le Point centre du cercle.
 -------------------------------------------------------------------
 
-Il y a une relation de dépendance, la classe Cercle dépend de la classe Point.
+Il y a une relation de composition, si un objet Cercle est détruit, le point associé dans la relation 
+de composition est détruit aussi, les durées de vies sont liées.
 
 
 Comment est réalisée l'exigence E18 ?
 -------------------------------------
 
-Les attributs de la classe Cercle ont tous un modifieur private donc un utilisateur 
+Les attributs de la classe Cercle ont tous une portée private donc un utilisateur 
 ne peut pas les changer les caractéristiques d'un cercle autrement qu'avec les méthodes 
 fournies par la classe.
-
 
 
 =====[ Explications ]===========================================================

@@ -36,18 +36,19 @@ public class Point {
 	}
 
 	/** Changer l'abscisse du point.
-	  * @param vx nouvelle abscisse
-	  */
+	 * @param vx nouvelle abscisse
+	 */
 	public void setX(double vx) {
 		this.x = vx;
 	}
 
 	/** Changer l'ordonnée du point.
-	  * @param vy nouvelle ordonnée
-	  */
+	 * @param vy nouvelle ordonnée
+	 */
 	public void setY(double vy) {
 		this.y = vy;
 	}
+
 
 	public String toString() {
 		return "(" + this.x + ", " + this.y + ")";
@@ -67,10 +68,10 @@ public class Point {
 					+ Math.pow(autre.y - this.y, 2));
 	}
 
-   /** Translater le point.
-	* @param dx déplacement suivant l'axe des X
-	* @param dy déplacement suivant l'axe des Y
-	*/
+  /** Translater le point.
+	 * @param dx déplacement suivant l'axe des X
+	 * @param dy déplacement suivant l'axe des Y
+	 */
 	public void translater(double dx, double dy) {
 		this.x += dx;
 		this.y += dy;
@@ -86,8 +87,8 @@ public class Point {
 	}
 
 	/** Changer la couleur du point.
-	  * @param nouvelleCouleur nouvelle couleur
-	  */
+	 * @param nouvelleCouleur nouvelle couleur
+	 */
 	public void setCouleur(Color nouvelleCouleur) {
 		this.couleur = nouvelleCouleur;
 	}
