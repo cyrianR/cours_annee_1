@@ -2,8 +2,10 @@
 #include <stdbool.h>
 
 // TODO : type liste_noeud_t
+struct liste_noeud_t;
 
 // TODO : typedef
+typedef struct liste_noeud_t liste_noeud_t;
 
 /**
  * creer_liste : crée une liste de noeuds, initialement vide
@@ -11,7 +13,7 @@
  * Post-conditions : `r = creer_liste()` => `r != NULL`, `est_vide_liste(r)`
  * @return liste nouvellement créée (de type liste_noeud_t)
  */
-/* TODO : type de retour */ creer_liste();
+liste_noeud_t creer_liste();
 
 /**
  * detruire_liste : détruit la liste passée en paramètre
@@ -21,7 +23,7 @@
  *
  * @param liste_ptr pointeur sur la liste à détruire
  */
-void detruire_liste(/* TODO : type paramètre */ liste_ptr);
+void detruire_liste(liste_noeud_t liste_ptr);
 
 /**
  * est_vide_liste : test si la liste passée en paramètre est vide
