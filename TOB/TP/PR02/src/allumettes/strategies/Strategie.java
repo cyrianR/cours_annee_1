@@ -11,13 +11,6 @@ import allumettes.Jeu;
 public interface Strategie {
 
   /**
-   * Obtenir le nom de la stratégie.
-   *
-   * @return le nom de la stratégie
-   */
-  String getNom();
-
-  /**
    * Choix de prise d'allumettes.
    *
    * @param jeu le jeu pour lequel on applique la stratégie

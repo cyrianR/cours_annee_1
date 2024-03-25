@@ -12,10 +12,6 @@ import allumettes.strategies.Strategie;
  */
 public class Joueur {
 
-  // Identité du prochain joueur créé.
-  // static final AtomicLong PROCHAIN_ID = new AtomicLong(0);
-  // Identité du joueur.
-  // private final long id = PROCHAIN_ID.getAndIncrement();
   /** Nom du joueur. */
   private String nom;
   /** Stratégie employée par le joueur. */
@@ -53,15 +49,6 @@ public class Joueur {
   }
 
   /**
-   * Modifier le nom du joueur.
-   *
-   * @param nom le nouveau nom du joueur
-   */
-  public void setNom(String nom) {
-    this.nom = nom;
-  }
-
-  /**
    * Obtenir la stratégie du joueur.
    *
    * @return la stratégie du joueur
@@ -79,13 +66,4 @@ public class Joueur {
     this.strategie = strategie;
   }
 
-  //
-  // Obtenir l'identité du joueur.
-  //
-  // @return l'identité du joueur
-  //
-  //public long getId() {
-  //  return this.id;
-  //}
-  //
 }

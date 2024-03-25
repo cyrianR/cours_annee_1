@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author Cyrian Ragot
  * @version 1.0
  */
-public interface StrategieScanner {
+public interface StrategieScanner extends Strategie {
 
   /** Scanner des stratégies qui demandent une entrée utilisateur. */
   Scanner SCANNER = new Scanner(System.in);
@@ -17,7 +17,5 @@ public interface StrategieScanner {
    * Lire une entrée utilisateur.
    * @return l'entrée utilisateur lue
    */
-  default String lireEntree() {
-    return SCANNER.nextLine();
-  }
+  String lireEntree();
 }

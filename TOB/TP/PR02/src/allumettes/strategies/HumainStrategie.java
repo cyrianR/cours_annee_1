@@ -1,5 +1,6 @@
 package allumettes.strategies;
 
+import allumettes.CoupInvalideException;
 import allumettes.Jeu;
 
 /**
@@ -8,17 +9,10 @@ import allumettes.Jeu;
  * @author Cyrian Ragot
  * @version 1.0
  */
-public class HumainStrategie extends StrategieTrichable implements StrategieScanner {
+public class HumainStrategie implements StrategieScanner {
 
   /** Nom de la stratégie. */
-  private String nom;
-
-  /**
-   * Construire la stratégie humain.
-   */
-  public HumainStrategie() {
-    this.nom = "humain";
-  }
+  public final static String NOM = "humain";
 
   /**
    * Afficher un message de triche.
@@ -27,8 +21,7 @@ public class HumainStrategie extends StrategieTrichable implements StrategieScan
    *                            joueur de tricher
    * @param allumettesRestantes les allumettes restantes sur le jeu après triche
    */
-  @Override
-  protected void afficherMessageTriche(int choixTriche, int allumettesRestantes) {
+  private void afficherMessageTriche(int choixTriche, int allumettesRestantes) {
     String message = (choixTriche == 1) ? "Une" : Integer.toString(choixTriche);
     message += " allumette";
     message += (choixTriche == 1) ? "" : "s";
@@ -44,8 +37,7 @@ public class HumainStrategie extends StrategieTrichable implements StrategieScan
    * @param jeu le jeu sur lequel la stratégie est appliquée
    * @return le nombre d'allumettes à enlever du jeu pour tricher
    */
-  @Override
-  protected int resultatTricherie(Jeu jeu) {
+  private int resultatTricherie(Jeu jeu) {
     if (jeu.getNombreAllumettes() == 1) {
       // il ne reste qu'une allumette, le joueur ne peut pas tricher
       return 0;
@@ -59,6 +51,23 @@ public class HumainStrategie extends StrategieTrichable implements StrategieScan
   }
 
   /**
+   * Tricher au jeu.
+   *
+   * @param jeu le jeu dont on retire les allumettes
+   */
+  private void tricher(Jeu jeu) {
+    int choixTricherie = this.resultatTricherie(jeu);
+    for (int i = 1; i <= choixTricherie; i++) {
+      try {
+        jeu.retirer(1);
+      } catch (CoupInvalideException e) {
+        e.printStackTrace();
+      }
+    }
+    afficherMessageTriche(choixTricherie, jeu.getNombreAllumettes());
+  }
+
+  /**
    * Choix de prise d'allumettes.
    *
    * @param jeu le jeu pour lequel on applique la stratégie
@@ -66,36 +75,55 @@ public class HumainStrategie extends StrategieTrichable implements StrategieScan
    */
   @Override
   public int choixPrise(Jeu jeu, String joueurNom) {
-    System.out.print(joueurNom + ", combien d'allumettes ? ");
-    String choixString = this.lireEntree();
-    if (choixString.contentEquals("triche")) {
-      // le joueur choisit de tricher
-      tricher(jeu);
-      return choixPrise(jeu, joueurNom);
-    } else {
-      // le joueur choisit de jouer normalement
-      try {
-        return choixToInteger(choixString);
-      } catch (ChoixInvalideException e) {
-        return choixPrise(jeu, joueurNom);
+    boolean choixInvalide;
+    boolean choixTriche;
+    int choix = 0;
+    do {
+      choixInvalide = false;
+      choixTriche = false;
+      System.out.print(joueurNom + ", combien d'allumettes ? ");
+      String choixString = lireEntree();
+      if (choixString.equals("triche")) {
+        // le joueur choisit de tricher
+        tricher(jeu);
+        choixTriche = true;
+      } else {
+        // le joueur choisit de jouer normalment 
+        try {
+          choix = choixToInteger(choixString);
+        } catch (ChoixInvalideException e) {
+          choixInvalide = true;
+          System.out.println(e.getMessage());
+        }
       }
-    }
+    } while (choixInvalide || choixTriche);
+    return choix;
   }
 
+  /**
+   * Transformer le choix donné en chaîne de caractères en entier.
+   *
+   * @param choixString le choix en chaîne de caractère
+   * @return le choix en entier
+   * @throws ChoixInvalideException lorsque le choix donné ne correspond pas à un entier
+   */
   private int choixToInteger(String choixString) throws ChoixInvalideException {
     int choixInt = 0; // on initialise la variable avec un entier
     try {
       choixInt = Integer.valueOf(choixString);
     } catch (NumberFormatException e) {
-      System.out.println("Vous devez donner un entier.");
-      throw new ChoixInvalideException();
+      throw new ChoixInvalideException("Vous devez donner un entier.");
     }
     return choixInt;
   }
 
+  /**
+   * Lire une entrée utilisateur.
+   * @return l'entrée utilisateur lue
+   */
   @Override
-  public String getNom() {
-    return this.nom;
+  public String lireEntree() {
+    return SCANNER.nextLine();
   }
 
 }

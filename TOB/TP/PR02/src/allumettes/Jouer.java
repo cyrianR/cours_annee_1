@@ -2,6 +2,8 @@ package allumettes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
 
 import allumettes.strategies.ExpertStrategie;
 import allumettes.strategies.HumainStrategie;
@@ -20,16 +22,16 @@ import allumettes.strategies.TricheurStrategie;
 public class Jouer {
 
 	/** Dictionnaire des stratégies utilisables. */
-	private static final HashMap<String, Strategie>
+	private static final Map<String, Strategie>
 		STRATEGIES = new HashMap<String, Strategie>();
 	/** Nombre d'allumettes dans le jeu. */
 	private static final int NBR_ALLUMETTES = 13;
 	/** Nombre de joueurs.  */
 	private static final int NB_JOUEURS = 2;
 	/** Nom des joueurs qui vont jouer. */
-	private static ArrayList<String> nomsJoueurs = new ArrayList<String>();
+	private static List<String> nomsJoueurs = new ArrayList<String>();
 	/** Stratégies des joueurs. */
-	private static ArrayList<String> strategiesJoueurs = new ArrayList<String>();
+	private static List<String> strategiesJoueurs = new ArrayList<String>();
 	/** Vrai si l'arbitre est confiant. */
 	private static boolean arbitreConfiant;
 
@@ -59,12 +61,14 @@ public class Jouer {
 			// créer le jeu
 			JeuSimple jeu = new JeuSimple(NBR_ALLUMETTES);
 
-			// créer le register de joueurs et ajouter les joueurs
-			JoueurRegister joueurRegister = new JoueurRegister();
-			remplirRegistreJoueurs(joueurRegister);
+			// créer les deux joueurs
+			Joueur joueur1 = new Joueur(nomsJoueurs.get(0),
+				STRATEGIES.get(strategiesJoueurs.get(0)));
+			Joueur joueur2 = new Joueur(nomsJoueurs.get(1),
+				STRATEGIES.get(strategiesJoueurs.get(1)));
 
 			// créer l'arbitre et lancer l'arbitrage
-			Arbitre arbitre = new Arbitre(joueurRegister, arbitreConfiant);
+			Arbitre arbitre = new Arbitre(joueur1, joueur2, arbitreConfiant);
 			arbitre.arbitrer(jeu);
 
 		} catch (ConfigurationException e) {
@@ -108,11 +112,11 @@ public class Jouer {
 	 * Ajouter les stratégies disponibles au dictionnaire STRATEGIES.
 	 */
 	private static void ajouterStrategies() {
-		STRATEGIES.put((new RapideStrategie()).getNom(), new RapideStrategie());
-		STRATEGIES.put((new ExpertStrategie()).getNom(), new ExpertStrategie());
-		STRATEGIES.put((new NaifStrategie()).getNom(), new NaifStrategie());
-		STRATEGIES.put((new HumainStrategie()).getNom(), new HumainStrategie());
-		STRATEGIES.put((new TricheurStrategie()).getNom(), new TricheurStrategie());
+		STRATEGIES.put(RapideStrategie.NOM, new RapideStrategie());
+		STRATEGIES.put(ExpertStrategie.NOM, new ExpertStrategie());
+		STRATEGIES.put(NaifStrategie.NOM, new NaifStrategie());
+		STRATEGIES.put(HumainStrategie.NOM, new HumainStrategie());
+		STRATEGIES.put(TricheurStrategie.NOM, new TricheurStrategie());
 	}
 
 	/**
@@ -121,26 +125,21 @@ public class Jouer {
 	 * @param args arguments de ligne de commande
 	 */
 	private static void traiterArguments(String[] args) {
-		// initialisation des paramètres
-		arbitreConfiant = false;
-		int i;
-		// itérer sur les arguments
-		for (i = 0; i < args.length; i++) {
-			switch (args[i]) {
-
-				case "-confiant":
-					// traiter l'argument confiant
-					arbitreConfiant = true;
-					break;
-
-				default:
-					// traiter les arguments de joueurs
-					String[] joueurArguments = args[i].split("@");
-					verifierArgumentJoueur(joueurArguments);
-					nomsJoueurs.add(joueurArguments[0]);
-					strategiesJoueurs.add(joueurArguments[1]);
-
-			}
+		int startArgsJoueurs;
+		// traiter l'argument confiant 
+		if (args[0].equals("-confiant")) {
+			arbitreConfiant = true;
+			startArgsJoueurs = 1;
+		} else {
+			arbitreConfiant = false;
+			startArgsJoueurs = 0;
+		}
+		// itérer sur les arguments de joueur
+		for (int i = startArgsJoueurs; i < args.length; i++) {	
+			String[] joueurArguments = args[i].split("@");
+			verifierArgumentJoueur(joueurArguments);
+			nomsJoueurs.add(joueurArguments[0]);
+			strategiesJoueurs.add(joueurArguments[1]);
 		}
 	}
 
@@ -159,23 +158,6 @@ public class Jouer {
 		}
 		if (joueurArguments[1].equals("")) {
 			throw new ConfigurationException("Stratégie de joueur indéfinie");
-		}
-	}
-
-	/**
-	 * Ajouter les joueurs au register de joueur.
-	 *
-	 * @param joueurRegister le register de joueurs
-	 */
-	private static void remplirRegistreJoueurs(JoueurRegister joueurRegister) {
-		for (int i = 0; i < nomsJoueurs.size(); i++) {
-			Strategie strategie = STRATEGIES.get(strategiesJoueurs.get(i));
-			String nom = nomsJoueurs.get(i);
-			if (strategie == null) {
-				throw new ConfigurationException("La stratégie donnée au joueur "
-					+ nom + " n'existe pas");
-			}
-			joueurRegister.ajouterJoueur(new Joueur(nom, strategie));
 		}
 	}
 

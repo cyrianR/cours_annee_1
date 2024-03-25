@@ -10,19 +10,12 @@ import java.util.Random;
  * @version 1.0
  */
 public class NaifStrategie implements Strategie {
-
+  
   /** Flux aléatoire static pour la stratégie aléatoire. */
   private static Random fluxAleatoire = new Random();
 
   /** Nom de la stratégie. */
-  private String nom;
-
-  /**
-   * Construire la stratégie naive.
-   */
-  public NaifStrategie() {
-    this.nom = "naif";
-  }
+  public final static String NOM = "naif";
 
   /**
    * Choix de la prise pour une stratégie naive.
@@ -44,15 +37,6 @@ public class NaifStrategie implements Strategie {
       // aléatoire en respectant la prise maximum
       return fluxAleatoire.nextInt(jeu.getNombreAllumettes() - 1) + 1;
     }
-  }
-
-  /**
-   * Obtenir le nom de la stratégie.
-   *
-   * @return le nom de la stratégie
-   */
-  public String getNom() {
-    return this.nom;
   }
 
 }

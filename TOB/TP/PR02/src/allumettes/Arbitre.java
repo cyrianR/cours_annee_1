@@ -1,5 +1,8 @@
 package allumettes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Arbitre de deux joueurs pouvant arbitrer un jeu.
  *
@@ -8,21 +11,12 @@ package allumettes;
  */
 public class Arbitre {
 
-  /** Register de joueurs qui jouent. */
-  private JoueurRegister joueurRegister;
   /** Vrai lorsque l'arbitre est confiant par rapport à la triche. */
   private boolean confiant;
-
-  /**
-   * Construire un arbitre avec plusieurs joueurs et une certaine confiance.
-   *
-   * @param joueurRegister le register de joueurs
-   * @param confiant vrai lorsque l'arbitre est confiant par rapport à la triche
-   */
-  public Arbitre(JoueurRegister joueurRegister, boolean confiant) {
-    this.joueurRegister = joueurRegister;
-    this.confiant = confiant;
-  }
+  /** Liste des deux joueurs jouant au jeu. */
+  private List<Joueur> joueurs = new ArrayList<Joueur>();
+  /** Indice prochain joueur. */
+  private int indProchainJoueur = 0;
 
   /**
    * Construire un arbitre avec deux joueurs et une certaine confiance.
@@ -32,9 +26,8 @@ public class Arbitre {
    * @param confiant vrai lorsque l'arbitre est confiant par rapport à la triche
    */
   public Arbitre(Joueur joueur1, Joueur joueur2, boolean confiant) {
-    this.joueurRegister = new JoueurRegister();
-    this.joueurRegister.ajouterJoueur(joueur1);
-    this.joueurRegister.ajouterJoueur(joueur2);
+    joueurs.add(joueur1);
+    joueurs.add(joueur2);
     this.confiant = confiant;
   }
 
@@ -57,7 +50,7 @@ public class Arbitre {
     // initialiser les variables d'arbitrage
     boolean finPartie = false;
     boolean tricherie = false;
-    Joueur joueurCourant = joueurRegister.obtenirProchainJoueur();
+    Joueur joueurCourant = obtenirProchainJoueur();
     Joueur joueurPrecedent = joueurCourant;
     // tant que la partie n'est pas finie et que aucune triche n'est détectée,
     // l'arbitre fait jouer un joueur
@@ -68,7 +61,7 @@ public class Arbitre {
       try {
         traiterTourJoueur(joueurCourant, jeu);
         joueurPrecedent = joueurCourant;
-        joueurCourant = joueurRegister.obtenirProchainJoueur();
+        joueurCourant = obtenirProchainJoueur();
         System.out.println(""); // saut de ligne
       } catch (OperationInterditeException e) {
         // il y a triche
@@ -86,8 +79,6 @@ public class Arbitre {
       finPartie = (jeu.getNombreAllumettes() == 0);
     }
     // message de fin de partie
-    // TODO : il faut ajouter les autres joueurs qui perdent si il y a plus de 2
-    // joueurs
     if (!tricherie) {
       System.out.println(joueurPrecedent.getNom() + " perd !");
       System.out.println(joueurCourant.getNom() + " gagne !");
@@ -127,6 +118,17 @@ public class Arbitre {
   }
 
   /**
+   * Obtenir le prochain joueur qui doit jouer.
+   *
+   * @return le prochain joueur
+   */
+  private Joueur obtenirProchainJoueur() {
+    int indJoueur = this.indProchainJoueur;
+    this.indProchainJoueur = (this.indProchainJoueur == 0) ? 1 : 0;
+    return this.joueurs.get(indJoueur);
+  }
+
+  /**
    * Obtenir le caractère confiant ou non de l'arbitre.
    *
    * @return vrai lorsque l'arbitre est confiant
@@ -142,24 +144,6 @@ public class Arbitre {
    */
   public void setConfiant(boolean confiant) {
     this.confiant = confiant;
-  }
-
-  /**
-   * Modifier le register de joueurs.
-   *
-   * @param joueurRegister le nouveau joueur register
-   */
-  public void setJoueurRegister(JoueurRegister joueurRegister) {
-    this.joueurRegister = joueurRegister;
-  }
-
-  /**
-   * Obtenir le register de joueur.
-   *
-   * @return le register de joueur
-   */
-  public JoueurRegister getJoueurRegister() {
-    return this.joueurRegister;
   }
 
 }

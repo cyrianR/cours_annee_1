@@ -4,46 +4,71 @@ import org.junit.*;
 
 import allumettes.JeuSimple;
 import allumettes.strategies.RapideStrategie;
+import allumettes.strategies.Strategie;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 /**
- * Test de la stratégie rapide.
+ * Test de la stratégie rapide (contrainte C16).
  * 
  * @author Cyrian Ragot
  * @version 1.0
  */
 public class StrategieRapideTest {
 
-  // précision pour les comparaisons réelle
-  public final static double EPSILON = 0.001;
+  /** Jeux de test. */
+  JeuSimple jeu1;
+  JeuSimple jeu2;
+  JeuSimple jeu3;
+  JeuSimple jeu4;
+  JeuSimple jeu5;
+  /** Strategie à tester. */
+  Strategie strategie;
 
-  // jeux simples dans une liste
-  ArrayList<JeuSimple> listeJeux = new ArrayList<JeuSimple>();
-
+  /** Instanciation des objets utiles aux tests. */
   @Before
   public void setUp() {
-    // construire des jeux avec différents nombres d'allumettes
-    for (int i = 1; i < 6; i++) {
-      listeJeux.add(new JeuSimple(i));
-    }
+    jeu1 = new JeuSimple(1);
+    jeu2 = new JeuSimple(2);
+    jeu3 = new JeuSimple(3);
+    jeu4 = new JeuSimple(4);
+    jeu5 = new JeuSimple(5);
   }
 
+  /** Test de création de la stratégie rapide. */
   @Test
-  public void testerC16() {
-    RapideStrategie strategie = new RapideStrategie();
+  public void testerCreationStrategie() {
+    strategie = new RapideStrategie();
+  }
+
+  /** Test de la stratégie pour un jeu de 1 allumette. */
+  @Test
+  public void testerJeu1Allumette() {
     assertEquals("C16 : Strategie rapide incorrect pour un jeu de 1 allumette",
-        1, strategie.choixPrise(listeJeux.get(0), "Jean"));
+      1, strategie.choixPrise(jeu1, "Jean"));
+  }
+
+  /** Test de la stratégie pour un jeu de 2 allumettes. */
+  @Test
+  public void testerJeu2Allumettes() {
     assertEquals("C16 : Strategie rapide incorrect pour un jeu de 2 allumettes",
-        2, strategie.choixPrise(listeJeux.get(1), "Jean"));
+      2, strategie.choixPrise(jeu2, "Jean"));
+  }
+
+  /** Test de la stratégie pour un jeu de 3 allumettes. */
+  @Test
+  public void testerJeu3Allumettes() {
     assertEquals("C16 : Strategie rapide incorrect pour un jeu de 3 allumettes",
-        3, strategie.choixPrise(listeJeux.get(2), "Jean"));
+      3, strategie.choixPrise(jeu3, "Jean"));
+  }
+
+  /** Test de la stratégie pour un jeu de plus de 3 allumettes. */
+  @Test
+  public void testerJeuPlusDe3Allumettes() {
     assertEquals("C16 : Strategie rapide incorrect pour un jeu de 4 allumettes",
-        3, strategie.choixPrise(listeJeux.get(3), "Jean"));
+      3, strategie.choixPrise(jeu4, "Jean"));
     assertEquals("C16 : Strategie rapide incorrect pour un jeu de 5 allumettes",
-        3, strategie.choixPrise(listeJeux.get(4), "Jean"));
+      3, strategie.choixPrise(jeu5, "Jean"));
   }
 
 }

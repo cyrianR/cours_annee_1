@@ -9,4 +9,11 @@ package allumettes.strategies;
  */
 public class ChoixInvalideException extends Exception {
 
+  	/** Initaliser une ChoixInvalideException avec le message précisé.
+	 * @param message le message explicatif
+	 */
+	public ChoixInvalideException(String message) {
+		super(message);
+	}
+
 }

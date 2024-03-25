@@ -66,44 +66,21 @@ Donner ici les explications supplémentaires utiles à la compréhension du
 travail rendu.
 --------------------------------------------------------------------------------
 
-1. On aurait pu s'arrêter à la classe abstraite "Strategie" pour le soucis d'extensibilité demandé 
-dans le sujet mais j'ai aussi créé la classe abstraite "StrategieTrichable" qui hérite de "Strategie" pour
-deux raison : 
-  -> Comme les stratégies "Humain" et "Tricheur" peuvent toutes les deux tricher et donc nécessitent 
-  des méthodes similaires, cela permet de factoriser plus de code et le rendre plus lisible.
-  -> Ceci permet aussi de pouvoir étendre la capacité de tricherie à toute nouvelle stratégie,
-  on ajoute donc encore plus d'extensibilité possible pour de futurs extensions du jeu.
+1. Au final, j'ai abandonné la classe abstraite StrategieTrichable malgré que 
+j'ai plus de similitudes.
 
-2. De même, l'interface "StrategieScanner" permet de donner à une stratégie la capacité de
+2. J'ai abandonné le joueurRegister selon vos conseils.
+
+3. L'interface "StrategieScanner" permet de donner à une stratégie la capacité de
 demander une entrée utilisateur via un seul Scanner static instancié par cette interface, il
 suffit qu'une stratégie implémente cette interface pour utiliser le scanner. Cela permet aussi
-plus d'extensibilité.  
+plus d'extensibilité.
 
-3. J'ai choisis de faire un switch case pour le traitement des arguments pour pouvoir ajouter 
-facilement des paramètres de ligne de commande en "-nom_parametre". Les autres arguments
-étant considérés comme les joueurs en "Nom@Strategie". On pourrait améliorer ce traitement d'arguments
-pour le rendre plus modulable au travers d'une autre classe peut être.
-
-4. Le register de joueurs nous permet d'avoir autant de joueurs que l'on souhaite dans une partie.
-On peut ainsi facilement en ajouter et itérer en boucle sur tous les joueurs présents dans le register pour
-traiter leurs tours 1 à 1 (grâce à la méthode "obtenirProchainJoueur"). L'arbitre n'utilise donc que ce register
-dans lequel on auras placé nos joueurs en début de partie à l'aide de la méthode "ajouterJoueur". On peut alors 
-aussi supprimer un joueur en cours de partie selon son identifiant unique (on peut imaginer que si on joueur triche
-on le supprime de la partie en guise de punition).
-
-5. L'identifiant unique d'un joueur est créé lors de l'instanciation du joueur avec l'attribut "id" grace au paramètre
-static final "AtomicLong" de "Joueur". Ceci assure que tout joueur instancié a un identifiant unique que l'on ne peut
-pas changer (pas de méthdoe get) mais que l'on peut récupérer avec un setter.
-
-6. Les stratégies utilisent le paramètre "PRISE_MAX" de "Jeu" de manière à ce qu'elles fonctionnent toujours lorsque
-l'on souhaite changer la prise maximum du jeu. De plus, cette constante est utilsée dans la robustesse, de manière à toujours
-être robuste.
-
-7. J'ai passé le nombre d'allumettes initiales du jeu et le nombre de joueurs comme paramètres constants
+4. J'ai passé le nombre d'allumettes initiales du jeu et le nombre de joueurs comme paramètres constants
 de la classe "Jouer" pour permettre de les changer plus simplement que d'utiliser "en dur" des nombres ou
 des variables locales.
 
-8. J'ai quelques similitudes dans les fichiers d'évaluation automatique, j'en ai corrigé quelques unes qui n'étaient pas géniales
+5. J'ai quelques similitudes dans les fichiers d'évaluation automatique, j'en ai corrigé quelques unes qui n'étaient pas géniales
 mais il ne me semble pas que les similitudes restantes reflètent un réel problème de structuration du code.
 
 --------------------------------------------------------------------------------

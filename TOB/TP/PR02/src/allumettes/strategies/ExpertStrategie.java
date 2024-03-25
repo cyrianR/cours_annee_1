@@ -11,14 +11,7 @@ import allumettes.Jeu;
 public class ExpertStrategie implements Strategie {
 
   /** Nom de la stratégie. */
-  private String nom;
-
-  /**
-   * Construire la stratégie experte.
-   */
-  public ExpertStrategie() {
-    this.nom = "expert";
-  }
+  public final static String NOM = "expert";
 
   /**
    * Choix de la prise pour une stratégie experte.
@@ -37,11 +30,6 @@ public class ExpertStrategie implements Strategie {
       return ((jeu.getNombreAllumettes() % (Jeu.PRISE_MAX + 1))
         + Jeu.PRISE_MAX) % (Jeu.PRISE_MAX + 1);
     }
-  }
-
-  @Override
-  public String getNom() {
-    return this.nom;
   }
 
 }

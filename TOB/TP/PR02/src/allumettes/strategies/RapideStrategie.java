@@ -11,14 +11,7 @@ import allumettes.Jeu;
 public class RapideStrategie implements Strategie {
 
   /** Nom de la stratégie. */
-  private String nom;
-
-  /**
-   * Construire la stratégie rapide.
-   */
-  public RapideStrategie() {
-    this.nom = "rapide";
-  }
+  public final static String NOM = "rapide";
 
   /**
    * Choix de la prise pour une stratégie rapide.
@@ -29,11 +22,6 @@ public class RapideStrategie implements Strategie {
   @Override
   public int choixPrise(Jeu jeu, String joueurNom) {
     return Math.min(jeu.getNombreAllumettes(), Jeu.PRISE_MAX);
-  }
-
-  @Override
-  public String getNom() {
-    return this.nom;
   }
 
 }
