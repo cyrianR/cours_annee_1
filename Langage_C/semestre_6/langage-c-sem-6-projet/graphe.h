@@ -125,7 +125,7 @@ void noeuds(const struct graphe_t* graphe, noeud_id_t* noeuds);
 
 /**
  * Renvoie vrai ssi les noeuds donnés sont _voisins_ dans le graphe. B est un voisin de A
- * ssi il existe un arc (orienté) dont l'origine est A et la destination est B.
+ * ssi il existent un arc (orienté) dont l'origine est A et la destination est B.
  *
  * Si les noeuds sont invalides, renvoie nécessairement faux.
  *

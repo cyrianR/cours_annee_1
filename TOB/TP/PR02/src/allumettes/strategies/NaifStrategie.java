@@ -10,12 +10,12 @@ import java.util.Random;
  * @version 1.0
  */
 public class NaifStrategie implements Strategie {
-  
+
   /** Flux aléatoire static pour la stratégie aléatoire. */
   private static Random fluxAleatoire = new Random();
 
   /** Nom de la stratégie. */
-  public final static String NOM = "naif";
+  public static final String NOM = "naif";
 
   /**
    * Choix de la prise pour une stratégie naive.

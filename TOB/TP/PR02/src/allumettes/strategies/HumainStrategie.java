@@ -12,7 +12,7 @@ import allumettes.Jeu;
 public class HumainStrategie implements StrategieScanner {
 
   /** Nom de la stratégie. */
-  public final static String NOM = "humain";
+  public static final String NOM = "humain";
 
   /**
    * Afficher un message de triche.
@@ -88,7 +88,7 @@ public class HumainStrategie implements StrategieScanner {
         tricher(jeu);
         choixTriche = true;
       } else {
-        // le joueur choisit de jouer normalment 
+        // le joueur choisit de jouer normalment
         try {
           choix = choixToInteger(choixString);
         } catch (ChoixInvalideException e) {

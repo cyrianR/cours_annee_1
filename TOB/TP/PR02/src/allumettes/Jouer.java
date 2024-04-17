@@ -126,7 +126,7 @@ public class Jouer {
 	 */
 	private static void traiterArguments(String[] args) {
 		int startArgsJoueurs;
-		// traiter l'argument confiant 
+		// traiter l'argument confiant
 		if (args[0].equals("-confiant")) {
 			arbitreConfiant = true;
 			startArgsJoueurs = 1;
@@ -135,7 +135,7 @@ public class Jouer {
 			startArgsJoueurs = 0;
 		}
 		// itérer sur les arguments de joueur
-		for (int i = startArgsJoueurs; i < args.length; i++) {	
+		for (int i = startArgsJoueurs; i < args.length; i++) {
 			String[] joueurArguments = args[i].split("@");
 			verifierArgumentJoueur(joueurArguments);
 			nomsJoueurs.add(joueurArguments[0]);

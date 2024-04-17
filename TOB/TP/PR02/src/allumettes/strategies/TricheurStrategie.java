@@ -12,7 +12,7 @@ import allumettes.Jeu;
 public class TricheurStrategie implements Strategie {
 
   /** Nom de la stratégie. */
-  public final static String NOM = "tricheur";
+  public static final String NOM = "tricheur";
 
   /**
    * Choix de la prise pour une stratégie tricheur.

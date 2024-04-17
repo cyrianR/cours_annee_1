@@ -11,7 +11,7 @@ import allumettes.Jeu;
 public class RapideStrategie implements Strategie {
 
   /** Nom de la stratégie. */
-  public final static String NOM = "rapide";
+  public static final String NOM = "rapide";
 
   /**
    * Choix de la prise pour une stratégie rapide.

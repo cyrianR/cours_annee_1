@@ -11,7 +11,7 @@ import allumettes.Jeu;
 public class ExpertStrategie implements Strategie {
 
   /** Nom de la stratégie. */
-  public final static String NOM = "expert";
+  public static final String NOM = "expert";
 
   /**
    * Choix de la prise pour une stratégie experte.

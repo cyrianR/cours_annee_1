@@ -11,7 +11,7 @@ prises en compte dans la notation du projet.
 
 
 * Temps passé sur la V1 : 20 heures 0 minutes
-* Temps passé sur la V2 : ... heures ... minutes
+* Temps passé sur la V2 : 2 heures 0 minutes
 
 Pour la V2 on ne tiendra pas compte du temps passé sur la V1.
 
@@ -25,7 +25,8 @@ comme vérifiée par le compilateur ?
 
 Cette exception est non vérifiée par le compilateur car il n'est pas possible de prévoir si 
 l'utilisateur va choisir de tricher ou non. De plus, on ne sait pas à l'avance quelles stratégies
-seront employées pour les joueurs qui s'affrontent (on ne sait pas si il y auras un tricheur ou non). 
+seront employées pour les joueurs qui s'affrontent (on ne sait pas si il y auras un tricheur ou non).
+C'est une exception liée à une mauvaise utilisation (le fait ce tricher) du programme donc elle est non vérifiée.
 
 
 --------------------------------------------------------------------------------

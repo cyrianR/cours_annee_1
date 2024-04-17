@@ -35,15 +35,10 @@ public class StrategieRapideTest {
     jeu5 = new JeuSimple(5);
   }
 
-  /** Test de création de la stratégie rapide. */
-  @Test
-  public void testerCreationStrategie() {
-    strategie = new RapideStrategie();
-  }
-
   /** Test de la stratégie pour un jeu de 1 allumette. */
   @Test
   public void testerJeu1Allumette() {
+    strategie = new RapideStrategie();
     assertEquals("C16 : Strategie rapide incorrect pour un jeu de 1 allumette",
       1, strategie.choixPrise(jeu1, "Jean"));
   }
@@ -51,6 +46,7 @@ public class StrategieRapideTest {
   /** Test de la stratégie pour un jeu de 2 allumettes. */
   @Test
   public void testerJeu2Allumettes() {
+    strategie = new RapideStrategie();
     assertEquals("C16 : Strategie rapide incorrect pour un jeu de 2 allumettes",
       2, strategie.choixPrise(jeu2, "Jean"));
   }
@@ -58,6 +54,7 @@ public class StrategieRapideTest {
   /** Test de la stratégie pour un jeu de 3 allumettes. */
   @Test
   public void testerJeu3Allumettes() {
+    strategie = new RapideStrategie();
     assertEquals("C16 : Strategie rapide incorrect pour un jeu de 3 allumettes",
       3, strategie.choixPrise(jeu3, "Jean"));
   }
@@ -65,6 +62,7 @@ public class StrategieRapideTest {
   /** Test de la stratégie pour un jeu de plus de 3 allumettes. */
   @Test
   public void testerJeuPlusDe3Allumettes() {
+    strategie = new RapideStrategie();
     assertEquals("C16 : Strategie rapide incorrect pour un jeu de 4 allumettes",
       3, strategie.choixPrise(jeu4, "Jean"));
     assertEquals("C16 : Strategie rapide incorrect pour un jeu de 5 allumettes",
